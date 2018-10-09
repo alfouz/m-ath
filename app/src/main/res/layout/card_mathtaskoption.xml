@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    card_view:cardUseCompatPadding="true"
+    card_view:cardElevation="4dp"
+    card_view:cardCornerRadius="3dp"
+    android:layout_margin="0dp"
+    card_view:cardPreventCornerOverlap="false"
+    card_view:contentPadding="-4dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="0dp">
+
+        <!-- <io.github.kexanie.library.MathView
+            android:id="@+id/newMathTaskOptionText"
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:engine="MathJax"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cb_mathtaskoption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:text="">
+
+        </io.github.kexanie.library.MathView> -->
+
+        <katex.hourglass.in.mathlib.MathView
+            android:id="@+id/newMathViewEquation"
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            app:setClickable="false"
+            app:setText=""
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/cb_mathtaskoption"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:setTextColor="@color/colorPrimaryText"
+            app:setTextSize="8sp">
+
+        </katex.hourglass.in.mathlib.MathView>
+
+        <CheckBox
+            android:id="@+id/cb_mathtaskoption"
+            style="@style/Widget.AppCompat.CompoundButton.CheckBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:checked="false"
+            android:text="@string/misc_correct"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/newMathViewEquation"
+            app:layout_constraintEnd_toStartOf="@+id/delete_mathtaskoption_button"
+            app:layout_constraintTop_toTopOf="@+id/newMathViewEquation" />
+
+        <ImageButton
+            android:id="@+id/delete_mathtaskoption_button"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:contentDescription="@string/misc_delete"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:srcCompat="@drawable/ic_clear_black_24dp" />
+
+        <!-- <TextView
+            android:id="@+id/cardMathTaskOptionDescription"
+            android:layout_width="234dp"
+            android:layout_height="21dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:text="Title"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18sp"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" /> -->
+
+        <!--<CheckBox
+            android:id="@+id/cardIsLessonDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:checked="false"
+            android:clickable="false"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent" />-->
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.v7.widget.CardView>

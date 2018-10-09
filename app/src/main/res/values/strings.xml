@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">M-ath</string>
+
+
+    <!-- Pantalla autenticación -->
+    <string name="welcome_text">M-ath</string>
+    <string name="auth_intro_text">Aprende rápido</string>
+    <string name="auth_intro_text_2">Enseña fácil</string>
+
+    <!-- Pantalla principal -->
+    <string name="main_menu_home">Inicio</string>
+    <string name="main_menu_student">Pupitre</string>
+    <string name="main_menu_teacher">Pizarra</string>
+    <string name="main_menu_store">Estantería</string>
+    <string name="main_menu_stats">Notas</string>
+    <string name="main_menu_profile">Perfil</string>
+
+    <!-- Acciones del menú -->
+    <string name="overflow_actions_logout">Salir</string>
+    <string name="overflow_actions_about">Acerca de</string>
+    <string name="overflow_actions_settings">Configuración</string>
+
+    <!-- Tarjeta de curso -->
+    <string name="course_card_level">Nivel: </string>
+
+    <!-- Actividad de Curso -->
+    <string name="course_lesson_start_message">Esta lección tiene una duración aproximada de %1$d minutos, ¿está listo para comenzar?</string>
+
+    <!-- Actividad de Lección -->
+    <string name="lesson_close_message">¿Está seguro que desea salir de esta lección y perder el progreso actual?</string>
+    <string name="lesson_next_message">Siguiente</string>
+    <string name="lesson_confirm_message">Confirmar</string>
+    <string name="lesson_empty">Esta lección está vacía</string>
+
+    <!-- Actividad de nuevo curso -->
+    <string name="new_course_title">Crear Curso</string>
+
+    <!-- Actividad de editar curso -->
+    <string name="edit_course_lessons_title">Administrar lecciones</string>
+    <string name="edit_course_title">Editar curso</string>
+    <string name="edit_course_lessons_list">Lista de lecciones</string>
+
+    <!-- Actividad de crear lección -->
+    <string name="new_lesson_title">Nueva lección</string>
+
+    <!-- Lista de tareas -->
+    <string name="math_task_list">Lista de tareas</string>
+
+    <!-- Editar lección -->
+    <string name="edit_lesson_title">Editar lección</string>
+    <string name="edit_lesson_mathtask_list">Lista de Tareas</string>
+
+    <!-- Nueva Tarea -->
+    <string name="new_mathtask_title">Nueva tarea</string>
+    <string name="new_mathtaskoption_title">Insertar nueva opción</string>
+    <string name="new_mathtaskoption_list">Seleccionar opciones</string>
+    <string name="new_mathtaskoption_select_at_least_one_correct">Selecciona al menos una opción correcta</string>
+
+    <!-- Miscelanea -->
+    <string name="misc_public">Público</string>
+    <string name="misc_private">Privado</string>
+    <string name="misc_title">Título</string>
+    <string name="misc_lessons">Lecciones</string>
+    <string name="misc_description">Descripción</string>
+    <string name="misc_autor">Autor</string>
+    <string name="misc_level">Nivel</string>
+    <string name="misc_visibility">Visibilidad</string>
+    <string name="misc_yes">Sí</string>
+    <string name="misc_no">No</string>
+    <string name="misc_save">Guardar</string>
+    <string name="misc_duration">Duración</string>
+    <string name="misc_delete">Eliminar</string>
+    <string name="misc_correct">Correcto</string>
+    <string name="misc_ecuation">Ecuación</string>
+    <string name="misc_solution">Resultado</string>
+    <string name="misc_accept">Aceptar</string>
+    <string name="misc_add">Añadir</string>
+    <string name="misc_back">Volver</string>
+    <string name="misc_options">Opciones</string>
+
+    <string name="misc_comp_options">%1$d opciones</string>
+    <string name="misc_comp_lessons">%1$d lecciones</string>
+
+
+    <string name="misc_not_implemented_yet">Esta funcionalidad no está implementada en estos momentos</string>
+    <!-- Peticiones -->
+    <string name="request_insert_data">Por favor, introduzca todos los datos solicitados</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="home_intro_explained_steps">
+        - En construcción - \n\n
+        Datos iniciales:\n
+        -Curso: Elemento principal que contiene todos los elementos para aprender sobre un concepto. \n
+        -Lección: Cada una de las categorías en las que se compone un curso.\n
+        -Tarea: Pregunta de cada una de las lecciones, contiene una descripción, la posibilidad de incluír una ecuación (insertada en modo latex por ahora) y una lista de opciones (que también soportan formato latex de ecuaciones).
+\n\n
+        Funcionalidades actuales:\n
+        -Posibilidad de crear cursos, lecciones y tareas en el apartado "Pizarra".\n
+        -Una vez creados los cursos, para tareas de test, aparecen todos en el apartado "Pupitre", pudiendo observarlos desde el punto de vista del alumno y realizarlos de una manera inicial.
+\n\n
+        -No contiene elementos online por ahora.\n
+        -El apartado home contenerá un resumen, el apartado "Estantería" la lista de cursos que se pueden descargar y el apartado "Perfil" los progresos del usuario actual.\n\n
+        Versión 0.18 alpha
+    </string>
+
+    <string name="info_equation">
+        Ayuda para creación de fórmulas \n\n
+        Esta aplicación utiliza el formato de fórmulas TeX, por lo que soporta cualquier tipo de fórmula redactada en este formato. \n\n
+        Por razones de simplicidad, se incorpora un pequeño teclado calculadora que ofrece la posibilidad de incorporar fórmulas de una manera sencilla a partir de un teclado.\n
+        En caso de desear más potencia, el cuadro de texto permite incluír la fórmula directamente en formato TeX y previsualizarla al instante. \n\n
+
+        Lista de comandos generales: \n\n
+        - Fracciones: \\frac{numerador}{denominador} \n
+        - Raíces: \\sqrt[grado]{contenido} \n
+        - Sumatorio: \\sum \n
+        - Productorio: \\prod \n
+        - Vector: \\overrightarrow{contenido} \n
+        - Ángulo: \\widehat{contenido} \n
+        - Variaciones signo igual: \\sim \\simeq \\approx \n
+    </string>
+
+</resources>

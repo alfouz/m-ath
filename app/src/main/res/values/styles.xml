@@ -1,0 +1,28 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <!-- <item name="colorPrimaryLight">@color/colorPrimaryLight</item> -->
+        <!-- <item name="android:textColor">@color/colorText</item> -->
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- <item name="android:textColorPrimary">@color/colorPrimaryText</item>
+        <item name="android:textColorSecondary">@color/colorSecondaryText</item> -->
+        <!-- <item name="colorDivider">@color/colorDivider</item> -->
+    </style>
+    <style name = "NoActionBar" parent = "AppTheme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="Toolbar" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/colorText</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+    <style name="OverflowToolbar" parent="Theme.AppCompat">
+        <item name="android:textColorPrimary">@color/colorText</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+</resources>

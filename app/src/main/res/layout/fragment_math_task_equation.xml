@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MathTaskEquationFragment">
+
+    <katex.hourglass.in.mathlib.MathView
+        android:id="@+id/newMathViewEquation"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:setClickable="false"
+        app:setText=""
+        app:setTextColor="@color/colorPrimaryText"
+        app:setTextSize="10sp">
+
+    </katex.hourglass.in.mathlib.MathView>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/etEquation"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:ems="10"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/infoButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/infoButton"
+            style="@style/Widget.AppCompat.ImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_info_outline_black_24dp" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:gravity="bottom"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/btnOptions"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonPi"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="\u03C0">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonE"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="e"
+                android:textAllCaps="false">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonX"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="x"
+                android:textAllCaps="false">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonY"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="y"
+                android:textAllCaps="false">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonZ"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="z"
+                android:textAllCaps="false">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonMod"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="Mod"
+                android:textAllCaps="false"
+                android:textSize="12sp">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonClear"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="CLR"
+                android:textAllCaps="false">
+
+            </Button>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button7"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="7" />
+
+            <Button
+                android:id="@+id/button8"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="8" />
+
+            <Button
+                android:id="@+id/button9"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="9" />
+
+            <Button
+                android:id="@+id/buttonDiv"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="\u00F7">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonSin"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="sin"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonCos"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="cos"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonTan"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="tan"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="4" />
+
+            <Button
+                android:id="@+id/button5"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="5" />
+
+            <Button
+                android:id="@+id/button6"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="6" />
+
+            <Button
+                android:id="@+id/buttonMultiply"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="\u00D7" />
+
+            <Button
+                android:id="@+id/buttonSqrt"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="\u221A">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonFact"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="!">
+
+            </Button>
+
+            <Button
+                android:id="@+id/buttonPercent"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="%">
+
+            </Button>
+
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="1" />
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="2" />
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="3" />
+
+            <Button
+                android:id="@+id/buttonMinus"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="-" />
+
+            <Button
+                android:id="@+id/buttonLn"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="ln"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/buttonLog"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="log"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/buttonExp"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="exp"
+                android:textAllCaps="false"
+                android:textSize="12sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/buttonpoint"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="." />
+
+            <Button
+                android:id="@+id/button0"
+                style="@style/Widget.AppCompat.Button.Colored"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/buttonDelete"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="C" />
+
+            <Button
+                android:id="@+id/buttonPlus"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="+" />
+
+            <Button
+                android:id="@+id/buttonEqual"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="=" />
+
+            <Button
+                android:id="@+id/buttonBrackeOn"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text="(" />
+
+            <Button
+                android:id="@+id/buttonBrackeOff"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="@dimen/calculator_button_size"
+                android:layout_height="@dimen/calculator_button_size"
+                android:text=")" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/btnBack"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Anterior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnOptions"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnOptions" />
+
+    <Button
+        android:id="@+id/btnOptions"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Siguiente"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnBack" />
+
+</android.support.constraint.ConstraintLayout>
