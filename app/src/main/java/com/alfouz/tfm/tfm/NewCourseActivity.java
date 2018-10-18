@@ -77,6 +77,7 @@ public class NewCourseActivity extends AppCompatActivity {
                     public void doCallback(CourseEntity course) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("goToFragment", 2);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
                 }, this).execute("1", title.getText().toString(), description.getText().toString(), Float.toString(ratingBar.getRating()), switchPublic.isActivated() ? "t" : "f");
@@ -87,11 +88,11 @@ public class NewCourseActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         intent.putExtra("goToFragment", 2);
         startActivity(intent);
         //super.onBackPressed();
-    }
+    }*/
 }

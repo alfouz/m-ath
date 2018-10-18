@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
+        <activity android:name=".MainActivity"/>
         <activity android:name=".AuthenticationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,10 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CourseActivity">
+        <activity android:name=".CourseActivity"
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
         <activity android:name=".LessonActivity"
             android:parentActivityName=".CourseActivity" >
@@ -29,13 +30,13 @@
                 android:value=".CourseActivity" />
         </activity>
         <activity android:name=".NewCourseActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
+                android:value=".MainActivity"/>
         </activity>
         <activity android:name=".EditCourseLessonsActivity"
-            android:parentActivityName=".EditCourseActivity" >
+            android:parentActivityName=".EditCourseActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".EditCourseActivity" />
@@ -47,28 +48,28 @@
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".NewLessonActivity"
-            android:parentActivityName=".EditCourseLessonsActivity" >
+            android:parentActivityName=".EditCourseLessonsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".EditCourseLessonsActivity" />
+                android:value=".EditCourseLessonsActivity"/>
         </activity>
         <activity android:name=".MathTaskListActivity"
-            android:parentActivityName=".EditLessonActivity" >
+            android:parentActivityName=".EditLessonActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".EditLessonActivity" />
+                android:value=".EditLessonActivity"/>
         </activity>
         <activity android:name=".EditLessonActivity"
-            android:parentActivityName=".EditCourseLessonsActivity" >
+            android:parentActivityName=".EditCourseLessonsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".EditCourseLessonsActivity" />
+                android:value=".EditCourseLessonsActivity"/>
         </activity>
         <activity android:name=".MathTaskNewActivity"
-            android:parentActivityName=".MathTaskListActivity" >
+            android:parentActivityName=".MathTaskListActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MathTaskListActivity" />
+                android:value=".MathTaskListActivity"/>
         </activity>
     </application>
 

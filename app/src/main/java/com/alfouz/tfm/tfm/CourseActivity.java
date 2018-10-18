@@ -93,6 +93,7 @@ public class CourseActivity extends AppCompatActivity {
                                         Intent intent = new Intent(getApplicationContext(), LessonActivity.class);
                                         intent.putExtra("idCourse", idCourse);
                                         intent.putExtra("idLesson", item.getId());
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                                         startActivity(intent);
                                         break;
 

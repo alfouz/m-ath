@@ -99,6 +99,7 @@ public class EditLessonActivity extends AppCompatActivity {
                             public void doCallback(LessonEntity course) {
                                 Intent intent = new Intent(getApplicationContext(), EditCourseLessonsActivity.class);
                                 intent.putExtra("idCourse", idCourse);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                             }
                         }, getApplicationContext()).execute(lessonEntity);

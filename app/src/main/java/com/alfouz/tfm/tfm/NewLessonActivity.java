@@ -75,6 +75,7 @@ public class NewLessonActivity extends AppCompatActivity {
                 public void doCallback(LessonEntity lesson) {
                     Intent intent = new Intent(getApplicationContext(), EditCourseLessonsActivity.class);
                     intent.putExtra("idCourse", idCourse);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 
                 }

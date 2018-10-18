@@ -177,9 +177,10 @@ public class LessonActivity extends AppCompatActivity {
                     createNewTask(actLesson.getTasks().get(mathTaskActual));
                 }else{
                     Toast.makeText(getApplicationContext(), "¡Has terminado la prueba!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
+                    /*Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
                     intent.putExtra("idCourse", idCourse);
-                    startActivity(intent);
+                    startActivity(intent);*/
+                    finish();
                 }
 
             }

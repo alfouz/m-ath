@@ -92,6 +92,7 @@ public class MathTaskListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MathTaskNewActivity.class);
                 intent.putExtra("idLesson", idLesson);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }
         });

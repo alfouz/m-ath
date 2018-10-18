@@ -26,6 +26,9 @@ public class EditCourseLessonsActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private LessonAdapter mAdapter;
+
+    long idCourse;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,10 +41,28 @@ public class EditCourseLessonsActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        final long idCourse = intent.getLongExtra("idCourse", -1);
+        idCourse = intent.getLongExtra("idCourse", -1);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list_lessons);
 
+
+
+        FloatingActionButton fab = findViewById(R.id.id_floating_button_add_lesson);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), NewLessonActivity.class);
+                intent.putExtra("idCourse", idCourse);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
         mRecyclerView.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -65,16 +86,5 @@ public class EditCourseLessonsActivity extends AppCompatActivity {
                 mRecyclerView.setAdapter(mAdapter);
             }
         }, this).execute(idCourse);
-
-        FloatingActionButton fab = findViewById(R.id.id_floating_button_add_lesson);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NewLessonActivity.class);
-                intent.putExtra("idCourse", idCourse);
-                startActivity(intent);
-            }
-        });
-
     }
 }

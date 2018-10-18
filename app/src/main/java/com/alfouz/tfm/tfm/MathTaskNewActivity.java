@@ -184,6 +184,7 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
                     public void doCallback(Object object) {
                         Intent intent = new Intent(getApplicationContext(), MathTaskListActivity.class);
                         intent.putExtra("idLesson", idLesson);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }
                 },getApplicationContext()).execute(mtoeArray);
