@@ -7,6 +7,11 @@
     <string name="auth_intro_text">Aprende rápido</string>
     <string name="auth_intro_text_2">Enseña fácil</string>
 
+    <!-- Pantalla inicial de primera vez -->
+    <string name="initial_no_config">No</string>
+    <string name="initial_basic_config">Sí</string>
+    <string name="initial_text">Veo que es la primera vez que ejecutas la aplicación.\n ¿Deseas que se configuren algunos cursos iniciales para que puedas realizar alguna prueba inicial?</string>
+
     <!-- Pantalla principal -->
     <string name="main_menu_home">Inicio</string>
     <string name="main_menu_student">Pupitre</string>

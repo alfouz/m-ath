@@ -41,7 +41,6 @@ public class GetLessonDB extends AsyncTask<Long, Void, Lesson> {
 
         }
 
-        Log.d("tst", Integer.toString(listMathTask.size()));
         Lesson lesson = new Lesson(lessonEntity.getId(), lessonEntity.getCourse(), lessonEntity.getTitle(), lessonEntity.getDescription(), listMathTask, lessonEntity.getDuration());
 
         return lesson;

@@ -7,6 +7,7 @@ import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.alfouz.tfm.tfm.Database.DAOs.CourseDao;
 import com.alfouz.tfm.tfm.Database.DAOs.LessonDao;
@@ -50,7 +51,7 @@ import java.util.concurrent.Executors;
                         Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
                             @Override
                             public void run() {
-                                insertInitialData(db);
+                                //insertInitialData(db);
                             }
                         });
                     }
@@ -84,14 +85,17 @@ import java.util.concurrent.Executors;
             };*/
 
     private static void insertInitialData(SupportSQLiteDatabase database){
-        database.execSQL("INSERT INTO Users (Id, IdGoogle) VALUES ('1', '1')");
 
-        database.execSQL("INSERT INTO Courses (Id, Title, Creator, Score, Level) VALUES ('1', 'Álgebra 3º ESO', '1', '5', '3')");
+        /*database.execSQL("INSERT INTO Users (IdGoogle) VALUES ('-1')");
 
-        database.execSQL("INSERT INTO Lessons (Id, Course, Title, Description, Duration, isDone) VALUES ('1', '1', 'Introducción', 'Breve introducción al álgebra', '3', 'true')");
-        database.execSQL("INSERT INTO Lessons (Id, Course, Title, Description, Duration, isDone) VALUES ('2', '1', 'Ecuaciones', 'Soluciones a ecuaciones básicas', '2', 'false')");
-        database.execSQL("INSERT INTO Lessons (Id, Course, Title, Description, Duration, isDone) VALUES ('3', '1', 'Inecuaciones', 'Aprendiendo sobre desigualdades', '5', 'true')");
-        database.execSQL("INSERT INTO Lessons (Id, Course, Title, Description, Duration, isDone) VALUES ('4', '1', 'Sistemas de ecuaciones', 'Resolver varias ecuaciones relacionadas', '6', 'false')");
+        database.execSQL("INSERT INTO Courses (Title, Creator, Score, Level) VALUES ('Álgebra 3º ESO', '1', '5', '3')");
+        database.execSQL("INSERT INTO Courses (Title, Creator, Score, Level) VALUES ('Ecuaciones 1º ESO', '1', '2', '2')");
+        database.execSQL("INSERT INTO Courses (Title, Creator, Score, Level) VALUES ('Física 3º ESO', '1', '5', '4')");
+
+        database.execSQL("INSERT INTO Lessons (Course, Title, Description, Duration, isDone) VALUES ('1', 'Introducción', 'Breve introducción al álgebra', '3', 'true')");
+        database.execSQL("INSERT INTO Lessons (Course, Title, Description, Duration, isDone) VALUES ('1', 'Ecuaciones', 'Soluciones a ecuaciones básicas', '2', 'false')");
+        database.execSQL("INSERT INTO Lessons (Course, Title, Description, Duration, isDone) VALUES ('1', 'Inecuaciones', 'Aprendiendo sobre desigualdades', '5', 'true')");
+        database.execSQL("INSERT INTO Lessons (Course, Title, Description, Duration, isDone) VALUES ('1', 'Sistemas de ecuaciones', 'Resolver varias ecuaciones relacionadas', '6', 'false')");*/
         /*
         //Logros de distancia
         database.execSQL("INSERT INTO Challenges (Title, Description, Level, Objective, Operator, Variable) VALUES ('Hacer un viaje de al menos 10 km', 'Haz un viaje de 10 km de distancia o mas', 3, 10, '>=', 'kms')");

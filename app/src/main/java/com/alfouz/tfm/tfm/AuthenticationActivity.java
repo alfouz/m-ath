@@ -30,14 +30,14 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
-                Intent intent = new Intent(this, MainActivity.class);
-                /*new CheckUserAndInsertDB(new CallbackInterface() {
+
+                new CheckUserAndInsertDB(new CallbackInterface() {
                     @Override
                     public void doCallback(Object object) {
-                        Log.d("tst", "tst");
+                        Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
+                        startActivity(intent);
                     }
-                }, getApplicationContext()).execute("1");*/
-                startActivity(intent);
+                }, getApplicationContext()).execute("1");
                 break;
         }
     }
