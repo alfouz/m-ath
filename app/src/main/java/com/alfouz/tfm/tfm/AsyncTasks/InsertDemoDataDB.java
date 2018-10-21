@@ -3,9 +3,12 @@ package com.alfouz.tfm.tfm.AsyncTasks;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.alfouz.tfm.tfm.DTOs.MathTask;
 import com.alfouz.tfm.tfm.Database.AppDatabase;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
 import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
+import com.alfouz.tfm.tfm.Database.Entities.MathTaskEntity;
+import com.alfouz.tfm.tfm.Database.Entities.MathTaskOptionEntity;
 import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
 
 public class InsertDemoDataDB extends AsyncTask {
@@ -104,6 +107,62 @@ public class InsertDemoDataDB extends AsyncTask {
         l2c2.setId(db.lessonDao().insertLesson(l2c2));
         l3c2.setId(db.lessonDao().insertLesson(l3c2));
         l4c2.setId(db.lessonDao().insertLesson(l4c2));
+
+        MathTaskEntity mte1l1c1 = new MathTaskEntity();
+        mte1l1c1.setLesson(l1c1.getId());
+        mte1l1c1.setDescription("Resuelve la siguiente ecuación");
+        mte1l1c1.setEcuation("$$x^2 = 9$$");
+        MathTaskEntity mte2l1c1 = new MathTaskEntity();
+        mte2l1c1.setLesson(l1c1.getId());
+        mte2l1c1.setDescription("Resuelve la siguiente ecuación");
+        mte2l1c1.setEcuation("$$x^3 = 8$$");
+        mte1l1c1.setId(db.mathTaskDao().insertMathTask(mte1l1c1));
+        mte2l1c1.setId(db.mathTaskDao().insertMathTask(mte2l1c1));
+
+        MathTaskOptionEntity mtoe1mte1l1c1 = new MathTaskOptionEntity();
+        mtoe1mte1l1c1.setMathTask(mte1l1c1.getId());
+        mtoe1mte1l1c1.setText("$$1$$");
+        mtoe1mte1l1c1.setCorrect(false);
+        MathTaskOptionEntity mtoe2mte1l1c1 = new MathTaskOptionEntity();
+        mtoe2mte1l1c1.setMathTask(mte1l1c1.getId());
+        mtoe2mte1l1c1.setText("$$2$$");
+        mtoe2mte1l1c1.setCorrect(false);
+        MathTaskOptionEntity mtoe3mte1l1c1 = new MathTaskOptionEntity();
+        mtoe3mte1l1c1.setMathTask(mte1l1c1.getId());
+        mtoe3mte1l1c1.setText("$$3$$");
+        mtoe3mte1l1c1.setCorrect(true);
+        MathTaskOptionEntity mtoe4mte1l1c1 = new MathTaskOptionEntity();
+        mtoe4mte1l1c1.setMathTask(mte1l1c1.getId());
+        mtoe4mte1l1c1.setText("$$4$$");
+        mtoe4mte1l1c1.setCorrect(false);
+
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe1mte1l1c1);
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe2mte1l1c1);
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe3mte1l1c1);
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe4mte1l1c1);
+
+        MathTaskOptionEntity mtoe1mte2l1c1 = new MathTaskOptionEntity();
+        mtoe1mte2l1c1.setMathTask(mte2l1c1.getId());
+        mtoe1mte2l1c1.setText("$$1$$");
+        mtoe1mte2l1c1.setCorrect(false);
+        MathTaskOptionEntity mtoe2mte2l1c1 = new MathTaskOptionEntity();
+        mtoe2mte2l1c1.setMathTask(mte2l1c1.getId());
+        mtoe2mte2l1c1.setText("$$2$$");
+        mtoe2mte2l1c1.setCorrect(false);
+        MathTaskOptionEntity mtoe3mte2l1c1 = new MathTaskOptionEntity();
+        mtoe3mte2l1c1.setMathTask(mte2l1c1.getId());
+        mtoe3mte2l1c1.setText("$$3$$");
+        mtoe3mte2l1c1.setCorrect(false);
+        MathTaskOptionEntity mtoe4mte2l1c1 = new MathTaskOptionEntity();
+        mtoe4mte2l1c1.setMathTask(mte2l1c1.getId());
+        mtoe4mte2l1c1.setText("$$4$$");
+        mtoe4mte2l1c1.setCorrect(true);
+
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe1mte2l1c1);
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe2mte2l1c1);
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe3mte2l1c1);
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe4mte2l1c1);
+
         return null;
     }
 
