@@ -13,16 +13,15 @@ import android.widget.Toast;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.AsyncTasks.CountMathTasksLessonDB;
 import com.alfouz.tfm.tfm.DTOs.Lesson;
-import com.alfouz.tfm.tfm.DTOs.MathTask;
 import com.alfouz.tfm.tfm.R;
 
 import java.util.List;
 
-public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder>{
+public class LessonBoardAdapter extends RecyclerView.Adapter<LessonBoardAdapter.ViewHolder>{
 
     private List<Lesson> lessonList;
 
-    private final LessonAdapter.OnItemClickListener listener;
+    private final LessonBoardAdapter.OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onItemClick(Lesson item);
@@ -48,7 +47,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             this.cv = cv;
         }
 
-        public void bind(final Lesson item, final LessonAdapter.OnItemClickListener listener) {
+        public void bind(final Lesson item, final LessonBoardAdapter.OnItemClickListener listener) {
             lessonEntity = item;
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override public void onClick(View v) {
@@ -61,7 +60,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
 
     // Este es nuestro constructor (puede variar según lo que queremos mostrar)
-    public LessonAdapter(List<Lesson> lessons,  LessonAdapter.OnItemClickListener listener) {
+    public LessonBoardAdapter(List<Lesson> lessons, LessonBoardAdapter.OnItemClickListener listener) {
 
         lessonList = lessons;
         this.listener = listener;
@@ -70,11 +69,11 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     // El layout manager invoca este método
     // para renderizar cada elemento del RecyclerView
     @Override
-    public LessonAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                       int viewType) {
+    public LessonBoardAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                            int viewType) {
         // Creamos una nueva vista
         CardView v = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_lesson_desk, parent, false);
+                .inflate(R.layout.card_lesson_board, parent, false);
 
         // Aquí podemos definir tamaños, márgenes, paddings
         // ...
@@ -91,25 +90,16 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
         holder.tvTitle.setText(lessonList.get(position).getTitle());
         holder.tvLessons.setText(lessonList.get(position).getDescription());
-        new CountMathTasksLessonDB(new CallbackInterface<Long>() {
-            @Override
-            public void doCallback(Long object) {
-                Log.d("tst", object.toString());
-                holder.tvNumberTasks.setText(object.toString());
-
-            }
-        },holder.itemView.getContext()).execute(lessonList.get(position).getId());
-        //holder.tvDuration.setText(lessonList.get(position).getDuration().toString());
         if(lessonList.get(position).isDone()){
             ((CardView)holder.itemView).setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.cardview_background_selected));
         }
 
-        /*holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
+        holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(holder.itemView.getContext(), R.string.misc_not_implemented_yet, Toast.LENGTH_SHORT).show();
             }
-        });*/
+        });
         holder.bind(lessonList.get(position), listener);
 
     }

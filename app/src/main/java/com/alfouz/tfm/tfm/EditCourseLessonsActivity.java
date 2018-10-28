@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.alfouz.tfm.tfm.Adapters.LessonAdapter;
+import com.alfouz.tfm.tfm.Adapters.LessonBoardAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseLessonsDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
@@ -25,7 +26,7 @@ import java.util.List;
 public class EditCourseLessonsActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
-    private LessonAdapter mAdapter;
+    private LessonBoardAdapter mAdapter;
 
     long idCourse;
 
@@ -74,7 +75,7 @@ public class EditCourseLessonsActivity extends AppCompatActivity {
                 for(LessonEntity l : listLessonentity){
                     lessonList.add(new Lesson(l.getId(), l.getTitle(), l.getDescription(), l.getDuration()));
                 }
-                mAdapter = new LessonAdapter(lessonList, new LessonAdapter.OnItemClickListener() {
+                mAdapter = new LessonBoardAdapter(lessonList, new LessonBoardAdapter.OnItemClickListener() {
                     @Override public void onItemClick(final Lesson item) {
                         Intent intent = new Intent(getApplicationContext(), EditLessonActivity.class);
                         intent.putExtra("idCourse", idCourse);

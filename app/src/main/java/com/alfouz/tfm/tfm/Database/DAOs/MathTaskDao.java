@@ -18,6 +18,9 @@ public interface MathTaskDao {
     @Query("SELECT * FROM MathTasks WHERE lesson = :lesson ORDER BY id DESC")
     List<MathTaskEntity> getMathTasksByLesson(long lesson);
 
+    @Query("SELECT COUNT() FROM MathTasks WHERE lesson = :lesson")
+    long countMathTasksByLesson(long lesson);
+
     @Insert
     long insertMathTask(MathTaskEntity MathTask);
 
