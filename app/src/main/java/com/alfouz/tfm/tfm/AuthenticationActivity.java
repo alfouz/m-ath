@@ -35,6 +35,7 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
                     @Override
                     public void doCallback(Object object) {
                         Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                         startActivity(intent);
                     }
                 }, getApplicationContext()).execute("1");

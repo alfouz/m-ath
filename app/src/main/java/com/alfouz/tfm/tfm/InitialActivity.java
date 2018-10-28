@@ -29,7 +29,7 @@ public class InitialActivity extends AppCompatActivity {
         prefManager = new PrefManager(this);
         if (!prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
-            finish();
+            //finish();
         }
 
         setContentView(R.layout.activity_initial);
@@ -48,7 +48,7 @@ public class InitialActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 CreateInitialData();
-                finish();
+                launchHomeScreen();
             }
         });
 
@@ -56,7 +56,6 @@ public class InitialActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 launchHomeScreen();
-                finish();
             }
         });
     }
@@ -65,7 +64,7 @@ public class InitialActivity extends AppCompatActivity {
         prefManager.setFirstTimeLaunch(false);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
-        finish();
+        //finish();
     }
 
     private void CreateInitialData(){
