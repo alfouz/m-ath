@@ -17,28 +17,40 @@
         android:orientation="vertical"
         android:padding="6dp">
 
+        <ImageView
+            android:id="@+id/courseIcon"
+            android:layout_width="60dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/cardCourseLessons"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/cardCourseTitle"
+            card_view:srcCompat="@drawable/icon_unknown" />
+
         <TextView
             android:id="@+id/cardCourseTitle"
-            android:layout_width="234dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
             android:text="Title"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
-            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintEnd_toStartOf="@+id/chart"
+            card_view:layout_constraintStart_toEndOf="@+id/courseIcon"
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/cardCourseLessons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Lessons"
-            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintStart_toStartOf="@+id/cardCourseTitle"
             card_view:layout_constraintTop_toBottomOf="@+id/cardCourseTitle" />
 
         <com.github.mikephil.charting.charts.PieChart

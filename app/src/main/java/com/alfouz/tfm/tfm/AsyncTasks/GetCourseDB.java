@@ -9,6 +9,7 @@ import com.alfouz.tfm.tfm.DTOs.MathTask;
 import com.alfouz.tfm.tfm.Database.AppDatabase;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
 import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
+import com.alfouz.tfm.tfm.Util.CourseType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class GetCourseDB extends AsyncTask<Long, Void, Course> {
         for(LessonEntity le : listLessonEntities){
             listLessons.add(new Lesson(le.getId(), le.getTitle(), le.getDescription(), le.getDuration()));
         }
-        Course course = new Course(courseEntity.getId(), courseEntity.getTitle(), listLessons, courseEntity.getLevel(), courseEntity.getScore(), courseEntity.getDescription(), courseEntity.isPublic());
+        Course course = new Course(courseEntity.getId(), courseEntity.getTitle(), listLessons, courseEntity.getLevel(), courseEntity.getScore(), courseEntity.getDescription(), courseEntity.isPublic(), CourseType.getType(courseEntity.getType()));
 
         return course;
     }

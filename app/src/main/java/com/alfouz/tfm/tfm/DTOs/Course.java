@@ -1,5 +1,7 @@
 package com.alfouz.tfm.tfm.DTOs;
 
+import com.alfouz.tfm.tfm.Util.CourseType;
+
 import java.util.List;
 
 public class Course {
@@ -13,8 +15,9 @@ public class Course {
     private Float level;
     private String description;
     private boolean isPublic;
+    private CourseType type;
 
-    public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic){
+    public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type){
         this.id = id;
         this.title = title;
         this.lessons = lessons;
@@ -22,16 +25,18 @@ public class Course {
         this.level = level;
         this.description = description;
         this.isPublic = isPublic;
+        this.type = type;
 
     }
 
-    public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic){
+    public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type){
         this.title = title;
         this.lessons = lessons;
         this.score = score;
         this.level = level;
         this.description = description;
         this.isPublic = isPublic;
+        this.type = type;
 
     }
 
@@ -105,6 +110,14 @@ public class Course {
 
     public void setPublic(boolean aPublic) {
         isPublic = aPublic;
+    }
+
+    public CourseType getType() {
+        return type;
+    }
+
+    public void setType(CourseType type) {
+        this.type = type;
     }
 }
 

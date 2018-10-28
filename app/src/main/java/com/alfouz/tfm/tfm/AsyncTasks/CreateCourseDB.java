@@ -28,6 +28,7 @@ public class CreateCourseDB extends AsyncTask<String, Void, CourseEntity> {
         }else{
             isPublic = false;
         }
+        int type = Integer.parseInt(strings[5]);
 
         CourseEntity course = new CourseEntity();
 
@@ -37,6 +38,7 @@ public class CreateCourseDB extends AsyncTask<String, Void, CourseEntity> {
         course.setDescription(description);
         course.setPublic(isPublic);
         course.setScore(0);
+        course.setType(type);
 
         long id = db.courseDao().insertCourse(course);
 

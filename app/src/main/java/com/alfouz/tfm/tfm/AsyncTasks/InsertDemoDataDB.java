@@ -10,6 +10,7 @@ import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
 import com.alfouz.tfm.tfm.Database.Entities.MathTaskEntity;
 import com.alfouz.tfm.tfm.Database.Entities.MathTaskOptionEntity;
 import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
+import com.alfouz.tfm.tfm.Util.CourseType;
 
 public class InsertDemoDataDB extends AsyncTask {
     CallbackInterface callback;
@@ -33,18 +34,21 @@ public class InsertDemoDataDB extends AsyncTask {
         c1.setCreator(1);
         c1.setScore(5);
         c1.setLevel(2);
+        c1.setType(CourseType.Others.getId());
         CourseEntity c2 = new CourseEntity();
         c2.setTitle("Matemáticas de prueba");
         c2.setDescription("descripción matemáticas prueba");
         c2.setCreator(1);
         c2.setScore(0);
         c2.setLevel(3);
+        c2.setType(CourseType.Maths.getId());
         CourseEntity c3 = new CourseEntity();
         c3.setTitle("Física de prueba");
         c3.setDescription("descripción física prueba");
         c3.setCreator(1);
         c3.setScore(5);
         c3.setLevel(5);
+        c3.setType(CourseType.Physics.getId());
 
         c1.setId(db.courseDao().insertCourse(c1));
         c2.setId(db.courseDao().insertCourse(c2));

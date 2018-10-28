@@ -5,12 +5,14 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.alfouz.tfm.tfm.Util.CourseType;
+
 @Entity(tableName = "Courses", foreignKeys = @ForeignKey(  entity = UserEntity.class,
         parentColumns = "id",
         childColumns = "creator",
         onUpdate = ForeignKey.CASCADE,
         onDelete = ForeignKey.CASCADE))
-//OJO con los borrados de base de datos de usuarios y e8ntidades
+//OJO con los borrados de base de datos de usuarios y entidades
 public class CourseEntity {
     @PrimaryKey(autoGenerate = true)
     private long id;
@@ -25,6 +27,8 @@ public class CourseEntity {
     private String description;
     @NonNull
     private boolean isPublic;
+
+    private int type;
 
     public long getId() {
         return id;
@@ -85,5 +89,14 @@ public class CourseEntity {
 
     public void setPublic(@NonNull boolean aPublic) {
         isPublic = aPublic;
+    }
+
+    @NonNull
+    public int getType() {
+        return type;
+    }
+
+    public void setType(@NonNull int type) {
+        this.type = type;
     }
 }

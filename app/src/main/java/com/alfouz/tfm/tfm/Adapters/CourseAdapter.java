@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -38,12 +39,15 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
         public PieChart chart;
         public RatingBar ratingBar;
         private Course courseEntity;
+        private ImageView courseIcon;
+
         public ViewHolder(CardView cv) {
             super(cv);
             tvTitle = cv.findViewById(R.id.cardCourseTitle);
             tvLessons = cv.findViewById(R.id.cardCourseLessons);
             chart = cv.findViewById(R.id.chart);
             ratingBar = cv.findViewById(R.id.ratingBar);
+            courseIcon = cv.findViewById(R.id.courseIcon);
 
         }
 
@@ -88,6 +92,21 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
         holder.tvTitle.setText(courseList.get(position).getTitle());
         holder.tvLessons.setText(String.format(holder.itemView.getContext().getString(R.string.misc_comp_lessons), courseList.get(position).getLessons().size()));
+
+        switch(courseList.get(position).getType()){
+            case Maths:
+                holder.courseIcon.setImageResource(R.drawable.icon_math);
+                break;
+            case Physics:
+                holder.courseIcon.setImageResource(R.drawable.icon_physic);
+                break;
+            case Others:
+                holder.courseIcon.setImageResource(R.drawable.icon_unknown);
+                break;
+            default:
+                holder.courseIcon.setImageResource(R.drawable.icon_unknown);
+                break;
+        }
 
         holder.ratingBar.setRating(courseList.get(position).getLevel());
 
