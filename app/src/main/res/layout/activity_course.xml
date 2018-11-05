@@ -31,18 +31,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
 
-        <TextView
-            android:id="@+id/tvCourseDescriptionTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/idCourseIcon"
+            android:layout_width="82dp"
+            android:layout_height="81dp"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="@string/misc_description"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/tvCourseVisibilityTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_unknown" />
 
         <TextView
             android:id="@+id/tvCourseDescription"
@@ -56,7 +55,7 @@
             android:text="CourseDescription"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCourseDescriptionTitle" />
+            app:layout_constraintTop_toBottomOf="@+id/idCourseIcon" />
 
         <TextView
             android:id="@+id/tvCourseAuthorTitle"
@@ -68,8 +67,8 @@
             android:text="@string/misc_autor"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCourseDescription" />
+            app:layout_constraintStart_toEndOf="@+id/idCourseIcon"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvCourseOwner"
@@ -88,13 +87,11 @@
             android:id="@+id/tvCourseLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/misc_level"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvCourseAuthorTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvCourseAuthorTitle" />
 
         <RatingBar
@@ -112,13 +109,11 @@
             android:id="@+id/tvCourseVisibilityTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="@string/misc_visibility"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvCourseLevel"
             app:layout_constraintTop_toBottomOf="@+id/tvCourseLevel" />
 
         <TextView

@@ -92,7 +92,7 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
         holder.tvTitle.setText(courseList.get(position).getTitle());
         holder.tvLessons.setText(String.format(holder.itemView.getContext().getString(R.string.misc_comp_lessons), courseList.get(position).getLessons().size()));
-
+        //Enum care
         switch(courseList.get(position).getType()){
             case Maths:
                 holder.courseIcon.setImageResource(R.drawable.icon_math);

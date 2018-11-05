@@ -152,7 +152,7 @@ public class InsertDemoDataDB extends AsyncTask {
         MathTaskOptionEntity mtoe2mte2l1c1 = new MathTaskOptionEntity();
         mtoe2mte2l1c1.setMathTask(mte2l1c1.getId());
         mtoe2mte2l1c1.setText("$$2$$");
-        mtoe2mte2l1c1.setCorrect(false);
+        mtoe2mte2l1c1.setCorrect(true);
         MathTaskOptionEntity mtoe3mte2l1c1 = new MathTaskOptionEntity();
         mtoe3mte2l1c1.setMathTask(mte2l1c1.getId());
         mtoe3mte2l1c1.setText("$$3$$");
@@ -160,7 +160,7 @@ public class InsertDemoDataDB extends AsyncTask {
         MathTaskOptionEntity mtoe4mte2l1c1 = new MathTaskOptionEntity();
         mtoe4mte2l1c1.setMathTask(mte2l1c1.getId());
         mtoe4mte2l1c1.setText("$$4$$");
-        mtoe4mte2l1c1.setCorrect(true);
+        mtoe4mte2l1c1.setCorrect(false);
 
         db.mathTaskOptionDao().insertMathTaskOption(mtoe1mte2l1c1);
         db.mathTaskOptionDao().insertMathTaskOption(mtoe2mte2l1c1);

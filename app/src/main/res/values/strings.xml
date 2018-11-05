@@ -29,7 +29,8 @@
     <string name="course_card_level">Nivel: </string>
 
     <!-- Actividad de Curso -->
-    <string name="course_lesson_start_message">Esta lección tiene una duración aproximada de %1$d minutos, ¿está listo para comenzar?</string>
+    <string name="course_lesson_start_message">Esta lección tiene %1$d preguntas, ¿está listo para comenzar?</string>
+    <string name="course_lesson_no_task_message">Esta lección no tiene tareas actualmente que realizar.</string>
 
     <!-- Actividad de Lección -->
     <string name="lesson_close_message">¿Está seguro que desea salir de esta lección y perder el progreso actual?</string>

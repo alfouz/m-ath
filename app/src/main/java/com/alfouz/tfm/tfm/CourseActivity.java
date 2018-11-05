@@ -11,8 +11,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.Adapters.LessonAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
@@ -72,7 +74,22 @@ public class CourseActivity extends AppCompatActivity {
                 TextView tvOwner = findViewById(R.id.tvCourseOwner);
                 TextView tvVisibility = findViewById(R.id.tvCourseVisibility);
                 RatingBar ratingBar = findViewById(R.id.ratingBarCourseLevel);
-
+                ImageView courseIcon = findViewById(R.id.idCourseIcon);
+                //Enum care
+                switch(course.getType()){
+                    case Maths:
+                        courseIcon.setImageResource(R.drawable.icon_math);
+                        break;
+                    case Physics:
+                        courseIcon.setImageResource(R.drawable.icon_physic);
+                        break;
+                    case Others:
+                        courseIcon.setImageResource(R.drawable.icon_unknown);
+                        break;
+                    default:
+                        courseIcon.setImageResource(R.drawable.icon_unknown);
+                        break;
+                }
                 tvDescription.setText(course.getDescription());
                 //Warning
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -84,29 +101,35 @@ public class CourseActivity extends AppCompatActivity {
 
                 mAdapter = new LessonAdapter(course.getLessons(), new LessonAdapter.OnItemClickListener() {
                     @Override public void onItemClick(final Lesson item) {
+                        if(item.getTasks()!=null && item.getTasks().size()>0){
+                            DialogInitLesson dialog = new DialogInitLesson(CourseActivity.this, idCourse, item);
+                            dialog.show();
+                            /*DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    switch (which){
+                                        case DialogInterface.BUTTON_POSITIVE:
+                                            Intent intent = new Intent(getApplicationContext(), LessonActivity.class);
+                                            intent.putExtra("idCourse", idCourse);
+                                            intent.putExtra("idLesson", item.getId());
+                                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+                                            startActivity(intent);
+                                            break;
 
-                        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                switch (which){
-                                    case DialogInterface.BUTTON_POSITIVE:
-                                        Intent intent = new Intent(getApplicationContext(), LessonActivity.class);
-                                        intent.putExtra("idCourse", idCourse);
-                                        intent.putExtra("idLesson", item.getId());
-                                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                        startActivity(intent);
-                                        break;
-
-                                    case DialogInterface.BUTTON_NEGATIVE:
-                                        //No button clicked
-                                        break;
+                                        case DialogInterface.BUTTON_NEGATIVE:
+                                            //No button clicked
+                                            break;
+                                    }
                                 }
-                            }
-                        };
+                            };*/
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                        builder.setMessage(String.format(getString(R.string.course_lesson_start_message), item.getDuration())).setPositiveButton(getString(R.string.misc_yes), dialogClickListener)
-                                .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
+                            //AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                            //builder.setMessage(String.format(getString(R.string.course_lesson_start_message), item.getDuration())).setPositiveButton(getString(R.string.misc_yes), dialogClickListener)
+                             //       .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
+                        }else{
+                            Toast.makeText(context,R.string.course_lesson_no_task_message, Toast.LENGTH_SHORT).show();
+                        }
+
 
                     }
                 });

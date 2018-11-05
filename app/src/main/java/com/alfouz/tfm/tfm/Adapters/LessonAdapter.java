@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.AsyncTasks.CountMathTasksLessonDB;
+import com.alfouz.tfm.tfm.AsyncTasks.GetMathTasksDB;
 import com.alfouz.tfm.tfm.DTOs.Lesson;
 import com.alfouz.tfm.tfm.DTOs.MathTask;
 import com.alfouz.tfm.tfm.R;
@@ -21,7 +22,6 @@ import java.util.List;
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder>{
 
     private List<Lesson> lessonList;
-
     private final LessonAdapter.OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -86,7 +86,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
     // Este método reemplaza el contenido de cada view,
     // para cada elemento de la lista (nótese el argumento position)
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         //TODO Mejorar las muestras
 
         holder.tvTitle.setText(lessonList.get(position).getTitle());
@@ -94,7 +94,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         new CountMathTasksLessonDB(new CallbackInterface<Long>() {
             @Override
             public void doCallback(Long object) {
-                Log.d("tst", object.toString());
                 holder.tvNumberTasks.setText(object.toString());
 
             }
@@ -103,6 +102,14 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         if(lessonList.get(position).isDone()){
             ((CardView)holder.itemView).setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.cardview_background_selected));
         }
+
+        new GetMathTasksDB(new CallbackInterface<List<MathTask>>() {
+            @Override
+            public void doCallback(List<MathTask> object) {
+                lessonList.get(position).setTasks(object);
+
+            }
+        }, holder.itemView.getContext()).execute(lessonList.get(position).getId());
 
         /*holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override

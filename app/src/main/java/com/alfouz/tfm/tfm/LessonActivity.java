@@ -80,27 +80,6 @@ public class LessonActivity extends AppCompatActivity {
                 }
             }
         }, getApplicationContext()).execute(idLesson);
-        /*mathTaskList = new ArrayList<MathTask>();
-        List<MathTaskOption> mathTaskOptionList = new ArrayList<MathTaskOption>();
-        mathTaskOptionList.add(new MathTaskOption("1", true));
-        mathTaskOptionList.add(new MathTaskOption("2", false));
-        mathTaskOptionList.add(new MathTaskOption("3", false));
-        mathTaskList.add(new MathTask(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true), "Introducción", "Breve introducción al álgebra", null, 3),null, "$$x^2 + x - 2 = 0$$", "Calcula x en la siguiente ecuación", mathTaskOptionList));
-
-        List<MathTaskOption> mathTaskOptionList2 = new ArrayList<MathTaskOption>();
-        mathTaskOptionList2.add(new MathTaskOption("4", false));
-        mathTaskOptionList2.add(new MathTaskOption("5", false));
-        mathTaskOptionList2.add(new MathTaskOption("3", true));
-        mathTaskList.add(new MathTask(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true), "Introducción", "Breve introducción al álgebra", null, 3), null, "$$x^2 + x - 12 = 0$$", "Calcula x en la siguiente ecuación", mathTaskOptionList2));
-
-        List<MathTaskOption> mathTaskOptionList3 = new ArrayList<MathTaskOption>();
-        mathTaskOptionList3.add(new MathTaskOption("4", true));
-        mathTaskOptionList3.add(new MathTaskOption("5", false));
-        mathTaskOptionList3.add(new MathTaskOption("2", false));
-        mathTaskList.add(new MathTask(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true), "Introducción", "Breve introducción al álgebra", null, 3),null, "$$x^2 - x = 12$$", "Calcula x en la siguiente ecuación", mathTaskOptionList3));
-*/
-
-
 
     }
 
