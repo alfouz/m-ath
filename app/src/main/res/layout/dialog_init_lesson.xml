@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/initLessonDialogImage"
+        android:id="@+id/lessonInitDialogImage"
         android:layout_width="66dp"
         android:layout_height="67dp"
         android:layout_marginLeft="8dp"
@@ -23,10 +23,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/initLessonDialogImage"
+        app:layout_constraintBottom_toBottomOf="@+id/lessonInitDialogImage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/initLessonDialogImage"
-        app:layout_constraintTop_toTopOf="@+id/initLessonDialogImage" />
+        app:layout_constraintStart_toEndOf="@+id/lessonInitDialogImage"
+        app:layout_constraintTop_toTopOf="@+id/lessonInitDialogImage" />
 
     <Button
         android:id="@+id/btnInitLessonNo"
@@ -39,7 +39,7 @@
         android:text="@string/misc_no"
         app:layout_constraintEnd_toStartOf="@+id/btnInitLessonYes"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/initLessonDialogImage" />
+        app:layout_constraintTop_toBottomOf="@+id/lessonInitDialogImage" />
 
     <Button
         android:id="@+id/btnInitLessonYes"

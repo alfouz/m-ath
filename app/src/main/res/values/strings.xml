@@ -37,6 +37,13 @@
     <string name="lesson_next_message">Siguiente</string>
     <string name="lesson_confirm_message">Confirmar</string>
     <string name="lesson_empty">Esta lección está vacía</string>
+    <string name="lesson_correct_answer">¡Felicidades, has acertado!</string>
+    <string name="lesson_incorrect_answer">Lo siento, no era la respuesta correcta</string>
+    <string name="lesson_result_excelent">¡Excelente, has conseguido un %1$d%% de aciertos!</string>
+    <string name="lesson_result_good">¡Muy bien, has aprobado con un %1$d%% de aciertos!</string>
+    <string name="lesson_result_regular">Has conseguido un %1$d%% de aciertos, la práctica hace al maestro</string>
+    <string name="lesson_result_bad">Conseguise un %1$d%% de aciertos, prueba a intentarlo de nuevo</string>
+    <string name="lesson_result_horrible">Tienes un %1$d%% de aciertos, yo sé que puedes hacerlo mejor</string>
 
     <!-- Actividad de nuevo curso -->
     <string name="new_course_title">Crear Curso</string>

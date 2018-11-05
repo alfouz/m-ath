@@ -42,6 +42,8 @@ public class LessonActivity extends AppCompatActivity {
     private long idCourse;
     private long idLesson;
 
+    private int score = 0;
+
     private RecyclerView mRecyclerView;
     private AnswerAdapter mAdapter;
     private List<MathTaskOption> actualAnswers;
@@ -124,20 +126,6 @@ public class LessonActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                //int selectedId = radioGroup.getCheckedRadioButtonId();
-                //RadioButton rb = findViewById(selectedId);
-                //MathTaskOption mtoCorrect = new MathTaskOption("NaN", false);
-                /*for(MathTaskOption mto : item.getAnswers()){
-                    if(mto.isCorrect()){
-                        mtoCorrect=mto;
-                    }
-                }*/
-                /*if(rb.getText().equals(mtoCorrect.getText())){
-                    Toast.makeText(getApplicationContext(), "¡Correcto!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(getApplicationContext(), "¡Error, sigue practicando!", Toast.LENGTH_SHORT).show();
-                }*/
-
                 int totalCorrect=0;
                 for(int i =0; i<actualAnswers.size(); i++){
                     if(actualAnswers.get(i).isCorrect()==item.getAnswers().get(i).isCorrect()){
@@ -146,21 +134,71 @@ public class LessonActivity extends AppCompatActivity {
                 }
 
                 if(totalCorrect>=actualAnswers.size()){
-                    Toast.makeText(getApplicationContext(), "¡Correcto!", Toast.LENGTH_SHORT).show();
+                    final DialogAnswerLesson dialog = new DialogAnswerLesson(LessonActivity.this, true);/*, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            score++;
+                            mathTaskActual++;
+                            if(mathTaskActual<actLesson.getTasks().size()){
+                                createNewTask(actLesson.getTasks().get(mathTaskActual));
+                            }else{
+                                Toast.makeText(getApplicationContext(), "¡Has terminado la prueba!", Toast.LENGTH_SHORT).show();
+
+                                finish();
+                            }
+                        }
+                    });*/
+                    dialog.show();
+                    Button buttontrue = dialog.getButtonNext();
+                    buttontrue.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            score++;
+                            mathTaskActual++;
+                            if(mathTaskActual<actLesson.getTasks().size()){
+                                createNewTask(actLesson.getTasks().get(mathTaskActual));
+                            }else{
+                                dialog.dismiss();
+                                int scoreFinal = (score*100/actLesson.getTasks().size());
+                                DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                dialogEnd.show();
+                            }
+                            dialog.dismiss();
+                        }
+                    });
                 }else{
-                    Toast.makeText(getApplicationContext(), "¡Error, sigue practicando!", Toast.LENGTH_SHORT).show();
+                    final DialogAnswerLesson dialog = new DialogAnswerLesson(LessonActivity.this, false);/*, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mathTaskActual++;
+                            if(mathTaskActual<actLesson.getTasks().size()){
+                                createNewTask(actLesson.getTasks().get(mathTaskActual));
+                            }else{
+                                Toast.makeText(getApplicationContext(), "¡Has terminado la prueba!", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                    });*/
+                    dialog.show();
+                    Button buttonfalse = dialog.getButtonNext();
+                    buttonfalse.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mathTaskActual++;
+                            if(mathTaskActual<actLesson.getTasks().size()){
+                                createNewTask(actLesson.getTasks().get(mathTaskActual));
+                            }else{
+                                dialog.dismiss();
+                                int scoreFinal = (score*100/actLesson.getTasks().size());
+                                DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                dialogEnd.show();
+                            }
+                            dialog.dismiss();
+                        }
+                    });
                 }
 
-                mathTaskActual++;
-                if(mathTaskActual<actLesson.getTasks().size()){
-                    createNewTask(actLesson.getTasks().get(mathTaskActual));
-                }else{
-                    Toast.makeText(getApplicationContext(), "¡Has terminado la prueba!", Toast.LENGTH_SHORT).show();
-                    /*Intent intent = new Intent(getApplicationContext(), CourseActivity.class);
-                    intent.putExtra("idCourse", idCourse);
-                    startActivity(intent);*/
-                    finish();
-                }
+
 
             }
         });
