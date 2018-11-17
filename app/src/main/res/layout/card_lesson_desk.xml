@@ -33,7 +33,7 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:gravity="center"
-            android:textSize="36sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             card_view:fontFamily="sans-serif"
             card_view:layout_constraintBottom_toBottomOf="@+id/imageView2"

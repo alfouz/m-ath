@@ -13,8 +13,10 @@ import android.widget.Toast;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.AsyncTasks.CountMathTasksLessonDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetMathTasksDB;
+import com.alfouz.tfm.tfm.AsyncTasks.GetResultUserLessonListDB;
 import com.alfouz.tfm.tfm.DTOs.Lesson;
 import com.alfouz.tfm.tfm.DTOs.MathTask;
+import com.alfouz.tfm.tfm.Database.Entities.ResultUserLessonEntity;
 import com.alfouz.tfm.tfm.R;
 
 import java.util.List;
@@ -91,13 +93,37 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
         holder.tvTitle.setText(lessonList.get(position).getTitle());
         holder.tvLessons.setText(lessonList.get(position).getDescription());
-        new CountMathTasksLessonDB(new CallbackInterface<Long>() {
+
+        new GetResultUserLessonListDB(new CallbackInterface<List<ResultUserLessonEntity>>() {
+
+            @Override
+            public void doCallback(List<ResultUserLessonEntity> resultUserLessonEntities) {
+                ResultUserLessonEntity resultAct = null;
+
+                Log.d("tst", Long.toString(resultUserLessonEntities.size()));
+                for(ResultUserLessonEntity result : resultUserLessonEntities){
+                    if(resultAct == null){
+                        resultAct=result;
+                    }else{
+                        if(resultAct.getPercentCorrect()<result.getPercentCorrect()){
+                            resultAct=result;
+                        }
+                    }
+                }
+                if(resultAct==null) {
+                    holder.tvNumberTasks.setText("0%");
+                }else{
+                    holder.tvNumberTasks.setText(Long.toString(resultAct.getPercentCorrect())+"%");
+                }
+            }
+        },holder.itemView.getContext()).execute(1L,lessonList.get(position).getId());
+        /*new CountMathTasksLessonDB(new CallbackInterface<Long>() {
             @Override
             public void doCallback(Long object) {
                 holder.tvNumberTasks.setText(object.toString());
 
             }
-        },holder.itemView.getContext()).execute(lessonList.get(position).getId());
+        },holder.itemView.getContext()).execute(lessonList.get(position).getId());*/
         //holder.tvDuration.setText(lessonList.get(position).getDuration().toString());
         if(lessonList.get(position).isDone()){
             ((CardView)holder.itemView).setCardBackgroundColor(holder.itemView.getResources().getColor(R.color.cardview_background_selected));

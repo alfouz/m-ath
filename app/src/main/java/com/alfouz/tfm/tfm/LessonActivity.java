@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.Adapters.AnswerAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
+import com.alfouz.tfm.tfm.AsyncTasks.CreateResultUserLessonDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseLessonsDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetLessonDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
@@ -159,9 +160,15 @@ public class LessonActivity extends AppCompatActivity {
                                 createNewTask(actLesson.getTasks().get(mathTaskActual));
                             }else{
                                 dialog.dismiss();
-                                int scoreFinal = (score*100/actLesson.getTasks().size());
-                                DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
-                                dialogEnd.show();
+                                final int scoreFinal = (score*100/actLesson.getTasks().size());
+                                new CreateResultUserLessonDB(new CallbackInterface() {
+                                    @Override
+                                    public void doCallback(Object object) {
+
+                                        DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                        dialogEnd.show();
+                                    }
+                                }, getApplicationContext()).execute(1L, actLesson.getId(),(long)scoreFinal);
                             }
                             dialog.dismiss();
                         }
@@ -189,9 +196,15 @@ public class LessonActivity extends AppCompatActivity {
                                 createNewTask(actLesson.getTasks().get(mathTaskActual));
                             }else{
                                 dialog.dismiss();
-                                int scoreFinal = (score*100/actLesson.getTasks().size());
-                                DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
-                                dialogEnd.show();
+                                final int scoreFinal = (score*100/actLesson.getTasks().size());
+                                new CreateResultUserLessonDB(new CallbackInterface() {
+                                    @Override
+                                    public void doCallback(Object object) {
+
+                                        DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                        dialogEnd.show();
+                                    }
+                                }, getApplicationContext()).execute(1L, actLesson.getId(),(long)scoreFinal);
                             }
                             dialog.dismiss();
                         }
@@ -215,7 +228,7 @@ public class LessonActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialog, int which) {
                     switch (which){
                         case DialogInterface.BUTTON_POSITIVE:
-                            onBackPressed();
+                            finish();
                             break;
 
                         case DialogInterface.BUTTON_NEGATIVE:
@@ -235,4 +248,25 @@ public class LessonActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        finish();
+                        break;
+
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        //No button clicked
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(getString(R.string.lesson_close_message)).setPositiveButton(getString(R.string.misc_yes), dialogClickListener)
+                .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
+    }
 }

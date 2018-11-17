@@ -13,16 +13,18 @@ import com.alfouz.tfm.tfm.Database.DAOs.CourseDao;
 import com.alfouz.tfm.tfm.Database.DAOs.LessonDao;
 import com.alfouz.tfm.tfm.Database.DAOs.MathTaskDao;
 import com.alfouz.tfm.tfm.Database.DAOs.MathTaskOptionDao;
+import com.alfouz.tfm.tfm.Database.DAOs.ResultUserLessonDao;
 import com.alfouz.tfm.tfm.Database.DAOs.UserDao;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
 import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
 import com.alfouz.tfm.tfm.Database.Entities.MathTaskEntity;
 import com.alfouz.tfm.tfm.Database.Entities.MathTaskOptionEntity;
+import com.alfouz.tfm.tfm.Database.Entities.ResultUserLessonEntity;
 import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {UserEntity.class, CourseEntity.class, LessonEntity.class, MathTaskEntity.class, MathTaskOptionEntity.class}, version = 2)
+@Database(entities = {UserEntity.class, CourseEntity.class, LessonEntity.class, MathTaskEntity.class, MathTaskOptionEntity.class, ResultUserLessonEntity.class}, version = 3)
         public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 
@@ -31,6 +33,7 @@ import java.util.concurrent.Executors;
     public abstract LessonDao lessonDao();
     public abstract MathTaskDao mathTaskDao();
     public abstract MathTaskOptionDao mathTaskOptionDao();
+    public abstract ResultUserLessonDao resultUserLessonDao();
 
     public synchronized static AppDatabase getInstance(Context context) {
         if (INSTANCE == null) {
