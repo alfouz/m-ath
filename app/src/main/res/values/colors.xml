@@ -22,4 +22,11 @@
     <color name="colorGrayCharts">#cccccc</color>
 
     <color name="cardview_background_selected">#F2F2F2</color>
+
+    <color name="colorPerfectScore">#76ff03</color>
+    <color name="colorGoodScore">#c6ff00</color>
+    <color name="colorRegularScore">#ffb300</color>
+    <color name="colorBadScore">#bf360c</color>
+    <color name="colorHorribleScore">#d50000</color>
+    <color name="colorNoScore">#9e9e9e</color>
 </resources>

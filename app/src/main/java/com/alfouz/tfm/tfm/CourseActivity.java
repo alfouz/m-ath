@@ -45,9 +45,71 @@ public class CourseActivity extends AppCompatActivity {
         getSupportActionBar().setTitle("");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+
+
+
+
+
+        /*TextView tvDescription = findViewById(R.id.tvCourseDescription);
+        TextView tvOwner = findViewById(R.id.tvCourseOwner);
+        TextView tvVisibility = findViewById(R.id.tvCourseVisibility);
+        RatingBar ratingBar = findViewById(R.id.ratingBarCourseLevel);
+
+        tvDescription.setText("Curso donde se explica el álgebra aplicada a problemas del mundo real desde un enfoque de un alumno de 4º de ESO.");
+        //Warning
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            tvDescription.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
+        }
+        tvOwner.setText("Adrián López Fouz");
+        tvVisibility.setText("Pública");
+        ratingBar.setRating(2f);*/
+
+        /*List<Lesson> lessonList = new ArrayList<Lesson>();
+        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true), "Introducción", "Breve introducción al álgebra", null, 3));
+        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Ecuaciones", "Soluciones a ecuaciones básicas", null, 2));
+        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Inecuaciones", "Aprendiendo sobre desigualdades", null, 5));
+        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Sistemas de ecuaciones", "Resolver varias ecuaciones relacionadas", null, 6));
+        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Teorema de Gauss", "Método para resolver sistemas de ecuaciones", null, 6));
+        lessonList.get(0).setDone(true);
+        lessonList.get(2).setDone(true);*/
+
+        /*final Context context = this;
+        mAdapter = new LessonAdapter(lessonList, new LessonAdapter.OnItemClickListener() {
+            @Override public void onItemClick(final Lesson item) {
+
+                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        switch (which){
+                            case DialogInterface.BUTTON_POSITIVE:
+                                Intent intent = new Intent(getApplicationContext(), LessonActivity.class);
+                                intent.putExtra("idLesson", item.getId());
+                                startActivity(intent);
+                                break;
+
+                            case DialogInterface.BUTTON_NEGATIVE:
+                                //No button clicked
+                                break;
+                        }
+                    }
+                };
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(String.format(getString(R.string.course_lesson_start_message), item.getDuration())).setPositiveButton(getString(R.string.misc_yes), dialogClickListener)
+                        .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
+
+            }
+        });
+        mRecyclerView.setAdapter(mAdapter);*/
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         Intent intent = getIntent();
         final long idCourse = intent.getLongExtra("idCourse", -1);
-
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list_lessons);
 
@@ -125,7 +187,7 @@ public class CourseActivity extends AppCompatActivity {
 
                             //AlertDialog.Builder builder = new AlertDialog.Builder(context);
                             //builder.setMessage(String.format(getString(R.string.course_lesson_start_message), item.getDuration())).setPositiveButton(getString(R.string.misc_yes), dialogClickListener)
-                             //       .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
+                            //       .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
                         }else{
                             Toast.makeText(context,R.string.course_lesson_no_task_message, Toast.LENGTH_SHORT).show();
                         }
@@ -136,59 +198,5 @@ public class CourseActivity extends AppCompatActivity {
                 mRecyclerView.setAdapter(mAdapter);
             }
         },getApplicationContext()).execute(idCourse);
-
-
-        /*TextView tvDescription = findViewById(R.id.tvCourseDescription);
-        TextView tvOwner = findViewById(R.id.tvCourseOwner);
-        TextView tvVisibility = findViewById(R.id.tvCourseVisibility);
-        RatingBar ratingBar = findViewById(R.id.ratingBarCourseLevel);
-
-        tvDescription.setText("Curso donde se explica el álgebra aplicada a problemas del mundo real desde un enfoque de un alumno de 4º de ESO.");
-        //Warning
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            tvDescription.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
-        }
-        tvOwner.setText("Adrián López Fouz");
-        tvVisibility.setText("Pública");
-        ratingBar.setRating(2f);*/
-
-        /*List<Lesson> lessonList = new ArrayList<Lesson>();
-        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true), "Introducción", "Breve introducción al álgebra", null, 3));
-        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Ecuaciones", "Soluciones a ecuaciones básicas", null, 2));
-        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Inecuaciones", "Aprendiendo sobre desigualdades", null, 5));
-        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Sistemas de ecuaciones", "Resolver varias ecuaciones relacionadas", null, 6));
-        lessonList.add(new Lesson(new Course("Números Naturales 4º ESO", null, 1f, 8, "Estructura de los números naturales en 4º ESO", true),"Teorema de Gauss", "Método para resolver sistemas de ecuaciones", null, 6));
-        lessonList.get(0).setDone(true);
-        lessonList.get(2).setDone(true);*/
-
-        /*final Context context = this;
-        mAdapter = new LessonAdapter(lessonList, new LessonAdapter.OnItemClickListener() {
-            @Override public void onItemClick(final Lesson item) {
-
-                DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        switch (which){
-                            case DialogInterface.BUTTON_POSITIVE:
-                                Intent intent = new Intent(getApplicationContext(), LessonActivity.class);
-                                intent.putExtra("idLesson", item.getId());
-                                startActivity(intent);
-                                break;
-
-                            case DialogInterface.BUTTON_NEGATIVE:
-                                //No button clicked
-                                break;
-                        }
-                    }
-                };
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage(String.format(getString(R.string.course_lesson_start_message), item.getDuration())).setPositiveButton(getString(R.string.misc_yes), dialogClickListener)
-                        .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
-
-            }
-        });
-        mRecyclerView.setAdapter(mAdapter);*/
-
     }
 }

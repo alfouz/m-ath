@@ -37,6 +37,15 @@ public class DeskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_desk, container, false);
+
+
+
+        return root;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
         mRecyclerView = (RecyclerView) root.findViewById(R.id.list_courses);
 
         // Usar esta línea para mejorar el rendimiento
@@ -74,9 +83,5 @@ public class DeskFragment extends Fragment {
                 mRecyclerView.setAdapter(mAdapter);
             }
         },getContext()).execute(1l);
-
-
-        return root;
     }
-
 }

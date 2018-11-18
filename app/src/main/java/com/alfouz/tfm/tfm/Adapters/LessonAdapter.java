@@ -100,7 +100,6 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
             public void doCallback(List<ResultUserLessonEntity> resultUserLessonEntities) {
                 ResultUserLessonEntity resultAct = null;
 
-                Log.d("tst", Long.toString(resultUserLessonEntities.size()));
                 for(ResultUserLessonEntity result : resultUserLessonEntities){
                     if(resultAct == null){
                         resultAct=result;
@@ -114,6 +113,23 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     holder.tvNumberTasks.setText("0%");
                 }else{
                     holder.tvNumberTasks.setText(Long.toString(resultAct.getPercentCorrect())+"%");
+                    if(resultAct.getPercentCorrect()<20){
+                        holder.tvNumberTasks.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorHorribleScore));
+                    }else{
+                        if(resultAct.getPercentCorrect()<40){
+                            holder.tvNumberTasks.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorBadScore));
+                        }else{
+                            if(resultAct.getPercentCorrect()<60){
+                                holder.tvNumberTasks.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorRegularScore));
+                            }else{
+                                if(resultAct.getPercentCorrect()<80){
+                                    holder.tvNumberTasks.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorGoodScore));
+                                }else{
+                                    holder.tvNumberTasks.setBackgroundColor(holder.itemView.getResources().getColor(R.color.colorPerfectScore));
+                                }
+                            }
+                        }
+                    }
                 }
             }
         },holder.itemView.getContext()).execute(1L,lessonList.get(position).getId());
