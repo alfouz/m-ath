@@ -149,6 +149,7 @@ public class LessonActivity extends AppCompatActivity {
                             }
                         }
                     });*/
+                    dialog.setCanceledOnTouchOutside(false);
                     dialog.show();
                     Button buttontrue = dialog.getButtonNext();
                     buttontrue.setOnClickListener(new View.OnClickListener() {
@@ -166,6 +167,7 @@ public class LessonActivity extends AppCompatActivity {
                                     public void doCallback(Object object) {
 
                                         DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                        dialog.setCanceledOnTouchOutside(false);
                                         dialogEnd.show();
                                     }
                                 }, getApplicationContext()).execute(1L, actLesson.getId(),(long)scoreFinal);
@@ -186,6 +188,7 @@ public class LessonActivity extends AppCompatActivity {
                             }
                         }
                     });*/
+                    dialog.setCanceledOnTouchOutside(false);
                     dialog.show();
                     Button buttonfalse = dialog.getButtonNext();
                     buttonfalse.setOnClickListener(new View.OnClickListener() {
@@ -202,6 +205,7 @@ public class LessonActivity extends AppCompatActivity {
                                     public void doCallback(Object object) {
 
                                         DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                        dialog.setCanceledOnTouchOutside(false);
                                         dialogEnd.show();
                                     }
                                 }, getApplicationContext()).execute(1L, actLesson.getId(),(long)scoreFinal);

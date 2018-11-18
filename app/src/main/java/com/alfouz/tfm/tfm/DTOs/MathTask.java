@@ -14,6 +14,14 @@ public class MathTask {
     private boolean answered;
     private boolean answeredCorrectly;
 
+    public MathTask(String ecuation, String description, List<MathTaskOption> answers){
+        this.ecuation = ecuation;
+        this.description = description;
+        this.answers = answers;
+        this.answered = false;
+        this.answeredCorrectly = false;
+    }
+
     public MathTask(long lesson, File image, String ecuation, String description, List<MathTaskOption> answers){
         this.lesson = lesson;
         this.image = image;

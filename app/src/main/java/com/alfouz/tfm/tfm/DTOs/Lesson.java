@@ -12,6 +12,13 @@ public class Lesson {
     private boolean isDone;
 
 
+    public Lesson(String title, String description, List<MathTask> tasks, Integer duration){
+        this.title = title;
+        this.tasks = tasks;
+        this.description = description;
+        this.duration = duration;
+    }
+
     public Lesson(long course, String title, String description, List<MathTask> tasks, Integer duration){
         this.course = course;
         this.title = title;

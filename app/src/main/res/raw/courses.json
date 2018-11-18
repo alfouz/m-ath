@@ -1,0 +1,331 @@
+{
+  "courses":[
+    {
+      "title":"1º ESO - Números enteros",
+      "level": 1,
+      "description": "Curso en el que se tratan las operaciones más comunes sobre números enteros en un nivel de 1º de ESO",
+      "public": true,
+      "type": 1,
+      "lessons": [
+        {
+          "title": "Sumas",
+          "description": "Ejercicios con sumas de números enteros",
+          "duration": 3,
+          "tasks": [
+            {
+              "description": "Resuelve la siguiente suma:",
+              "ecuation": "(-3)+(+6)",
+              "answers":[
+                {
+                  "text":"3",
+                  "correct": true
+                },
+                {
+                  "text":"-3",
+                  "correct": false
+                },
+                {
+                  "text": "-9",
+                  "correct": false
+                },
+                {
+                  "text": "9",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente suma:",
+              "ecuation": "(+5)+(-6)",
+              "answers":[
+                {
+                  "text":"1",
+                  "correct": false
+                },
+                {
+                  "text":"-1",
+                  "correct": true
+                },
+                {
+                  "text": "11",
+                  "correct": false
+                },
+                {
+                  "text": "-11",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente suma:",
+              "ecuation": "(+2)+(-6)",
+              "answers":[
+                {
+                  "text":"4",
+                  "correct": false
+                },
+                {
+                  "text":"8",
+                  "correct": false
+                },
+                {
+                  "text": "-4",
+                  "correct": true
+                },
+                {
+                  "text": "-8",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente suma:",
+              "ecuation": "(+7)+(-9)",
+              "answers":[
+                {
+                  "text":"2",
+                  "correct": false
+                },
+                {
+                  "text":"16",
+                  "correct": false
+                },
+                {
+                  "text": "-2",
+                  "correct": true
+                },
+                {
+                  "text": "-16",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente suma:",
+              "ecuation": "(-15)+(-6)",
+              "answers":[
+                {
+                  "text":"21",
+                  "correct": false
+                },
+                {
+                  "text":"-21",
+                  "correct": true
+                },
+                {
+                  "text": "9",
+                  "correct": false
+                },
+                {
+                  "text": "-9",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Restas",
+          "description": "Ejercicios con restas de números enteros",
+          "duration": 3,
+          "tasks": [
+            {
+              "description": "Resuelve la siguiente resta:",
+              "ecuation": "(-3)-(-6)",
+              "answers":[
+                {
+                  "text":"3",
+                  "correct": true
+                },
+                {
+                  "text":"-3",
+                  "correct": false
+                },
+                {
+                  "text": "-9",
+                  "correct": false
+                },
+                {
+                  "text": "9",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente resta:",
+              "ecuation": "(+3)-(-8)",
+              "answers":[
+                {
+                  "text":"11",
+                  "correct": true
+                },
+                {
+                  "text":"-11",
+                  "correct": false
+                },
+                {
+                  "text": "5",
+                  "correct": false
+                },
+                {
+                  "text": "-5",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente resta:",
+              "ecuation": "(+5)-(-5)",
+              "answers":[
+                {
+                  "text":"0",
+                  "correct": false
+                },
+                {
+                  "text":"10",
+                  "correct": true
+                },
+                {
+                  "text": "-5",
+                  "correct": false
+                },
+                {
+                  "text": "-10",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente resta:",
+              "ecuation": "(-7)-(+11)",
+              "answers":[
+                {
+                  "text":"19",
+                  "correct": false
+                },
+                {
+                  "text":"4",
+                  "correct": false
+                },
+                {
+                  "text": "-19",
+                  "correct": true
+                },
+                {
+                  "text": "-4",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Resuelve la siguiente resta:",
+              "ecuation": "(-12)-(-3)",
+              "answers":[
+                {
+                  "text":"15",
+                  "correct": false
+                },
+                {
+                  "text":"-15",
+                  "correct": false
+                },
+                {
+                  "text": "9",
+                  "correct": false
+                },
+                {
+                  "text": "-9",
+                  "correct": true
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title":"1º BAC - Números reales",
+      "level": 2.5,
+      "description": "Curso en el que se tratan los números reales en un nivel de 1º de Bachillerato",
+      "public": true,
+      "type": 1,
+      "lessons": [
+        {
+          "title": "Racionales",
+          "description": "Ejercicios con números racionales",
+          "duration": 3,
+          "tasks": [
+            {
+              "description": "¿Cuál de los siguientes números NO es racional?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"0.33333",
+                  "correct": false
+                },
+                {
+                  "text":"\\sqrt 2",
+                  "correct": true
+                },
+                {
+                  "text": "-0.5",
+                  "correct": false
+                },
+                {
+                  "text": "\\frac 2 5",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "¿Cuál de las siguientes expresiones representa la distancia entre -3 y 4?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"|-3 -4|",
+                  "correct": false
+                },
+                {
+                  "text":"|3-4|",
+                  "correct": false
+                },
+                {
+                  "text": "|-3|+|4|",
+                  "correct": true
+                },
+                {
+                  "text": "Ninguna",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "Indica dónde está incluido",
+              "ecuation": "x=5",
+              "answers":[
+                {
+                  "text":"|x|<3",
+                  "correct": false
+                },
+                {
+                  "text":"|x-2| \\leq 3",
+                  "correct": true
+                },
+                {
+                  "text": "5>|x|",
+                  "correct": false
+                },
+                {
+                  "text": "|x-2|>3",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+
+}

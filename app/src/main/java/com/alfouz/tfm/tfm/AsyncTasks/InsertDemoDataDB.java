@@ -2,33 +2,85 @@ package com.alfouz.tfm.tfm.AsyncTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
+import com.alfouz.tfm.tfm.DTOs.Course;
+import com.alfouz.tfm.tfm.DTOs.Lesson;
 import com.alfouz.tfm.tfm.DTOs.MathTask;
+import com.alfouz.tfm.tfm.DTOs.MathTaskOption;
 import com.alfouz.tfm.tfm.Database.AppDatabase;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
 import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
 import com.alfouz.tfm.tfm.Database.Entities.MathTaskEntity;
 import com.alfouz.tfm.tfm.Database.Entities.MathTaskOptionEntity;
 import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
+import com.alfouz.tfm.tfm.R;
 import com.alfouz.tfm.tfm.Util.CourseType;
+import com.alfouz.tfm.tfm.Util.JSONHelper;
+
+import java.util.List;
 
 public class InsertDemoDataDB extends AsyncTask {
     CallbackInterface callback;
     AppDatabase db;
+    JSONHelper jsonHelper;
 
     public InsertDemoDataDB(CallbackInterface callback, Context context){
         this.callback = callback;
         this.db = AppDatabase.getInstance(context);
+        jsonHelper = new JSONHelper(context);
 
     }
 
     @Override
     protected Object doInBackground(Object[] objects) {
+
+        List<Course> courseList = jsonHelper.getCoursesFromFile(R.raw.courses);
+
+        for(Course c : courseList){
+            CourseEntity cE = new CourseEntity();
+            cE.setTitle(c.getTitle());
+            cE.setDescription(c.getDescription());
+            cE.setCreator(1);
+            cE.setScore(0);
+            cE.setLevel(c.getLevel());
+            cE.setType(c.getType().getId());
+            cE.setId(db.courseDao().insertCourse(cE));
+            for(Lesson l : c.getLessons()){
+                LessonEntity lE = new LessonEntity();
+                lE.setCourse(cE.getId());
+                lE.setTitle(l.getTitle());
+                lE.setDescription(l.getDescription());
+                lE.setDuration(l.getDuration());
+                lE.setDone(false);
+
+
+                lE.setId(db.lessonDao().insertLesson(lE));
+
+                for(MathTask m : l.getTasks()){
+                    MathTaskEntity mE = new MathTaskEntity();
+                    mE.setLesson(lE.getId());
+                    mE.setDescription(m.getDescription());
+                    mE.setEcuation(m.getEcuation());
+                    mE.setId(db.mathTaskDao().insertMathTask(mE));
+
+                    for(MathTaskOption mo : m.getAnswers()){
+                        MathTaskOptionEntity moE = new MathTaskOptionEntity();
+                        moE.setMathTask(mE.getId());
+                        moE.setText(mo.getText());
+                        moE.setCorrect(mo.isCorrect());
+
+                        db.mathTaskOptionDao().insertMathTaskOption(moE);
+                    }
+                }
+            }
+        }
+
         //UserEntity u = new UserEntity();
         //u.setIdGoogle("-1");
         //db.userDao().insertUser(u);
         //TODO ojo con el id de usuario y con la escritura directa
-        CourseEntity c1 = new CourseEntity();
+        /*CourseEntity c1 = new CourseEntity();
         c1.setTitle("Curso de prueba 1");
         c1.setDescription("descripción prueba 1");
         c1.setCreator(1);
@@ -165,7 +217,7 @@ public class InsertDemoDataDB extends AsyncTask {
         db.mathTaskOptionDao().insertMathTaskOption(mtoe1mte2l1c1);
         db.mathTaskOptionDao().insertMathTaskOption(mtoe2mte2l1c1);
         db.mathTaskOptionDao().insertMathTaskOption(mtoe3mte2l1c1);
-        db.mathTaskOptionDao().insertMathTaskOption(mtoe4mte2l1c1);
+        db.mathTaskOptionDao().insertMathTaskOption(mtoe4mte2l1c1);*/
 
         return null;
     }
