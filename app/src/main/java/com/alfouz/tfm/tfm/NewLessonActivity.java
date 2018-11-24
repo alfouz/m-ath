@@ -73,8 +73,10 @@ public class NewLessonActivity extends AppCompatActivity {
             new CreateLessonDB(new CallbackInterface<LessonEntity>() {
                 @Override
                 public void doCallback(LessonEntity lesson) {
-                    Intent intent = new Intent(getApplicationContext(), EditCourseLessonsActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), EditLessonActivity.class);
                     intent.putExtra("idCourse", idCourse);
+                    intent.putExtra("idLesson", lesson.getId());
+                    intent.putExtra("nameLesson", lesson.getTitle());
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
 

@@ -44,6 +44,7 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
     private List<MathTaskOption> mathTaskOptionL;
 
     long idLesson;
+    String nameLesson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +55,11 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
         // Setting action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.new_lesson_title));
+        getSupportActionBar().setTitle(getResources().getString(R.string.new_mathtask_title));
 
         Intent intent = getIntent();
         idLesson = intent.getLongExtra("idLesson", -1);
+        nameLesson = intent.getStringExtra("nameLesson");
 
         loadFragment(new MathTaskDataFragment(), null, null);
 
@@ -184,6 +186,7 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
                     public void doCallback(Object object) {
                         Intent intent = new Intent(getApplicationContext(), MathTaskListActivity.class);
                         intent.putExtra("idLesson", idLesson);
+                        intent.putExtra("nameLesson", nameLesson);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);
                     }

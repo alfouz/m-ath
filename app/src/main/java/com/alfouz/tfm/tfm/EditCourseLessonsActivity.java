@@ -29,6 +29,7 @@ public class EditCourseLessonsActivity extends AppCompatActivity {
     private LessonBoardAdapter mAdapter;
 
     long idCourse;
+    String nameCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +39,13 @@ public class EditCourseLessonsActivity extends AppCompatActivity {
         // Setting action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.edit_course_lessons_title));
 
 
         Intent intent = getIntent();
         idCourse = intent.getLongExtra("idCourse", -1);
+        nameCourse = intent.getStringExtra("nameCourse");
+
+        getSupportActionBar().setTitle(String.format(getResources().getString(R.string.edit_course_lessons_title),nameCourse));
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list_lessons);
 
@@ -80,6 +83,7 @@ public class EditCourseLessonsActivity extends AppCompatActivity {
                         Intent intent = new Intent(getApplicationContext(), EditLessonActivity.class);
                         intent.putExtra("idCourse", idCourse);
                         intent.putExtra("idLesson", item.getId());
+                        intent.putExtra("nameLesson", item.getTitle());
                         startActivity(intent);
 
                     }

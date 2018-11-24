@@ -56,22 +56,6 @@ public class BoardFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(layoutManager);
 
-        List<Course> courseList = new ArrayList<Course>();
-
-        new GetUserCoursesDB(new CallbackInterface<List<Course>>() {
-            @Override
-            public void doCallback(List<Course> courses) {
-                mAdapter = new CourseBoardAdapter(courses, new CourseBoardAdapter.OnItemClickListener() {
-                    @Override public void onItemClick(Course item) {
-                        //Log.d("tst", Integer.toString(item.getId()) + " " + item.getTitle());
-                        Intent intent = new Intent(getActivity(), EditCourseActivity.class);
-                        intent.putExtra("idCourse", item.getId());
-                        startActivity(intent);
-                    }
-                });
-                mRecyclerView.setAdapter(mAdapter);
-            }
-        }, getContext()).execute(1l);
         /*courseList.add(new Course("Números Naturales 4º ESO", null, 1f, 8));
         courseList.add(new Course("Números Reales 4º ESO", null, 1.5f, 15));
         courseList.add(new Course("Álgebra 4º ESO", null, 2f, 64));
@@ -103,5 +87,25 @@ public class BoardFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
 
+        List<Course> courseList = new ArrayList<Course>();
+
+        new GetUserCoursesDB(new CallbackInterface<List<Course>>() {
+            @Override
+            public void doCallback(List<Course> courses) {
+                mAdapter = new CourseBoardAdapter(courses, new CourseBoardAdapter.OnItemClickListener() {
+                    @Override public void onItemClick(Course item) {
+                        //Log.d("tst", Integer.toString(item.getId()) + " " + item.getTitle());
+                        Intent intent = new Intent(getActivity(), EditCourseActivity.class);
+                        intent.putExtra("idCourse", item.getId());
+                        startActivity(intent);
+                    }
+                });
+                mRecyclerView.setAdapter(mAdapter);
+            }
+        }, getContext()).execute(1l);
+    }
 }

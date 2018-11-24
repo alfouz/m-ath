@@ -32,11 +32,13 @@ public class MathTaskListActivity extends AppCompatActivity {
         // Setting action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.math_task_list));
 
 
         Intent intent = getIntent();
         final long idLesson = intent.getLongExtra("idLesson", -1);
+        final String nameLesson = intent.getStringExtra("nameLesson");
+
+        getSupportActionBar().setTitle(String.format(getResources().getString(R.string.edit_lesson_mathtask_list_title),nameLesson));
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list_tasks);
 
@@ -92,6 +94,7 @@ public class MathTaskListActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MathTaskNewActivity.class);
                 intent.putExtra("idLesson", idLesson);
+                intent.putExtra("nameLesson", nameLesson);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent);
             }

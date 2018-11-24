@@ -35,7 +35,6 @@ public class EditCourseActivity extends AppCompatActivity {
         // Setting action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.edit_course_title));
 
         title = findViewById(R.id.course_title_input);
         description = findViewById(R.id.course_description_input);
@@ -53,6 +52,9 @@ public class EditCourseActivity extends AppCompatActivity {
                     description.setText(course.getDescription());
                     ratingBar.setRating(course.getLevel());
                     switchPublic.setChecked(course.isPublic());
+
+
+                    getSupportActionBar().setTitle(String.format(getResources().getString(R.string.edit_course_title), course.getTitle()));
                 }
             }
         }, this).execute(idCourse);
@@ -63,6 +65,7 @@ public class EditCourseActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), EditCourseLessonsActivity.class);
                 intent.putExtra("idCourse", idCourse);
+                intent.putExtra("nameCourse", title.getText().toString());
                 startActivity(intent);
             }
         });

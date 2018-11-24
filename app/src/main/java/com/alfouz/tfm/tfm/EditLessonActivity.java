@@ -28,11 +28,13 @@ public class EditLessonActivity extends AppCompatActivity {
         // Setting action bar
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
-        getSupportActionBar().setTitle(getResources().getString(R.string.edit_lesson_title));
 
         Intent intent = getIntent();
         final long idLesson = intent.getLongExtra("idLesson", -1);
         final long idCourse = intent.getLongExtra("idCourse", -1);
+        final String nameLesson = intent.getStringExtra("nameLesson");
+
+        getSupportActionBar().setTitle(String.format(getResources().getString(R.string.edit_lesson_title),nameLesson));
 
         new GetLessonDB(new CallbackInterface<Lesson>() {
             @Override
@@ -57,6 +59,7 @@ public class EditLessonActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MathTaskListActivity.class);
                 intent.putExtra("idLesson", idLesson);
+                intent.putExtra("nameLesson", nameLesson);
                 startActivity(intent);
             }
         });

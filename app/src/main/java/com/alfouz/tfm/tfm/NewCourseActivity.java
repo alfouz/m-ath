@@ -56,7 +56,7 @@ public class NewCourseActivity extends AppCompatActivity {
         switchPublic = findViewById(R.id.course_public_switch);
         spinner = findViewById(R.id.spType);
 
-        spinner.setAdapter(new ArrayAdapter<CourseType>(this, android.R.layout.simple_spinner_item, CourseType.values()));
+        spinner.setAdapter(new ArrayAdapter<CourseType>(this, android.R.layout.simple_spinner_dropdown_item, CourseType.values()));
 
         //Set Default values
         ratingBar.setRating(2f);
@@ -82,10 +82,13 @@ public class NewCourseActivity extends AppCompatActivity {
                 new CreateCourseDB(new CallbackInterface<CourseEntity>() {
                     @Override
                     public void doCallback(CourseEntity course) {
-                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent = new Intent(getApplicationContext(), EditCourseActivity.class);
+                        intent.putExtra("idCourse", course.getId());
+                        startActivity(intent);
+                        /*Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("goToFragment", 2);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
+                        startActivity(intent);*/
                     }
                 }, this).execute("1", title.getText().toString(), description.getText().toString(), Float.toString(ratingBar.getRating()), switchPublic.isActivated() ? "t" : "f", Integer.toString(((CourseType)spinner.getSelectedItem()).getId()));
             }else{

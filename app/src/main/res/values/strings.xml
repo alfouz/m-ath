@@ -49,8 +49,8 @@
     <string name="new_course_title">Crear Curso</string>
 
     <!-- Actividad de editar curso -->
-    <string name="edit_course_lessons_title">Administrar lecciones</string>
-    <string name="edit_course_title">Editar curso</string>
+    <string name="edit_course_lessons_title">Administrar lecciones de %1$s</string>
+    <string name="edit_course_title">Editar curso %1$s</string>
     <string name="edit_course_lessons_list">Lista de lecciones</string>
 
     <!-- Actividad de crear lección -->
@@ -60,8 +60,9 @@
     <string name="math_task_list">Lista de tareas</string>
 
     <!-- Editar lección -->
-    <string name="edit_lesson_title">Editar lección</string>
+    <string name="edit_lesson_title">Editar lección %1$s</string>
     <string name="edit_lesson_mathtask_list">Lista de Tareas</string>
+    <string name="edit_lesson_mathtask_list_title">Tareas de %1$s</string>
 
     <!-- Nueva Tarea -->
     <string name="new_mathtask_title">Nueva tarea</string>
