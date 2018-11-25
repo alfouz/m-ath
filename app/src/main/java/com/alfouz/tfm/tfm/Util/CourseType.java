@@ -1,7 +1,7 @@
 package com.alfouz.tfm.tfm.Util;
 
 public enum CourseType {
-    Maths(1), Physics(2), Others(3);
+    Maths(1), Science(2), Engineering(3), Technology(4), Others(5);
 
     private int id;
 

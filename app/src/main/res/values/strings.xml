@@ -69,6 +69,7 @@
     <string name="new_mathtaskoption_title">Insertar nueva opción</string>
     <string name="new_mathtaskoption_list">Seleccionar opciones</string>
     <string name="new_mathtaskoption_select_at_least_one_correct">Selecciona al menos una opción correcta</string>
+    <string name="new_mathtask_equation">Ecuación</string>
 
     <!-- Miscelanea -->
     <string name="misc_public">Público</string>
@@ -91,6 +92,7 @@
     <string name="misc_add">Añadir</string>
     <string name="misc_back">Volver</string>
     <string name="misc_options">Opciones</string>
+    <string name="misc_edit">Editar</string>
 
     <string name="misc_comp_options">%1$d opciones</string>
     <string name="misc_comp_lessons">%1$d lecciones</string>

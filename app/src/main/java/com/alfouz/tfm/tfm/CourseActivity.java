@@ -142,8 +142,14 @@ public class CourseActivity extends AppCompatActivity {
                     case Maths:
                         courseIcon.setImageResource(R.drawable.icon_math);
                         break;
-                    case Physics:
-                        courseIcon.setImageResource(R.drawable.icon_physic);
+                    case Science:
+                        courseIcon.setImageResource(R.drawable.icon_science);
+                        break;
+                    case Technology:
+                        courseIcon.setImageResource(R.drawable.icon_tecnology);
+                        break;
+                    case Engineering:
+                        courseIcon.setImageResource(R.drawable.icon_engineering);
                         break;
                     case Others:
                         courseIcon.setImageResource(R.drawable.icon_unknown);

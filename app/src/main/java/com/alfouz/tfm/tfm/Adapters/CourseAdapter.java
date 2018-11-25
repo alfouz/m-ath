@@ -97,8 +97,14 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
             case Maths:
                 holder.courseIcon.setImageResource(R.drawable.icon_math);
                 break;
-            case Physics:
-                holder.courseIcon.setImageResource(R.drawable.icon_physic);
+            case Science:
+                holder.courseIcon.setImageResource(R.drawable.icon_science);
+                break;
+            case Engineering:
+                holder.courseIcon.setImageResource(R.drawable.icon_engineering);
+                break;
+            case Technology:
+                holder.courseIcon.setImageResource(R.drawable.icon_tecnology);
                 break;
             case Others:
                 holder.courseIcon.setImageResource(R.drawable.icon_unknown);
