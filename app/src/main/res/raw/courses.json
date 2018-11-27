@@ -325,6 +325,197 @@
           ]
         }
       ]
+    },
+
+    {
+      "title":"Programación 1",
+      "level": 4,
+      "description": "Curso en el que se enseñan los conceptos básicos de programación",
+      "public": true,
+      "type": 4,
+      "lessons": [
+        {
+          "title": "Tipos",
+          "description": "Comprensión básica de los tipos en un lenguaje",
+          "duration": 5,
+          "tasks": [
+            {
+              "description": "¿Qué tipo es más genérico?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"integer",
+                  "correct": false
+                },
+                {
+                  "text":"long",
+                  "correct": false
+                },
+                {
+                  "text": "float",
+                  "correct": false
+                },
+                {
+                  "text": "double",
+                  "correct": true
+                }
+              ]
+            },
+            {
+              "description": "¿Qué tipo compuesto es una cadena de texto?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"Una lista",
+                  "correct": false
+                },
+                {
+                  "text":"Un array",
+                  "correct": true
+                },
+                {
+                  "text": "Un int64",
+                  "correct": false
+                },
+                {
+                  "text": "Un puntero",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "title": "Condicionales",
+          "description": "Aprendizaje sobre los condicionales en lenguajes de programación",
+          "duration": 5,
+          "tasks": [
+            {
+              "description": "¿Cuál es el principal operador condicional?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"if...else...",
+                  "correct": true
+                },
+                {
+                  "text":"while...",
+                  "correct": false
+                },
+                {
+                  "text": "for...",
+                  "correct": false
+                },
+                {
+                  "text": "class...",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "title":"2º ESO - El átomo",
+      "level": 1.5,
+      "description": "Introducción al conocimiento del átomo para alumnos de 2º de ESO",
+      "public": true,
+      "type": 2,
+      "lessons": [
+        {
+          "title": "Elementos del átomo",
+          "description": "Descripción de los elementos del átomo",
+          "duration": 5,
+          "tasks": [
+            {
+              "description": "¿Cuál es la partícula del átomo con carga negativa?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"Protón",
+                  "correct": false
+                },
+                {
+                  "text":"Electrón",
+                  "correct": true
+                },
+                {
+                  "text": "Neutrón",
+                  "correct": false
+                },
+                {
+                  "text": "Fotón",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "¿Qué partícula NO está en el núcleo del átomo?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"Protón",
+                  "correct": false
+                },
+                {
+                  "text":"Neutrón",
+                  "correct": false
+                },
+                {
+                  "text": "Electrón",
+                  "correct": true
+                }
+              ]
+            },
+            {
+              "description": "¿Cuál es la partícula con carga positiva?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"Protón",
+                  "correct": true
+                },
+                {
+                  "text":"Electrón",
+                  "correct": false
+                },
+                {
+                  "text": "Neutrón",
+                  "correct": false
+                },
+                {
+                  "text": "Fotón",
+                  "correct": false
+                }
+              ]
+            },
+            {
+              "description": "¿Cuál es la masa atómica del hidrógeno?",
+              "ecuation": "",
+              "answers":[
+                {
+                  "text":"1",
+                  "correct": true
+                },
+                {
+                  "text":"2",
+                  "correct": false
+                },
+                {
+                  "text": "3",
+                  "correct": false
+                },
+                {
+                  "text": "4",
+                  "correct": false
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ]
 

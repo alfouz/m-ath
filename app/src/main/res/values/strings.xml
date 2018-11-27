@@ -113,6 +113,7 @@
 
     <string name="home_intro_explained_steps">
         - En construcción - \n\n
+        * Es posible que sea necesario desinstalar la aplicación o borrar los datos que esta tiene para poder comprobar todas las nuevas funcionalidades * \n\n
         Datos iniciales:\n
         -Curso: Elemento principal que contiene todos los elementos para aprender sobre un concepto. \n
         -Lección: Cada una de las categorías en las que se compone un curso.\n
