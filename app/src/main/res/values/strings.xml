@@ -97,6 +97,12 @@
     <string name="misc_comp_options">%1$d opciones</string>
     <string name="misc_comp_lessons">%1$d lecciones</string>
 
+    <string name="course_type_maths">Matemáticas</string>
+    <string name="course_type_science">Ciencias</string>
+    <string name="course_type_technology">Tecnología</string>
+    <string name="course_type_engineering">Ingeniería</string>
+    <string name="course_type_others">Otros</string>
+
 
     <string name="misc_not_implemented_yet">Esta funcionalidad no está implementada en estos momentos</string>
     <!-- Peticiones -->
