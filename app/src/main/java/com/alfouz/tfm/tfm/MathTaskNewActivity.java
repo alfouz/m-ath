@@ -132,13 +132,17 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
     //Data fragment buttons
 
     @Override
-    public void onButtonDataClicked(String title) {
-        if(!title.equals("")) {
-            titleMathTask = title;
-            loadFragment(new MathTaskEquationFragment(), titleMathTask, null);
-        }else{
-            Toast.makeText(this, R.string.request_insert_data, Toast.LENGTH_SHORT).show();
-        }
+    public void onButtonDataEcuationClicked(String title) {
+        titleMathTask = title;
+        loadFragment(new MathTaskEquationFragment(), titleMathTask, null);
+
+    }
+
+    @Override
+    public void onButtonDataOptionsClicked(String title) {
+        titleMathTask = title;
+        loadFragment(new MathTaskOptionListFragment(), titleMathTask, null);
+
     }
 
     //Equation fragment buttons
@@ -146,12 +150,6 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
     @Override
     public void onButtonEquationClicked(String ecuation) {
         ecuationMathTask=ecuation;
-        loadFragment(new MathTaskOptionListFragment(), titleMathTask, ecuationMathTask);
-    }
-
-
-    @Override
-    public void onButtonBackToDataClicked() {
         loadFragment(new MathTaskDataFragment(), titleMathTask, ecuationMathTask);
     }
 
@@ -166,7 +164,9 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
 
     @Override
     public void onButtonOptionsClicked(final List<MathTaskOption> listOption) {
-        new CreateMathTaskDB(new CallbackInterface<MathTaskEntity>() {
+        mathTaskOptionL = listOption;
+        loadFragment(new MathTaskDataFragment(), titleMathTask, ecuationMathTask);
+        /*new CreateMathTaskDB(new CallbackInterface<MathTaskEntity>() {
             @Override
             public void doCallback(MathTaskEntity mathTaskEntity) {
                 List<MathTaskOptionEntity> mtoeList = new ArrayList<>();
@@ -192,18 +192,95 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
                     }
                 },getApplicationContext()).execute(mtoeArray);
             }
-        },this).execute(Long.toString(idLesson), titleMathTask, ecuationMathTask);
+        },this).execute(Long.toString(idLesson), titleMathTask, ecuationMathTask);*/
     }
 
-    @Override
-    public void onButtonBackClicked() {
-        loadFragment(new MathTaskEquationFragment(), titleMathTask, ecuationMathTask);
-    }
 
 
     //Info Equation Fragment
     @Override
     public void onButtonBackInfoClicked() {
         loadFragment(new MathTaskEquationFragment(), titleMathTask, ecuationMathTask);
+    }
+
+    public List<MathTaskOption> getMathTaskOptionL(){
+        return mathTaskOptionL;
+    }
+    public String getTitleMathTask(){
+        return titleMathTask;
+    }
+    public String getEcuationMathTask(){
+        return ecuationMathTask;
+    }
+
+
+    public void setTitleMathTask(String titleMathTask){
+        this.titleMathTask=titleMathTask;
+    }
+
+    // create an action bar button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_new_mathtask, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    // handle button activities
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.mathtask_menu_create) {
+            if(titleMathTask!=null && !titleMathTask.equals("")) {
+                if(mathTaskOptionL!=null && mathTaskOptionL.size()>0) {
+                    int correct = 0;
+                    for(MathTaskOption mto : mathTaskOptionL){
+                        if(mto.isCorrect()){
+                            correct++;
+                        }
+                    }
+                    if(correct>0) {
+                        if(ecuationMathTask==null){
+                            ecuationMathTask="";
+                        }
+                        new CreateMathTaskDB(new CallbackInterface<MathTaskEntity>() {
+                            @Override
+                            public void doCallback(MathTaskEntity mathTaskEntity) {
+                                List<MathTaskOptionEntity> mtoeList = new ArrayList<>();
+                                for (MathTaskOption mto : mathTaskOptionL) {
+                                    MathTaskOptionEntity mtoE = new MathTaskOptionEntity();
+                                    mtoE.setText(mto.getText());
+                                    mtoE.setCorrect(mto.isCorrect());
+                                    mtoE.setMathTask(mathTaskEntity.getId());
+
+                                    mtoeList.add(mtoE);
+                                }
+
+                                MathTaskOptionEntity[] mtoeArray = new MathTaskOptionEntity[mtoeList.size()];
+                                mtoeList.toArray(mtoeArray);
+                                new CreateMathTaskOptionsDB(new CallbackInterface() {
+                                    @Override
+                                    public void doCallback(Object object) {
+                                        Intent intent = new Intent(getApplicationContext(), MathTaskListActivity.class);
+                                        intent.putExtra("idLesson", idLesson);
+                                        intent.putExtra("nameLesson", nameLesson);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(intent);
+                                    }
+                                }, getApplicationContext()).execute(mtoeArray);
+                            }
+                        }, this).execute(Long.toString(idLesson), titleMathTask, ecuationMathTask);
+                    }else{
+                        Toast.makeText(this, getString(R.string.new_mathtaskoption_select_at_least_one_correct), Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(this, getString(R.string.new_mathtask_options_error), Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(this, getString(R.string.new_mathtask_title_error), Toast.LENGTH_SHORT).show();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

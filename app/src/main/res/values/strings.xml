@@ -68,8 +68,12 @@
     <string name="new_mathtask_title">Nueva tarea</string>
     <string name="new_mathtaskoption_title">Insertar nueva opción</string>
     <string name="new_mathtaskoption_list">Seleccionar opciones</string>
-    <string name="new_mathtaskoption_select_at_least_one_correct">Selecciona al menos una opción correcta</string>
+    <string name="new_mathtaskoption_select_at_least_one_correct">Por favor, selecciona al menos una opción correcta</string>
     <string name="new_mathtask_equation">Ecuación</string>
+    <string name="new_mathtask_info_options">Selecciona si la respuesta es una fórmula o no. Esto se utiliza para evitar fallos en el formato a la hora de la representación.</string>
+    <string name="new_mathtask_title_error">Por favor, introduzca la información del enunciado</string>
+    <string name="new_mathtask_options_error">Por favor, introduzca por lo menos una opción</string>
+
 
     <!-- Miscelanea -->
     <string name="misc_public">Público</string>
@@ -77,6 +81,7 @@
     <string name="misc_title">Título</string>
     <string name="misc_lessons">Lecciones</string>
     <string name="misc_description">Descripción</string>
+    <string name="misc_statement">Enunciado</string>
     <string name="misc_autor">Autor</string>
     <string name="misc_level">Nivel</string>
     <string name="misc_visibility">Visibilidad</string>
@@ -93,6 +98,9 @@
     <string name="misc_back">Volver</string>
     <string name="misc_options">Opciones</string>
     <string name="misc_edit">Editar</string>
+    <string name="misc_preview">Previsualización</string>
+    <string name="misc_is_ecuation">¿Es una fórmula?</string>
+    <string name="misc_ok">Ok</string>
 
     <string name="misc_comp_options">%1$d opciones</string>
     <string name="misc_comp_lessons">%1$d lecciones</string>

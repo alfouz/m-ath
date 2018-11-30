@@ -2,18 +2,24 @@ package com.alfouz.tfm.tfm;
 
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.Adapters.MathTaskOptionAdapter;
@@ -34,6 +40,9 @@ public class MathTaskOptionListFragment extends Fragment {
     private MathTaskOptionAdapter mAdapter;
     private List<MathTaskOption> mathTaskOptionList;
 
+    private CheckBox isFunction;
+    private ImageButton info;
+
     OnClickButtonSaveOptionsData mCallback;
 
     View root;
@@ -45,7 +54,6 @@ public class MathTaskOptionListFragment extends Fragment {
     // Container Activity must implement this interface
     public interface OnClickButtonSaveOptionsData {
         public void onButtonOptionsClicked(List<MathTaskOption> listOption);
-        public void onButtonBackClicked();
     }
 
     @Override
@@ -73,6 +81,10 @@ public class MathTaskOptionListFragment extends Fragment {
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
 
         mathTaskOptionList = new ArrayList<MathTaskOption>();
+        List<MathTaskOption> mtoL = ((MathTaskNewActivity) getActivity()).getMathTaskOptionL();
+        if(mtoL!=null) {
+            mathTaskOptionList = ((MathTaskNewActivity) getActivity()).getMathTaskOptionL();
+        }
         ((TextInputEditText) root.findViewById(R.id.et_text_option)).addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -87,7 +99,11 @@ public class MathTaskOptionListFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable s) {
-                ((MathView) root.findViewById(R.id.createMathTaskOptionText)).setDisplayText("$$"+s.toString()+"$$");
+                if(isFunction.isChecked()) {
+                    ((MathView) root.findViewById(R.id.createMathTaskOptionText)).setDisplayText("$$"+s.toString()+"$$");
+                }else{
+                    ((MathView) root.findViewById(R.id.createMathTaskOptionText)).setDisplayText(s.toString());
+                }
             }
         });
 
@@ -95,7 +111,12 @@ public class MathTaskOptionListFragment extends Fragment {
         buttonAddOption.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MathTaskOption mto = new MathTaskOption("$$"+((TextInputEditText) root.findViewById(R.id.et_text_option)).getText().toString()+"$$",false);
+                MathTaskOption mto;
+                if(isFunction.isChecked()) {
+                    mto = new MathTaskOption("$$" + ((TextInputEditText) root.findViewById(R.id.et_text_option)).getText().toString() + "$$", false);
+                }else{
+                    mto = new MathTaskOption(((TextInputEditText) root.findViewById(R.id.et_text_option)).getText().toString(), false);
+                }
                 mathTaskOptionList.add(mto);
                 mAdapter.notifyDataSetChanged();
                 ((TextInputEditText) root.findViewById(R.id.et_text_option)).setText("");
@@ -122,31 +143,48 @@ public class MathTaskOptionListFragment extends Fragment {
 
 
         Button btn_save = root.findViewById(R.id.btn_save_options);
-        Button btn_back = root.findViewById(R.id.btn_back_data);
 
         btn_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int correct = 0;
+                /*int correct = 0;
                 for(MathTaskOption mto : mathTaskOptionList){
                     if(mto.isCorrect()){
                         correct++;
                     }
                 }
-                if(correct>0) {
-                    mCallback.onButtonOptionsClicked(mathTaskOptionList);
-                }else{
+                if(correct>0) {*/
+                mCallback.onButtonOptionsClicked(mathTaskOptionList);
+                /*}else{
                     Toast.makeText(getContext(), getText(R.string.new_mathtaskoption_select_at_least_one_correct),Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
         });
 
-        btn_back.setOnClickListener(new View.OnClickListener() {
+
+        info = root.findViewById(R.id.infoButton);
+
+        info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mCallback.onButtonBackClicked();
+                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                alertDialog.setTitle(getString(R.string.new_mathtask_equation));
+                alertDialog.setMessage(getString(R.string.new_mathtask_info_options));
+                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, getString(R.string.misc_ok),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                alertDialog.show();
+                final Button neutralButton = alertDialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+                LinearLayout.LayoutParams positiveButtonLL = (LinearLayout.LayoutParams) neutralButton.getLayoutParams();
+                positiveButtonLL.width = ViewGroup.LayoutParams.MATCH_PARENT;
+                neutralButton.setLayoutParams(positiveButtonLL);
             }
         });
+
+        isFunction = root.findViewById(R.id.isEcuation);
 
         return root;
     }

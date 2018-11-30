@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +13,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
-
-import com.alfouz.tfm.tfm.Util.MathElement;
-
-import java.util.List;
 
 import katex.hourglass.in.mathlib.MathView;
 
@@ -71,9 +65,7 @@ public class MathTaskEquationFragment extends Fragment {
 
     View root;
 
-
-    Button nextButton;
-    Button prevButton;
+    Button saveButton;
 
     OnClickButtonSaveEquation mCallback;
 
@@ -91,7 +83,6 @@ public class MathTaskEquationFragment extends Fragment {
     // Container Activity must implement this interface
     public interface OnClickButtonSaveEquation {
         public void onButtonEquationClicked(String ecuation);
-        public void onButtonBackToDataClicked();
         public void onButtonInfoClicked(String ecuation);
     }
 
@@ -159,8 +150,7 @@ public class MathTaskEquationFragment extends Fragment {
         etEquation = root.findViewById(R.id.etEquation);
         infoButton = root.findViewById(R.id.infoButton);
 
-        nextButton = root.findViewById(R.id.btnOptions);
-        prevButton = root.findViewById(R.id.btnBack);
+        saveButton = root.findViewById(R.id.btnSave);
 
         //mathView.setInitialScale(1000);
         //Idea para reescalar pero que no funciona bien
@@ -172,12 +162,12 @@ public class MathTaskEquationFragment extends Fragment {
         actEquation = "";
         displayText(actEquation);
 
-        Bundle arguments = getArguments();
-        String ecuationArguments = arguments.getString("ecuation");
+        //Bundle arguments = getArguments();
+        //String ecuationArguments = arguments.getString("ecuation");
 
-
-        if(ecuationArguments!=null){
-            actEquation=ecuationArguments.replace("$", "");
+        String ecuationAct = ((MathTaskNewActivity) getActivity()).getEcuationMathTask();
+        if(ecuationAct!=null){
+            actEquation=ecuationAct.replace("$", "");
             displayText(actEquation);
         }
 
@@ -613,17 +603,10 @@ public class MathTaskEquationFragment extends Fragment {
             }
         });
 
-        nextButton.setOnClickListener(new View.OnClickListener() {
+        saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mCallback.onButtonEquationClicked("$$"+actEquation+"$$");
-            }
-        });
-
-        prevButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCallback.onButtonBackToDataClicked();
             }
         });
     }

@@ -200,7 +200,7 @@
               "ecuation": "(-7)-(+11)",
               "answers":[
                 {
-                  "text":"19",
+                  "text":"18",
                   "correct": false
                 },
                 {
@@ -208,7 +208,7 @@
                   "correct": false
                 },
                 {
-                  "text": "-19",
+                  "text": "-18",
                   "correct": true
                 },
                 {
@@ -283,7 +283,7 @@
               "ecuation": "",
               "answers":[
                 {
-                  "text":"|-3 -4|",
+                  "text":"|-3 +4|",
                   "correct": false
                 },
                 {
