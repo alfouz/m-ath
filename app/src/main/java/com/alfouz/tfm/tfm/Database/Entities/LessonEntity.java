@@ -24,6 +24,8 @@ public class LessonEntity {
     @NonNull
     private boolean isDone;
 
+    private long idRemote;
+
     public long getId() {
         return id;
     }
@@ -74,5 +76,13 @@ public class LessonEntity {
 
     public void setDone(@NonNull boolean done) {
         isDone = done;
+    }
+
+    public long getIdRemote() {
+        return idRemote;
+    }
+
+    public void setIdRemote(long idRemote) {
+        this.idRemote = idRemote;
     }
 }

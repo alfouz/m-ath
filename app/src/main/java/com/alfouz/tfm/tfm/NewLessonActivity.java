@@ -81,7 +81,7 @@ public class NewLessonActivity extends AppCompatActivity {
                     startActivity(intent);
 
                 }
-            }, getApplicationContext()).execute(Long.toString(idCourse), titleStr, descriptionStr, durationStr, "f");
+            }, getApplicationContext()).execute(Long.toString(idCourse), titleStr, descriptionStr, durationStr, "f", "-1");
 
         }
         return super.onOptionsItemSelected(item);

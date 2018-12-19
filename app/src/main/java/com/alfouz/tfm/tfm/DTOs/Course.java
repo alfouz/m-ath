@@ -16,6 +16,7 @@ public class Course {
     private String description;
     private boolean isPublic;
     private CourseType type;
+    private long idRemote;
 
     public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type){
         this.id = id;
@@ -29,6 +30,19 @@ public class Course {
 
     }
 
+    public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote){
+        this.id = id;
+        this.title = title;
+        this.lessons = lessons;
+        this.score = score;
+        this.level = level;
+        this.description = description;
+        this.isPublic = isPublic;
+        this.type = type;
+        this.idRemote = idRemote;
+
+    }
+
     public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type){
         this.title = title;
         this.lessons = lessons;
@@ -37,6 +51,31 @@ public class Course {
         this.description = description;
         this.isPublic = isPublic;
         this.type = type;
+
+    }
+
+    public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote){
+        this.title = title;
+        this.lessons = lessons;
+        this.score = score;
+        this.level = level;
+        this.description = description;
+        this.isPublic = isPublic;
+        this.type = type;
+        this.idRemote = idRemote;
+
+    }
+
+    public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote, long idUser){
+        this.title = title;
+        this.lessons = lessons;
+        this.score = score;
+        this.level = level;
+        this.description = description;
+        this.isPublic = isPublic;
+        this.type = type;
+        this.idRemote = idRemote;
+        this.creator = idUser;
 
     }
 
@@ -118,6 +157,14 @@ public class Course {
 
     public void setType(CourseType type) {
         this.type = type;
+    }
+
+    public long getIdRemote() {
+        return idRemote;
+    }
+
+    public void setIdRemote(long idRemote) {
+        this.idRemote = idRemote;
     }
 }
 

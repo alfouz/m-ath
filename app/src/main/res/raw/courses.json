@@ -18,19 +18,23 @@
               "answers":[
                 {
                   "text":"3",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text":"-3",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-9",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "9",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -40,19 +44,23 @@
               "answers":[
                 {
                   "text":"1",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"-1",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "11",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-11",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -62,19 +70,23 @@
               "answers":[
                 {
                   "text":"4",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"8",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-4",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "-8",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -84,19 +96,23 @@
               "answers":[
                 {
                   "text":"2",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"16",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-2",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "-16",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -106,19 +122,23 @@
               "answers":[
                 {
                   "text":"21",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"-21",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "9",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-9",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             }
@@ -135,19 +155,23 @@
               "answers":[
                 {
                   "text":"3",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text":"-3",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-9",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "9",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -157,19 +181,23 @@
               "answers":[
                 {
                   "text":"11",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text":"-11",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "5",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-5",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -179,19 +207,23 @@
               "answers":[
                 {
                   "text":"0",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"10",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "-5",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-10",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -201,19 +233,23 @@
               "answers":[
                 {
                   "text":"18",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"4",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-18",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "-4",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -223,19 +259,23 @@
               "answers":[
                 {
                   "text":"15",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"-15",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "9",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "-9",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 }
               ]
             }
@@ -262,19 +302,23 @@
               "answers":[
                 {
                   "text":"0.33333",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"\\sqrt 2",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "-0.5",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "\\frac 2 5",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -284,19 +328,23 @@
               "answers":[
                 {
                   "text":"|-3 +4|",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"|3-4|",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "|-3|+|4|",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "Ninguna",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             },
@@ -306,19 +354,23 @@
               "answers":[
                 {
                   "text":"|x|<3",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text":"|x-2| \\leq 3",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": true
                 },
                 {
                   "text": "5>|x|",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 },
                 {
                   "text": "|x-2|>3",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": true
                 }
               ]
             }
@@ -345,19 +397,23 @@
               "answers":[
                 {
                   "text":"integer",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text":"long",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "float",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "double",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": false
                 }
               ]
             },
@@ -367,19 +423,23 @@
               "answers":[
                 {
                   "text":"Una lista",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text":"Un array",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": false
                 },
                 {
                   "text": "Un int64",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "Un puntero",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 }
               ]
             }
@@ -396,19 +456,23 @@
               "answers":[
                 {
                   "text":"if...else...",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": false
                 },
                 {
                   "text":"while...",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "for...",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "class...",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 }
               ]
             }
@@ -435,19 +499,23 @@
               "answers":[
                 {
                   "text":"Protón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text":"Electrón",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": false
                 },
                 {
                   "text": "Neutrón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "Fotón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 }
               ]
             },
@@ -457,15 +525,18 @@
               "answers":[
                 {
                   "text":"Protón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text":"Neutrón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "Electrón",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": false
                 }
               ]
             },
@@ -475,19 +546,23 @@
               "answers":[
                 {
                   "text":"Protón",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": false
                 },
                 {
                   "text":"Electrón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "Neutrón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "Fotón",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 }
               ]
             },
@@ -497,19 +572,23 @@
               "answers":[
                 {
                   "text":"1",
-                  "correct": true
+                  "correct": true,
+                  "isEcuation": false
                 },
                 {
                   "text":"2",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "3",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 },
                 {
                   "text": "4",
-                  "correct": false
+                  "correct": false,
+                  "isEcuation": false
                 }
               ]
             }

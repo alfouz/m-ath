@@ -113,9 +113,9 @@ public class MathTaskOptionListFragment extends Fragment {
             public void onClick(View v) {
                 MathTaskOption mto;
                 if(isFunction.isChecked()) {
-                    mto = new MathTaskOption("$$" + ((TextInputEditText) root.findViewById(R.id.et_text_option)).getText().toString() + "$$", false);
+                    mto = new MathTaskOption("$$" + ((TextInputEditText) root.findViewById(R.id.et_text_option)).getText().toString() + "$$", false, true, -1);
                 }else{
-                    mto = new MathTaskOption(((TextInputEditText) root.findViewById(R.id.et_text_option)).getText().toString(), false);
+                    mto = new MathTaskOption(((TextInputEditText) root.findViewById(R.id.et_text_option)).getText().toString(), false, true, -1);
                 }
                 mathTaskOptionList.add(mto);
                 mAdapter.notifyDataSetChanged();

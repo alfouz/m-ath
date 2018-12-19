@@ -33,7 +33,7 @@ public class GetMathTaskDB extends AsyncTask<Long, Void, MathTask> {
         }
 
 
-        MathTask mathTask = new MathTask(mathTaskEntity.getId(), mathTaskEntity.getLesson(), null, mathTaskEntity.getEcuation(), mathTaskEntity.getDescription(), listMathTaskOption);
+        MathTask mathTask = new MathTask(mathTaskEntity.getId(), mathTaskEntity.getLesson(), null, mathTaskEntity.getEcuation(), mathTaskEntity.getDescription(), listMathTaskOption, mathTaskEntity.getIdRemote());
 
         return mathTask;
     }

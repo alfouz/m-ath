@@ -49,6 +49,7 @@ public class EditLessonActivity extends AppCompatActivity {
                     seekBar.setProgress(lesson.getDuration());
 
                     getSupportActionBar().setTitle(lesson.getTitle());
+
                 }
             }
         }, this).execute(idLesson);
@@ -63,6 +64,8 @@ public class EditLessonActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
 
 

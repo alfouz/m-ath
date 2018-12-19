@@ -30,6 +30,8 @@ public class CreateLessonDB extends AsyncTask<String, Void, LessonEntity> {
             isDone = false;
         }
 
+        long idRemote = Long.parseLong(strings[5]);
+
         LessonEntity lesson = new LessonEntity();
 
         lesson.setCourse(idCourse);
@@ -37,6 +39,7 @@ public class CreateLessonDB extends AsyncTask<String, Void, LessonEntity> {
         lesson.setTitle(title);
         lesson.setDescription(description);
         lesson.setDone(isDone);
+        lesson.setIdRemote(idRemote);
 
         long id = db.lessonDao().insertLesson(lesson);
 

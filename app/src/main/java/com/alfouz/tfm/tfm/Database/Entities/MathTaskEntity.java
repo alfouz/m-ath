@@ -19,6 +19,8 @@ public class MathTaskEntity {
     @NonNull
     private String description;
 
+    private long idRemote;
+
     public long getId() {
         return id;
     }
@@ -50,5 +52,13 @@ public class MathTaskEntity {
 
     public void setDescription(@NonNull String description) {
         this.description = description;
+    }
+
+    public long getIdRemote() {
+        return idRemote;
+    }
+
+    public void setIdRemote(long idRemote) {
+        this.idRemote = idRemote;
     }
 }

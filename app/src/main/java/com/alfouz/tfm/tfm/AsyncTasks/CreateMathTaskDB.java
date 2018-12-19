@@ -21,14 +21,14 @@ public class CreateMathTaskDB extends AsyncTask<String, Void, MathTaskEntity> {
         int idLesson = Integer.parseInt(strings[0]);
         String description = strings[1];
         String ecuation = strings[2];
-
+        long idRemote = Long.parseLong(strings[3]);
 
         MathTaskEntity mathTaskEntity = new MathTaskEntity();
 
         mathTaskEntity.setLesson(idLesson);
         mathTaskEntity.setEcuation(ecuation);
         mathTaskEntity.setDescription(description);
-
+        mathTaskEntity.setIdRemote(idRemote);
 
         long id = db.mathTaskDao().insertMathTask(mathTaskEntity);
 

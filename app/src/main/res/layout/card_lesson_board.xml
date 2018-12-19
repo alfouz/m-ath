@@ -24,6 +24,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="4dp"
+            android:maxLines="1"
             android:text="Title"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
@@ -37,6 +38,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:maxLines="1"
             android:text="Description"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toBottomOf="@+id/cardMathTaskOptionDescription" />

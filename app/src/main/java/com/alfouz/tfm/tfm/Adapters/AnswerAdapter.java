@@ -81,7 +81,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         //TODO Mejorar las muestras
 
         holder.tvMath.setDisplayText(mathTaskOptionList.get(position).getText());
-        holder.isCorrect.setChecked(mathTaskOptionList.get(position).isCorrect());
+        //holder.isCorrect.setChecked(mathTaskOptionList.get(position).isCorrect());
 
 
         holder.isCorrect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

@@ -7,11 +7,11 @@ import android.support.annotation.NonNull;
 
 import com.alfouz.tfm.tfm.Util.CourseType;
 
-@Entity(tableName = "Courses", foreignKeys = @ForeignKey(  entity = UserEntity.class,
+@Entity(tableName = "Courses"/*, foreignKeys = @ForeignKey(  entity = UserEntity.class,
         parentColumns = "id",
         childColumns = "creator",
         onUpdate = ForeignKey.CASCADE,
-        onDelete = ForeignKey.CASCADE))
+        onDelete = ForeignKey.CASCADE)*/)
 //OJO con los borrados de base de datos de usuarios y entidades
 public class CourseEntity {
     @PrimaryKey(autoGenerate = true)
@@ -27,6 +27,8 @@ public class CourseEntity {
     private String description;
     @NonNull
     private boolean isPublic;
+
+    private long idRemote;
 
     private int type;
 
@@ -98,5 +100,13 @@ public class CourseEntity {
 
     public void setType(@NonNull int type) {
         this.type = type;
+    }
+
+    public long getIdRemote() {
+        return idRemote;
+    }
+
+    public void setIdRemote(long idRemote) {
+        this.idRemote = idRemote;
     }
 }

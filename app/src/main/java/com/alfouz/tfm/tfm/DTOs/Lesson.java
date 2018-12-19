@@ -10,6 +10,7 @@ public class Lesson {
     private String description;
     private Integer duration;
     private boolean isDone;
+    private long idRemote;
 
 
     public Lesson(String title, String description, List<MathTask> tasks, Integer duration){
@@ -27,6 +28,15 @@ public class Lesson {
         this.duration = duration;
     }
 
+    public Lesson(long course, String title, String description, List<MathTask> tasks, Integer duration, long idRemote){
+        this.course = course;
+        this.title = title;
+        this.tasks = tasks;
+        this.description = description;
+        this.duration = duration;
+        this.idRemote = idRemote;
+    }
+
     public Lesson(long id, long course, String title, String description, List<MathTask> tasks, Integer duration){
         this.id = id;
         this.course = course;
@@ -34,6 +44,16 @@ public class Lesson {
         this.tasks = tasks;
         this.description = description;
         this.duration = duration;
+    }
+
+    public Lesson(long id, long course, String title, String description, List<MathTask> tasks, Integer duration, long idRemote){
+        this.id = id;
+        this.course = course;
+        this.title = title;
+        this.tasks = tasks;
+        this.description = description;
+        this.duration = duration;
+        this.idRemote = idRemote;
     }
 
     public Lesson(long id, String title, String description, Integer duration){
@@ -97,5 +117,13 @@ public class Lesson {
 
     public void setCourse(long course) {
         this.course = course;
+    }
+
+    public long getIdRemote() {
+        return idRemote;
+    }
+
+    public void setIdRemote(long idRemote) {
+        this.idRemote = idRemote;
     }
 }

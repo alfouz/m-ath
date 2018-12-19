@@ -11,6 +11,8 @@ public class MathTask {
     private String description;
     private List<MathTaskOption> answers;
 
+    private long idRemote;
+
     private boolean answered;
     private boolean answeredCorrectly;
 
@@ -32,6 +34,17 @@ public class MathTask {
         this.answeredCorrectly = false;
     }
 
+    public MathTask(long lesson, File image, String ecuation, String description, List<MathTaskOption> answers, long idRemote){
+        this.lesson = lesson;
+        this.image = image;
+        this.ecuation = ecuation;
+        this.description = description;
+        this.answers = answers;
+        this.answered = false;
+        this.answeredCorrectly = false;
+        this.idRemote = idRemote;
+    }
+
     public MathTask(long id, long lesson, File image, String ecuation, String description, List<MathTaskOption> answers){
         this.id = id;
         this.lesson = lesson;
@@ -41,6 +54,18 @@ public class MathTask {
         this.answers = answers;
         this.answered = false;
         this.answeredCorrectly = false;
+    }
+
+    public MathTask(long id, long lesson, File image, String ecuation, String description, List<MathTaskOption> answers, long idRemote){
+        this.id = id;
+        this.lesson = lesson;
+        this.image = image;
+        this.ecuation = ecuation;
+        this.description = description;
+        this.answers = answers;
+        this.answered = false;
+        this.answeredCorrectly = false;
+        this.idRemote = idRemote;
     }
 
     public File getImage() {
@@ -105,5 +130,13 @@ public class MathTask {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdRemote() {
+        return idRemote;
+    }
+
+    public void setIdRemote(long idRemote) {
+        this.idRemote = idRemote;
     }
 }

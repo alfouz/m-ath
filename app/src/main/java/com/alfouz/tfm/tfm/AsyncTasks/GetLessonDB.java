@@ -41,7 +41,7 @@ public class GetLessonDB extends AsyncTask<Long, Void, Lesson> {
 
         }
 
-        Lesson lesson = new Lesson(lessonEntity.getId(), lessonEntity.getCourse(), lessonEntity.getTitle(), lessonEntity.getDescription(), listMathTask, lessonEntity.getDuration());
+        Lesson lesson = new Lesson(lessonEntity.getId(), lessonEntity.getCourse(), lessonEntity.getTitle(), lessonEntity.getDescription(), listMathTask, lessonEntity.getDuration(), lessonEntity.getIdRemote());
 
         return lesson;
     }

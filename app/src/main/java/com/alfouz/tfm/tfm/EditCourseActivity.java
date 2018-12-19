@@ -1,9 +1,12 @@
 package com.alfouz.tfm.tfm;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,10 +17,27 @@ import android.widget.Switch;
 
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.AsyncTasks.EditCourseDB;
+import com.alfouz.tfm.tfm.AsyncTasks.GetCourseCompleteDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseEntityDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
+import com.alfouz.tfm.tfm.Util.APIRestUtil;
+import com.alfouz.tfm.tfm.Util.JSONHelper;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class EditCourseActivity extends AppCompatActivity {
 
@@ -25,6 +45,8 @@ public class EditCourseActivity extends AppCompatActivity {
     private EditText description;
     private RatingBar ratingBar;
     private Switch switchPublic;
+
+    private Course courseAct;
 
     private long idCourse;
     @Override
@@ -53,7 +75,7 @@ public class EditCourseActivity extends AppCompatActivity {
                     ratingBar.setRating(course.getLevel());
                     switchPublic.setChecked(course.isPublic());
 
-
+                    courseAct = course;
                     getSupportActionBar().setTitle(String.format(getResources().getString(R.string.edit_course_title), course.getTitle()));
                 }
             }
@@ -109,6 +131,113 @@ public class EditCourseActivity extends AppCompatActivity {
             }, this).execute(idCourse);
 
 
+        }
+        if(id == R.id.course_menu_upload){
+            AlertDialog.Builder builder = new AlertDialog.Builder(EditCourseActivity.this);
+            builder.setPositiveButton(R.string.misc_yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    new GetCourseCompleteDB(new CallbackInterface<Course>() {
+                        @Override
+                        public void doCallback(Course courset) {
+                            //try {
+                            //Log.d("tst", new JSONHelper(getApplicationContext()).getJSONfromCourse(courset).toString());
+
+                            String PLACES_URL = APIRestUtil.getCurses()+"/createall";
+                            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+
+                            JSONObject params = new JSONObject();
+
+                            try {
+                                params.put("idlocal", courseAct.getId());
+                                params.put("iduser", courseAct.getCreator());
+                                params.put("titulo", courseAct.getTitle());
+                                params.put("descripcion", courseAct.getDescription());
+                                params.put("tipo", courseAct.getType().getId());
+                                params.put("nivel", courseAct.getLevel());
+                                params.put("publico", courseAct.isPublic());
+                                params.put("courseJSON", new JSONHelper(getApplicationContext()).getJSONfromCourse(courset));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            //Prepare the Request
+                            JsonObjectRequest request = new JsonObjectRequest(
+                                    Request.Method.POST, //GET or POST
+                                    PLACES_URL, //URL
+                                    params, //Parameters
+                                    new Response.Listener<JSONObject>() { //Listener OK
+
+                                        @Override
+                                        public void onResponse(final JSONObject responsePlaces) {
+                                            new GetCourseEntityDB(new CallbackInterface<CourseEntity>() {
+                                                @Override
+                                                public void doCallback(CourseEntity courseEntity) {
+                                                    if(courseEntity!=null && courseEntity.getIdRemote()<=0l) {
+                                                        courseEntity.setTitle(title.getText().toString());
+                                                        courseEntity.setDescription(description.getText().toString());
+                                                        courseEntity.setPublic(switchPublic.isChecked());
+                                                        courseEntity.setLevel(ratingBar.getRating());
+                                                        try {
+                                                            courseEntity.setIdRemote(responsePlaces.getLong("id"));
+                                                            courseAct.setIdRemote(courseEntity.getIdRemote());
+                                                        } catch (JSONException e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                        new EditCourseDB(new CallbackInterface<CourseEntity>() {
+                                                            @Override
+                                                            public void doCallback(CourseEntity course) {
+
+                                                            }
+                                                        }, getApplicationContext()).execute(courseEntity);
+                                                    }else{
+                                                        Log.d("tst", "idremote " + Long.toString(courseEntity.getIdRemote()));
+
+                                                    }
+                                                    AlertDialog.Builder builderneutral = new AlertDialog.Builder(EditCourseActivity.this);
+                                                    builderneutral.setNeutralButton(R.string.misc_ok, new DialogInterface.OnClickListener() {
+                                                        public void onClick(DialogInterface dialog, int id) {
+                                                            dialog.dismiss();
+                                                        }
+                                                    });
+                                                    builderneutral.setTitle(R.string.edit_course_upload_correct);
+                                                    AlertDialog dialogNeutral = builderneutral.create();
+                                                    dialogNeutral.show();
+                                                }
+                                            }, getApplicationContext()).execute(idCourse);
+                                        }
+                                    }, new Response.ErrorListener() { //Listener ERROR
+
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    //There was an error :(
+                                    Log.d("tst",error.toString());
+                                }
+                            });
+                            //Send the request to the requestQueue
+                            requestQueue.add(request);
+
+
+
+                            /*} catch (JSONException e) {
+                                e.printStackTrace();
+                            }*/
+                        }
+                    }, getApplicationContext()).execute(idCourse);
+
+                }
+            });
+            builder.setNegativeButton(R.string.misc_no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+            Log.d("tst", Long.toString(courseAct.getIdRemote()));
+            if(courseAct.getIdRemote()>0){
+                builder.setTitle(R.string.edit_course_upload_yet);
+            }else {
+                builder.setTitle(R.string.edit_course_upload);
+            }
+            AlertDialog dialog = builder.create();
+            dialog.show();
         }
         return super.onOptionsItemSelected(item);
     }

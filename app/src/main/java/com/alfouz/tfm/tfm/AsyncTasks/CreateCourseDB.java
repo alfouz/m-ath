@@ -2,6 +2,7 @@ package com.alfouz.tfm.tfm.AsyncTasks;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.alfouz.tfm.tfm.Database.AppDatabase;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
@@ -29,6 +30,7 @@ public class CreateCourseDB extends AsyncTask<String, Void, CourseEntity> {
             isPublic = false;
         }
         int type = Integer.parseInt(strings[5]);
+        int idRemote = Integer.parseInt(strings[6]);
 
         CourseEntity course = new CourseEntity();
 
@@ -39,6 +41,7 @@ public class CreateCourseDB extends AsyncTask<String, Void, CourseEntity> {
         course.setPublic(isPublic);
         course.setScore(0);
         course.setType(type);
+        course.setIdRemote(idRemote);
 
         long id = db.courseDao().insertCourse(course);
 

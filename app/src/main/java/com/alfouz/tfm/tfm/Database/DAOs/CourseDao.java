@@ -15,6 +15,9 @@ public interface CourseDao {
     @Query("SELECT * FROM Courses WHERE id = :id")
     CourseEntity getCourseById(long id);
 
+    @Query("SELECT * FROM Courses WHERE idRemote = :idRemote")
+    CourseEntity getCourseByIdRemoto(long idRemote);
+
     @Query("SELECT * FROM Courses WHERE creator = :creator ORDER BY id DESC")
     List<CourseEntity> getCoursesByUser(long creator);
 

@@ -270,7 +270,7 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
                                     }
                                 }, getApplicationContext()).execute(mtoeArray);
                             }
-                        }, this).execute(Long.toString(idLesson), titleMathTask, ecuationMathTask);
+                        }, this).execute(Long.toString(idLesson), titleMathTask, ecuationMathTask, "-1");
                     }else{
                         Toast.makeText(this, getString(R.string.new_mathtaskoption_select_at_least_one_correct), Toast.LENGTH_SHORT).show();
                     }

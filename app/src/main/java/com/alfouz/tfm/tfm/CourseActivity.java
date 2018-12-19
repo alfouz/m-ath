@@ -11,6 +11,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Layout;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -18,10 +21,13 @@ import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.Adapters.LessonAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
+import com.alfouz.tfm.tfm.AsyncTasks.DeleteCourseDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseDB;
+import com.alfouz.tfm.tfm.AsyncTasks.GetCourseEntityDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseLessonsDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
 import com.alfouz.tfm.tfm.DTOs.Lesson;
+import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
 import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
 
 import org.w3c.dom.Text;
@@ -204,5 +210,52 @@ public class CourseActivity extends AppCompatActivity {
                 mRecyclerView.setAdapter(mAdapter);
             }
         },getApplicationContext()).execute(idCourse);
+    }
+
+    // create an action bar button
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_course, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    // handle button activities
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+
+        if (id == R.id.course_menu_delete) {
+            Intent intent = getIntent();
+            final long idCourse = intent.getLongExtra("idCourse", -1);
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(CourseActivity.this);
+            builder.setPositiveButton(R.string.misc_yes, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    new GetCourseEntityDB(new CallbackInterface<CourseEntity>() {
+                        @Override
+                        public void doCallback(CourseEntity courseEntity) {
+                            new DeleteCourseDB(new CallbackInterface<Boolean>() {
+                                @Override
+                                public void doCallback(Boolean correct) {
+                                    onBackPressed();
+                                }
+                            }, getApplicationContext()).execute(courseEntity);
+                        }
+                    }, getApplicationContext()).execute(idCourse);
+                }
+            });
+            builder.setNegativeButton(R.string.misc_no, new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+                    dialog.dismiss();
+                }
+            });
+            builder.setTitle(R.string.course_delete);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -18,6 +18,10 @@ public class MathTaskOptionEntity {
     private String text;
     @NonNull
     private boolean isCorrect;
+    @NonNull
+    private boolean isEcuation;
+
+    private long idRemote;
 
     public long getId() {
         return id;
@@ -51,5 +55,22 @@ public class MathTaskOptionEntity {
 
     public void setCorrect(@NonNull boolean correct) {
         isCorrect = correct;
+    }
+
+    @NonNull
+    public boolean isEcuation() {
+        return isEcuation;
+    }
+
+    public void setEcuation(@NonNull boolean ecuation) {
+        isEcuation = ecuation;
+    }
+
+    public long getIdRemote() {
+        return idRemote;
+    }
+
+    public void setIdRemote(long idRemote) {
+        this.idRemote = idRemote;
     }
 }

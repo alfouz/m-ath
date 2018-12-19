@@ -90,7 +90,7 @@ public class NewCourseActivity extends AppCompatActivity {
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(intent);*/
                     }
-                }, this).execute("1", title.getText().toString(), description.getText().toString(), Float.toString(ratingBar.getRating()), switchPublic.isActivated() ? "t" : "f", Integer.toString(((CourseType)spinner.getSelectedItem()).getId()));
+                }, this).execute("1", title.getText().toString(), description.getText().toString(), Float.toString(ratingBar.getRating()), switchPublic.isActivated() ? "t" : "f", Integer.toString(((CourseType)spinner.getSelectedItem()).getId()), "-1");
             }else{
                 Toast.makeText(getApplicationContext(),R.string.request_insert_data,Toast.LENGTH_SHORT).show();
             }

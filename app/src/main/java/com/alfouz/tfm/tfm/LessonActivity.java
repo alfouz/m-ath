@@ -97,7 +97,7 @@ public class LessonActivity extends AppCompatActivity {
 
         actualAnswers = new ArrayList<>();
         for(MathTaskOption mto : item.getAnswers()){
-            actualAnswers.add(new MathTaskOption(mto.getId(), mto.getText(), false));
+            actualAnswers.add(new MathTaskOption(mto.getId(), mto.getText(), mto.isCorrect(), mto.isEcuation()));
         }
         mAdapter = new AnswerAdapter(actualAnswers, new AnswerAdapter.OnItemClickListener() {
 

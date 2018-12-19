@@ -31,6 +31,7 @@
     <!-- Actividad de Curso -->
     <string name="course_lesson_start_message">Esta lección tiene %1$d preguntas, ¿está listo para comenzar?</string>
     <string name="course_lesson_no_task_message">Esta lección no tiene tareas actualmente que realizar.</string>
+    <string name="course_delete">¿Está seguro que desea eliminar este curso y todo su progreso?</string>
 
     <!-- Actividad de Lección -->
     <string name="lesson_close_message">¿Está seguro que desea salir de esta lección y perder el progreso actual?</string>
@@ -52,6 +53,10 @@
     <string name="edit_course_lessons_title">Administrar lecciones de %1$s</string>
     <string name="edit_course_title">Editar curso %1$s</string>
     <string name="edit_course_lessons_list">Lista de lecciones</string>
+    <string name="edit_course_upload">¿Desea subir el curso a internet?</string>
+    <string name="edit_course_upload_yet">Este curso ya está subido en internet, ¿desea actualizarlo?</string>
+    <string name="edit_course_upload_correct">El curso se ha subido correctamente</string>
+
 
     <!-- Actividad de crear lección -->
     <string name="new_lesson_title">Nueva lección</string>
@@ -73,6 +78,13 @@
     <string name="new_mathtask_info_options">Selecciona si la respuesta es una fórmula o no. Esto se utiliza para evitar fallos en el formato a la hora de la representación.</string>
     <string name="new_mathtask_title_error">Por favor, introduzca la información del enunciado</string>
     <string name="new_mathtask_options_error">Por favor, introduzca por lo menos una opción</string>
+
+    <!-- Shop Fragment -->
+    <string name="shop_fragment_download_new">¿Desea descargar el curso?</string>
+    <string name="shop_fragment_download_update">Este curso ya está descargado, ¿desea actualizarlo (se borrará el progreso actual)?</string>
+    <string name="shop_fragment_downloaded_course">Curso descargado correctamente</string>
+    <string name="shop_fragment_view_curse">Ver curso descargado</string>
+    <string name="shop_fragment_no_connection">No hay conexión con el servidor</string>
 
 
     <!-- Miscelanea -->
@@ -101,6 +113,7 @@
     <string name="misc_preview">Previsualización</string>
     <string name="misc_is_ecuation">¿Es una fórmula?</string>
     <string name="misc_ok">Ok</string>
+    <string name="misc_upload">Subir</string>
 
     <string name="misc_comp_options">%1$d opciones</string>
     <string name="misc_comp_lessons">%1$d lecciones</string>
