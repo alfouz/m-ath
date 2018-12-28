@@ -1,5 +1,6 @@
 package com.alfouz.tfm.tfm.Adapters;
 
+import android.content.Intent;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.DTOs.Course;
 import com.alfouz.tfm.tfm.R;
+import com.alfouz.tfm.tfm.StatsActivity;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
@@ -95,7 +97,10 @@ public class CourseBoardAdapter  extends RecyclerView.Adapter<CourseBoardAdapter
         holder.statButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), holder.itemView.getContext().getText(R.string.misc_not_implemented_yet), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(holder.itemView.getContext(), StatsActivity.class);
+                intent.putExtra("idLesson", holder.courseEntity.getId());
+                holder.itemView.getContext().startActivity(intent);
+                //Toast.makeText(holder.itemView.getContext(), holder.itemView.getContext().getText(R.string.misc_not_implemented_yet), Toast.LENGTH_SHORT).show();
             }
         });
         holder.bind(courseList.get(position), listener);

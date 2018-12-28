@@ -144,9 +144,9 @@
         -Posibilidad de crear cursos, lecciones y tareas en el apartado "Pizarra".\n
         -Una vez creados los cursos, para tareas de test, aparecen todos en el apartado "Pupitre", pudiendo observarlos desde el punto de vista del alumno y realizarlos de una manera inicial.
 \n\n
-        -No contiene elementos online por ahora.\n
-        -El apartado home contenerá un resumen, el apartado "Estantería" la lista de cursos que se pueden descargar y el apartado "Perfil" los progresos del usuario actual.\n\n
-        Versión 0.24 alpha
+        -Posibilidad de subir curso a internet o descargar alguno de los cursos que estén en el apartado "estantería"\n
+        -El apartado home contenerá un resumen, y el apartado "Perfil" los progresos del usuario actual.\n\n
+        Versión 0.4 alpha
     </string>
 
     <string name="info_equation">

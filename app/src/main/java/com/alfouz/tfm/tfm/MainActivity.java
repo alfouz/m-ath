@@ -8,16 +8,26 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private static final String TAG = MainActivity.class.getSimpleName();
     private Fragment actualFragmentMenu;
     GoogleSignInClient mGoogleSignInClient;
+
+    private long idUser;
+    private String nameUser;
+    private String imageURL;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         Intent intent = getIntent();
+        idUser = intent.getIntExtra("idUser", - 1);
+        nameUser = intent.getStringExtra("personName");
+        imageURL = intent.getStringExtra("personPhotoUrl");
+
         int goToFragment = intent.getIntExtra("goToFragment", 0);
         switch(goToFragment){
             case 0:
@@ -133,10 +147,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu items for use in the action bar
-        /*MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.overflow_actions, menu);
-        return super.onCreateOptionsMenu(menu);*/
-        return true;
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 
@@ -164,9 +177,9 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /*Intent intent;
+        Intent intent;
         switch (item.getItemId()) {
-            case R.id.action_settings:
+            /*case R.id.action_settings:
                 // User chose the "Settings" item, show the app settings UI...
                 Log.d(TAG, "clicked on settings");
 
@@ -184,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 //Pasamos a la activity de acerca de
                 intent = new Intent(this, AboutActivity.class);
                 startActivity(intent);
-                return true;
+                return true;*/
             case R.id.action_logout:
                 // User chose the "Logout" item, show the authentication about UI...
                 Log.d(TAG, "clicked on logout");
@@ -209,8 +222,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 // Invoke the superclass to handle it.
                 return super.onOptionsItemSelected(item);
 
-        }*/
-        return true;
+        }
+        //return true;
     }
 
 

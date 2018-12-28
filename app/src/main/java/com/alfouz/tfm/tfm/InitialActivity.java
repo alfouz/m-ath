@@ -20,7 +20,6 @@ public class InitialActivity extends AppCompatActivity {
     private TextView tvInfo;
     private PrefManager prefManager;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +62,9 @@ public class InitialActivity extends AppCompatActivity {
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        intent.putExtra("idUser", getIntent().getIntExtra("idUser", - 1));
+        intent.putExtra("personName", getIntent().getStringExtra("personName"));
+        intent.putExtra("personPhotoUrl", getIntent().getStringExtra("personPhotoUrl"));
         startActivity(intent);
         //finish();
     }
