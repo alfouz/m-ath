@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.alfouz.tfm.tfm.Adapters.CourseAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
+import com.alfouz.tfm.tfm.AsyncTasks.GetCoursesByStudentDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCoursesDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetUserCoursesDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
@@ -61,7 +62,7 @@ public class DeskFragment extends Fragment {
 
 
 
-        new GetCoursesDB(new CallbackInterface<List<Course>>() {
+        new GetCoursesByStudentDB(new CallbackInterface<List<Course>>() {
             @Override
             public void doCallback(List<Course> courses) {
                 /*List<Course> courseList = new ArrayList<Course>();

@@ -31,6 +31,7 @@ public class CreateCourseDB extends AsyncTask<String, Void, CourseEntity> {
         }
         int type = Integer.parseInt(strings[5]);
         int idRemote = Integer.parseInt(strings[6]);
+        long student = Long.parseLong(strings[7]);
 
         CourseEntity course = new CourseEntity();
 
@@ -42,6 +43,7 @@ public class CreateCourseDB extends AsyncTask<String, Void, CourseEntity> {
         course.setScore(0);
         course.setType(type);
         course.setIdRemote(idRemote);
+        course.setStudent(student);
 
         long id = db.courseDao().insertCourse(course);
 

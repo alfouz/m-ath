@@ -18,12 +18,17 @@ public interface CourseDao {
     @Query("SELECT * FROM Courses WHERE idRemote = :idRemote")
     CourseEntity getCourseByIdRemoto(long idRemote);
 
+    @Query("SELECT * FROM Courses WHERE idRemote = :idRemote AND  student = :student")
+    CourseEntity getCourseByIdRemotoAndStudent(long idRemote, long student);
+
     @Query("SELECT * FROM Courses WHERE creator = :creator ORDER BY id DESC")
     List<CourseEntity> getCoursesByUser(long creator);
 
-
     @Query("SELECT * FROM Courses ORDER BY id DESC")
     List<CourseEntity> getCourses();
+
+    @Query("SELECT * FROM Courses WHERE student = :student OR creator = -1 ORDER BY id DESC")
+    List<CourseEntity> getCoursesByStudent(long student);
 
     @Insert
     long insertCourse(CourseEntity course);

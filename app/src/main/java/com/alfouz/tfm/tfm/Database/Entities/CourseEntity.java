@@ -20,6 +20,8 @@ public class CourseEntity {
     private String title;
     private long creator;
     @NonNull
+    private long student;
+    @NonNull
     private int score;
     @NonNull
     private float level;
@@ -108,5 +110,14 @@ public class CourseEntity {
 
     public void setIdRemote(long idRemote) {
         this.idRemote = idRemote;
+    }
+
+    @NonNull
+    public long getStudent() {
+        return student;
+    }
+
+    public void setStudent(@NonNull long student) {
+        this.student = student;
     }
 }

@@ -13,6 +13,7 @@ import com.alfouz.tfm.tfm.AsyncTasks.CreateLessonDB;
 import com.alfouz.tfm.tfm.AsyncTasks.CreateMathTaskDB;
 import com.alfouz.tfm.tfm.AsyncTasks.CreateMathTaskOptionsDB;
 import com.alfouz.tfm.tfm.AsyncTasks.DeleteCourseDB;
+import com.alfouz.tfm.tfm.AsyncTasks.GetCourseByIdRemotoAndStudentDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseByIdRemotoDB;
 import com.alfouz.tfm.tfm.CourseActivity;
 import com.alfouz.tfm.tfm.DTOs.Course;
@@ -89,7 +90,7 @@ public class APIRestUtil {
                         try {
                             //Obtenemos curso
                             final Course c = jsonHelper.getCourseFromJSON(responsePlaces);
-                            new GetCourseByIdRemotoDB(new CallbackInterface<CourseEntity>() {
+                            new GetCourseByIdRemotoAndStudentDB(new CallbackInterface<CourseEntity>() {
                                 @Override
                                 public void doCallback(final CourseEntity course) {
                                     if(course!=null){
@@ -267,7 +268,7 @@ public class APIRestUtil {
                                                                 //Send the request to the requestQueue
                                                                 requestQueue.add(requestLessons);
                                                             }
-                                                        }, MyApplication.getAppContext()).execute(/*Long.toString(c.getCreator())*/"1", c.getTitle(), c.getDescription(), Float.toString(c.getLevel()), c.isPublic()?"t":"f", Integer.toString(c.getType().getId()), Long.toString(c.getIdRemote()));
+                                                        }, MyApplication.getAppContext()).execute(Long.toString(c.getCreator()), c.getTitle(), c.getDescription(), Float.toString(c.getLevel()), c.isPublic()?"t":"f", Integer.toString(c.getType().getId()), Long.toString(c.getIdRemote()),Long.toString(MyApplication.getIdUser()));
 
                                                     }
                                                 }, context).execute(course);
@@ -455,7 +456,7 @@ public class APIRestUtil {
                                                         //Send the request to the requestQueue
                                                         requestQueue.add(requestLessons);
                                                     }
-                                                }, MyApplication.getAppContext()).execute(/*Long.toString(c.getCreator())*/"1", c.getTitle(), c.getDescription(), Float.toString(c.getLevel()), c.isPublic()?"t":"f", Integer.toString(c.getType().getId()), Long.toString(c.getIdRemote()));
+                                                }, MyApplication.getAppContext()).execute(Long.toString(c.getCreator()), c.getTitle(), c.getDescription(), Float.toString(c.getLevel()), c.isPublic()?"t":"f", Integer.toString(c.getType().getId()), Long.toString(c.getIdRemote()),Long.toString(MyApplication.getIdUser()) );
 
                                             }
                                         });
@@ -469,7 +470,7 @@ public class APIRestUtil {
                                         dialog.show();
                                     }
                                 }
-                            }, context).execute(c.getIdRemote());
+                            }, context).execute(c.getIdRemote(), MyApplication.getIdUser());
 
 
 
