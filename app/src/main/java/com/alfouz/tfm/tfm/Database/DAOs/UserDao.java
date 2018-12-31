@@ -13,6 +13,9 @@ public interface UserDao {
     @Query("SELECT * FROM Users WHERE idGoogle = :idGoogle")
     UserEntity getUserByIdGoogle(String idGoogle);
 
+    @Query("SELECT * FROM Users WHERE id = :id")
+    UserEntity getUserById(Long id);
+
     @Insert
     long insertUser(UserEntity user);
 

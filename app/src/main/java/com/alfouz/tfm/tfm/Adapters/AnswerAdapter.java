@@ -84,6 +84,7 @@ public class AnswerAdapter extends RecyclerView.Adapter<AnswerAdapter.ViewHolder
         //holder.isCorrect.setChecked(mathTaskOptionList.get(position).isCorrect());
 
 
+        holder.isCorrect.setChecked(false);
         holder.isCorrect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

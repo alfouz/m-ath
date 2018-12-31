@@ -33,6 +33,8 @@ public class BoardFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private CourseBoardAdapter mAdapter;
 
+    private long idUser;
+
     View root;
     public BoardFragment() {
         // Required empty public constructor
@@ -44,6 +46,7 @@ public class BoardFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_board, container, false);
+        idUser = MyApplication.getIdUser();
 
         mRecyclerView = (RecyclerView) root.findViewById(R.id.list_courses);
 
@@ -106,6 +109,6 @@ public class BoardFragment extends Fragment {
                 });
                 mRecyclerView.setAdapter(mAdapter);
             }
-        }, getContext()).execute(1l);
+        }, getContext()).execute(idUser);
     }
 }

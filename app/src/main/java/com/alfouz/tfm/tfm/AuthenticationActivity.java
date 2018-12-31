@@ -11,7 +11,17 @@ import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.AsyncTasks.CheckUserAndInsertDB;
+import com.alfouz.tfm.tfm.AsyncTasks.CheckUserDB;
+import com.alfouz.tfm.tfm.AsyncTasks.InsertUserDB;
 import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
+import com.alfouz.tfm.tfm.Util.APIRestUtil;
+import com.alfouz.tfm.tfm.Util.JSONHelper;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -19,6 +29,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class AuthenticationActivity extends AppCompatActivity implements View.OnClickListener, CallbackInterface<UserEntity>{
 
@@ -108,7 +121,7 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
 
             initializeData(account);
 
-            new CheckUserAndInsertDB(this, getApplicationContext()).execute(account.getId());
+            //new CheckUserDB(this, getApplicationContext()).execute(account.getId());
             /*new CheckUserAndInsertBD(this, getApplicationContext()).execute(account.getId());*/
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -125,14 +138,14 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
         }
         email = account.getEmail();
 
-        new CheckUserAndInsertDB(this, getApplicationContext()).execute(account.getId());
+        new CheckUserDB(this, getApplicationContext()).execute(account.getId());
         /*new CheckUserAndInsertBD(this, getApplicationContext()).execute(account.getId());*/
     }
 
 
     @Override
-    public void doCallback(UserEntity user) {
-        if(user.getId() > 0){
+    public void doCallback(final UserEntity user) {
+        /*if(user.getId() > 0){
             Log.e("tst", "Name: " + personName + ", email: " + email
                     + ", Image: " + personPhotoUrl);
             // Signed in successfully, show next UI.
@@ -143,6 +156,119 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+        }*/
+
+        if(user.getId() > 0){
+            Log.e("tst", "Existe: Name: " + personName + ", email: " + email
+                    + ", Image: " + personPhotoUrl);
+            // Signed in successfully, show next UI.
+            Intent intent = new Intent(this, InitialActivity.class);
+            intent.putExtra("idUser", user.getId());
+            intent.putExtra("personName", personName);
+            intent.putExtra("personPhotoUrl", personPhotoUrl);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }else {
+            final JSONHelper jsonHelper = new JSONHelper(getApplicationContext());
+            final RequestQueue requestQueue = Volley.newRequestQueue(MyApplication.getAppContext());
+            //BUSCANDO SI EXISTE EN REMOTO ---------------------------------------------------------
+            JsonObjectRequest request = new JsonObjectRequest(
+                    Request.Method.GET, //GET or POST
+                    APIRestUtil.getUsers() + "/idgoogle/" + user.getIdGoogle(), //URL
+                    null, //Parameters
+                    new Response.Listener<JSONObject>() { //Listener OK
+
+                        @Override
+                        public void onResponse(JSONObject responsePlaces) {
+                            //Existe en remoto
+                            final UserEntity userRemote;
+                            try {
+                                userRemote = jsonHelper.getUserEntityFromJSON(responsePlaces);
+                                new InsertUserDB(new CallbackInterface<UserEntity>() {
+                                    @Override
+                                    public void doCallback(UserEntity userEntity) {
+                                        //Insertado
+                                        Log.e("tst", "Insertado: Name: " + personName + ", email: " + email
+                                                + ", Image: " + personPhotoUrl);
+                                        // Signed in successfully, show next UI.
+                                        Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
+                                        intent.putExtra("idUser", userEntity.getId());
+                                        intent.putExtra("personName", personName);
+                                        intent.putExtra("personPhotoUrl", personPhotoUrl);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                    }
+                                }, getApplicationContext()).execute(Long.toString(userRemote.getId()), userRemote.getIdGoogle());
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+                    }, new Response.ErrorListener() { //Listener ERROR
+
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    //error
+
+                    JSONObject params = new JSONObject();
+
+                    try {
+                        params.put("idgoogle", user.getIdGoogle());
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    //Prepare the Request
+                    JsonObjectRequest request = new JsonObjectRequest(
+                            Request.Method.POST, //GET or POST
+                            APIRestUtil.getUsers() + "/create", //URL
+                            params, //Parameters
+                            new Response.Listener<JSONObject>() { //Listener OK
+
+                                @Override
+                                public void onResponse(JSONObject responsePlaces) {
+                                    try {
+                                        long id = responsePlaces.getLong("id");
+                                        new InsertUserDB(new CallbackInterface<UserEntity>() {
+                                            @Override
+                                            public void doCallback(UserEntity userEntity) {
+                                                //Insertado
+                                                Log.e("tst", "Creado: Name: " + personName + ", email: " + email
+                                                        + ", Image: " + personPhotoUrl);
+                                                // Signed in successfully, show next UI.
+                                                Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
+                                                intent.putExtra("idUser", userEntity.getId());
+                                                intent.putExtra("personName", personName);
+                                                intent.putExtra("personPhotoUrl", personPhotoUrl);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                            }
+                                        }, getApplicationContext()).execute(Long.toString(id), user.getIdGoogle());
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+
+                                }
+                            }, new Response.ErrorListener() { //Listener ERROR
+
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //error
+                            Log.d("tst", "error creando");
+                            Toast.makeText(getApplicationContext(), R.string.auth_intro_error, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    //Send the request to the requestQueue
+                    requestQueue.add(request);
+                }
+            });
+
+
+            //Send the request to the requestQueue
+            requestQueue.add(request);
         }
     }
 }

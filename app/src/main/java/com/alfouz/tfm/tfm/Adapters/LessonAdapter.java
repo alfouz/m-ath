@@ -25,6 +25,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
     private List<Lesson> lessonList;
     private final LessonAdapter.OnItemClickListener listener;
+    private long idUser;
 
     public interface OnItemClickListener {
         void onItemClick(Lesson item);
@@ -63,8 +64,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
 
     // Este es nuestro constructor (puede variar según lo que queremos mostrar)
-    public LessonAdapter(List<Lesson> lessons,  LessonAdapter.OnItemClickListener listener) {
-
+    public LessonAdapter(long idUser, List<Lesson> lessons,  LessonAdapter.OnItemClickListener listener) {
+        this.idUser = idUser;
         lessonList = lessons;
         this.listener = listener;
     }
@@ -132,7 +133,7 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
                     }
                 }
             }
-        },holder.itemView.getContext()).execute(1L,lessonList.get(position).getId());
+        },holder.itemView.getContext()).execute(idUser,lessonList.get(position).getId());
         /*new CountMathTasksLessonDB(new CallbackInterface<Long>() {
             @Override
             public void doCallback(Long object) {

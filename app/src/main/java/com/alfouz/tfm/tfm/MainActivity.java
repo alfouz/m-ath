@@ -38,28 +38,40 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         Intent intent = getIntent();
-        idUser = intent.getIntExtra("idUser", - 1);
+        idUser = intent.getLongExtra("idUser", - 1);
         nameUser = intent.getStringExtra("personName");
         imageURL = intent.getStringExtra("personPhotoUrl");
 
+        if(idUser>0) {
+            MyApplication.setIdUser(idUser);
+        }
+
+        Log.d("tst", "Actual id user = " + Long.toString(idUser));
         int goToFragment = intent.getIntExtra("goToFragment", 0);
+        Fragment fragmentToGo = null;
         switch(goToFragment){
             case 0:
-                loadFragment(new HomeFragment());
+                fragmentToGo = new HomeFragment();
                 break;
             case 1:
-                loadFragment(new DeskFragment());
+                fragmentToGo = new DeskFragment();
                 break;
             case 2:
-                loadFragment(new BoardFragment());
+                fragmentToGo = new BoardFragment();
                 break;
             case 3:
-                loadFragment(new ShopFragment());
+                fragmentToGo = new ShopFragment();
                 break;
             case 4:
-                loadFragment(new ProfileFragment());
+                fragmentToGo = new ProfileFragment();
                 break;
+            default:
+                fragmentToGo = new HomeFragment();
         }
+        Bundle bundle = new Bundle();
+        bundle.putString("idUser", Long.toString(idUser));
+        fragmentToGo.setArguments(bundle);
+        loadFragment(fragmentToGo);
 
         //loading the default fragment
 
@@ -96,6 +108,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
 
+        Bundle bundle = new Bundle();
+        bundle.putString("idUser", Long.toString(idUser));
         switch (item.getItemId()) {
 
             case R.id.navigation_home:
@@ -140,6 +154,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         if (actualFragmentMenu.getClass().equals(fragment.getClass())) {
             return false;
         }
+        fragment.setArguments(bundle);
 
         return loadFragment(fragment);
     }
@@ -225,6 +240,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         //return true;
     }
+
 
 
 }

@@ -62,7 +62,7 @@ public class InitialActivity extends AppCompatActivity {
     private void launchHomeScreen() {
         prefManager.setFirstTimeLaunch(false);
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-        intent.putExtra("idUser", getIntent().getIntExtra("idUser", - 1));
+        intent.putExtra("idUser", getIntent().getLongExtra("idUser", - 1));
         intent.putExtra("personName", getIntent().getStringExtra("personName"));
         intent.putExtra("personPhotoUrl", getIntent().getStringExtra("personPhotoUrl"));
         startActivity(intent);
@@ -74,7 +74,7 @@ public class InitialActivity extends AppCompatActivity {
         new InsertDemoDataDB(new CallbackInterface() {
             @Override
             public void doCallback(Object object) {
-                launchHomeScreen();
+                //launchHomeScreen();
             }
         }, getApplicationContext()).execute();
     }

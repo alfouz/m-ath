@@ -41,6 +41,7 @@ public class ProfileFragment extends Fragment {
 
     View root;
 
+    private long idUser;
 
     public ProfileFragment() {
         // Required empty public constructor
@@ -53,6 +54,7 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        idUser = MyApplication.getIdUser();
 
         String name = getActivity().getIntent().getStringExtra("personName");
         TextView accountName = root.findViewById(R.id.accountName);

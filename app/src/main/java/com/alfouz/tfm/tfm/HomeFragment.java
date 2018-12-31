@@ -18,6 +18,8 @@ public class HomeFragment extends Fragment {
 
     View root;
 
+    private long idUser;
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -28,6 +30,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_home, container, false);
+        idUser = MyApplication.getIdUser();
 
         //Warning
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

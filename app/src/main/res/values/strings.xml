@@ -6,6 +6,7 @@
     <string name="welcome_text">M-ath</string>
     <string name="auth_intro_text">Aprende rápido</string>
     <string name="auth_intro_text_2">Enseña fácil</string>
+    <string name="auth_intro_error">Es necesaria conexión a internet para realizar la primera autenticación en la aplicación</string>
 
     <!-- Pantalla inicial de primera vez -->
     <string name="initial_no_config">No</string>
@@ -45,6 +46,7 @@
     <string name="lesson_result_regular">Has conseguido un %1$d%% de aciertos, la práctica hace al maestro</string>
     <string name="lesson_result_bad">Conseguise un %1$d%% de aciertos, prueba a intentarlo de nuevo</string>
     <string name="lesson_result_horrible">Tienes un %1$d%% de aciertos, yo sé que puedes hacerlo mejor</string>
+    <string name="lesson_select_one_option">Debes seleccionar una opción</string>
 
     <!-- Actividad de nuevo curso -->
     <string name="new_course_title">Crear Curso</string>

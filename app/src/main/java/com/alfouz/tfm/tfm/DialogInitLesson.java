@@ -19,13 +19,16 @@ public class DialogInitLesson extends Dialog implements
     public Button yes, no;
     public TextView content;
     private long idCourse;
+    private long idUser;
     public Lesson lesson;
 
-    public DialogInitLesson(Activity a, long idCourse, Lesson lesson){
+    public DialogInitLesson(Activity a, long idCourse, long idUser, Lesson lesson){
         super(a);
         this.activity = a;
         this.idCourse = idCourse;
+        this.idUser = idUser;
         this.lesson = lesson;
+
     }
 
     @Override
@@ -49,6 +52,7 @@ public class DialogInitLesson extends Dialog implements
                 Intent intent = new Intent(activity.getApplicationContext(), LessonActivity.class);
                 intent.putExtra("idCourse", idCourse);
                 intent.putExtra("idLesson", lesson.getId());
+                intent.putExtra("idUser", idUser);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 activity.startActivity(intent);
                 break;

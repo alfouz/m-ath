@@ -7,6 +7,7 @@ import com.alfouz.tfm.tfm.DTOs.Course;
 import com.alfouz.tfm.tfm.DTOs.Lesson;
 import com.alfouz.tfm.tfm.DTOs.MathTask;
 import com.alfouz.tfm.tfm.DTOs.MathTaskOption;
+import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
 import com.alfouz.tfm.tfm.R;
 
 import org.json.JSONArray;
@@ -241,5 +242,15 @@ public class JSONHelper {
 
 
         return options;
+    }
+
+    public UserEntity getUserEntityFromJSON(JSONObject jsonObject) throws JSONException {
+        Long id = jsonObject.getLong("id");
+        String idGoogle = jsonObject.getString("idgoogle");
+
+        UserEntity user = new UserEntity();
+        user.setId(id);
+        user.setIdGoogle(idGoogle);
+        return user;
     }
 }

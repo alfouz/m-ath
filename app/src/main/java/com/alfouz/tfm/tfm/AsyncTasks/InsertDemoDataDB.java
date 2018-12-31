@@ -41,7 +41,7 @@ public class InsertDemoDataDB extends AsyncTask {
             CourseEntity cE = new CourseEntity();
             cE.setTitle(c.getTitle());
             cE.setDescription(c.getDescription());
-            cE.setCreator(1);
+            cE.setCreator(-1);
             cE.setScore(0);
             cE.setLevel(c.getLevel());
             cE.setType(c.getType().getId());

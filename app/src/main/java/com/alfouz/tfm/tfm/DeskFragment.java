@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.alfouz.tfm.tfm.Adapters.CourseAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
+import com.alfouz.tfm.tfm.AsyncTasks.GetCoursesDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetUserCoursesDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
 
@@ -27,6 +28,8 @@ public class DeskFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private CourseAdapter mAdapter;
 
+    private long idUser;
+
     View root;
     public DeskFragment() {
         // Required empty public constructor
@@ -37,8 +40,7 @@ public class DeskFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_desk, container, false);
-
-
+        idUser = MyApplication.getIdUser();
 
         return root;
     }
@@ -59,7 +61,7 @@ public class DeskFragment extends Fragment {
 
 
 
-        new GetUserCoursesDB(new CallbackInterface<List<Course>>() {
+        new GetCoursesDB(new CallbackInterface<List<Course>>() {
             @Override
             public void doCallback(List<Course> courses) {
                 /*List<Course> courseList = new ArrayList<Course>();
@@ -77,11 +79,12 @@ public class DeskFragment extends Fragment {
                     @Override public void onItemClick(Course item) {
                         Intent intent = new Intent(getActivity(), CourseActivity.class);
                         intent.putExtra("idCourse", item.getId());
+                        intent.putExtra("idUser", idUser);
                         startActivity(intent);
                     }
                 });
                 mRecyclerView.setAdapter(mAdapter);
             }
-        },getContext()).execute(1l);
+        },getContext()).execute(idUser);
     }
 }

@@ -24,7 +24,7 @@ import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
 
 import java.util.concurrent.Executors;
 
-@Database(entities = {UserEntity.class, CourseEntity.class, LessonEntity.class, MathTaskEntity.class, MathTaskOptionEntity.class, ResultUserLessonEntity.class}, version = 8)
+@Database(entities = {UserEntity.class, CourseEntity.class, LessonEntity.class, MathTaskEntity.class, MathTaskOptionEntity.class, ResultUserLessonEntity.class}, version = 9)
         public abstract class AppDatabase extends RoomDatabase {
     private static AppDatabase INSTANCE;
 

@@ -6,14 +6,13 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = "Users")
 public class UserEntity {
-    @PrimaryKey(autoGenerate = true)
-    private int id;
+    @PrimaryKey(autoGenerate = false)
+    private long id;
 
     @NonNull
     private String idGoogle;
 
-
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -21,7 +20,7 @@ public class UserEntity {
         this.idGoogle = idGoogle;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

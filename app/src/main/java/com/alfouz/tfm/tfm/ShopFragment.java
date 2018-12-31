@@ -50,6 +50,8 @@ public class ShopFragment extends Fragment {
     private JSONHelper jsonHelper;
     View root;
 
+    private long idUser;
+
     public ShopFragment() {
         // Required empty public constructor
         jsonHelper = new JSONHelper(getContext());
@@ -61,6 +63,7 @@ public class ShopFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         root = inflater.inflate(R.layout.fragment_shop, container, false);
+        idUser = MyApplication.getIdUser();
 
         progressBar = root.findViewById(R.id.progressBar);
         tvNoConnection = root.findViewById(R.id.tvNoConnection);

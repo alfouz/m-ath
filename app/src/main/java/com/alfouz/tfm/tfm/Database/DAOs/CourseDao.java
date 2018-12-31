@@ -21,6 +21,10 @@ public interface CourseDao {
     @Query("SELECT * FROM Courses WHERE creator = :creator ORDER BY id DESC")
     List<CourseEntity> getCoursesByUser(long creator);
 
+
+    @Query("SELECT * FROM Courses ORDER BY id DESC")
+    List<CourseEntity> getCourses();
+
     @Insert
     long insertCourse(CourseEntity course);
 

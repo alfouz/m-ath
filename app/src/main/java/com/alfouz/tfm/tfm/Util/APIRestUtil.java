@@ -43,10 +43,12 @@ import java.util.List;
 public class APIRestUtil {
 
     private static String url = "http://192.168.0.25:3000/api";
+    //private static String url =  "http://193.144.50.248:3000/api";
     private static String curses = "/course";
     private static String lessons = "/lesson";
     private static String tasks = "/task";
     private static String taskoptions = "/taskoption";
+    private static String users = "/user";
 
     private static String create = "/createall";
 
@@ -66,6 +68,7 @@ public class APIRestUtil {
     public static String getOptions(){
         return url+taskoptions;
     }
+    public static String getUsers(){return url+users;}
 
 
 
@@ -134,6 +137,7 @@ public class APIRestUtil {
                                                                                                             @Override
                                                                                                             public void onResponse(JSONArray responseTasks) {
                                                                                                                 try {
+                                                                                                                    Log.d("tst", responseTasks.toString());
                                                                                                                     final List<MathTask> mathTasks = jsonHelper.getTasksFromJSON(responseTasks);
                                                                                                                     for(final MathTask mt : mathTasks) {
                                                                                                                         new CreateMathTaskDB(new CallbackInterface<MathTaskEntity>() {

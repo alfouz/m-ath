@@ -40,6 +40,8 @@ public class CourseActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private LessonAdapter mAdapter;
 
+    private long idUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,6 +118,7 @@ public class CourseActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         final long idCourse = intent.getLongExtra("idCourse", -1);
+        idUser = MyApplication.getIdUser();
 
         mRecyclerView = (RecyclerView) findViewById(R.id.list_lessons);
 
@@ -173,10 +176,10 @@ public class CourseActivity extends AppCompatActivity {
                 tvVisibility.setText(course.isPublic()?"Pública":"Privada");
                 ratingBar.setRating(course.getLevel());
 
-                mAdapter = new LessonAdapter(course.getLessons(), new LessonAdapter.OnItemClickListener() {
+                mAdapter = new LessonAdapter(idUser,course.getLessons(), new LessonAdapter.OnItemClickListener() {
                     @Override public void onItemClick(final Lesson item) {
                         if(item.getTasks()!=null && item.getTasks().size()>0){
-                            DialogInitLesson dialog = new DialogInitLesson(CourseActivity.this, idCourse, item);
+                            DialogInitLesson dialog = new DialogInitLesson(CourseActivity.this, idCourse, idUser, item);
                             dialog.show();
                             /*DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                                 @Override

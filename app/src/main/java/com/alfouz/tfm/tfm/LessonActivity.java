@@ -42,12 +42,14 @@ public class LessonActivity extends AppCompatActivity {
     private Lesson actLesson;
     private long idCourse;
     private long idLesson;
+    private long idUser;
 
     private int score = 0;
 
     private RecyclerView mRecyclerView;
     private AnswerAdapter mAdapter;
     private List<MathTaskOption> actualAnswers;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +61,9 @@ public class LessonActivity extends AppCompatActivity {
 
         idCourse = getIntent().getLongExtra("idCourse", -1);
         idLesson = getIntent().getLongExtra("idLesson", -1);
+        idUser = MyApplication.getIdUser();
 
+        Log.d("tst", "iduser lesson = "+Long.toString(idUser));
 
         mRecyclerView = (RecyclerView) findViewById(R.id.idListAnswers);
 
@@ -97,7 +101,7 @@ public class LessonActivity extends AppCompatActivity {
 
         actualAnswers = new ArrayList<>();
         for(MathTaskOption mto : item.getAnswers()){
-            actualAnswers.add(new MathTaskOption(mto.getId(), mto.getText(), mto.isCorrect(), mto.isEcuation()));
+            actualAnswers.add(new MathTaskOption(mto.getId(), mto.getText(), false, mto.isEcuation()));
         }
         mAdapter = new AnswerAdapter(actualAnswers, new AnswerAdapter.OnItemClickListener() {
 
@@ -128,14 +132,25 @@ public class LessonActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 int totalCorrect=0;
+                int selected = 0;
                 for(int i =0; i<actualAnswers.size(); i++){
+                    if (actualAnswers.get(i).isCorrect()) {
+                        Log.d("tst", "Opcion " + actualAnswers.get(i).getText() + " está activo" );
+                        selected++;
+                    }else{
+                        Log.d("tst", "Opcion " + actualAnswers.get(i).getText() + " está desactivado" );
+
+                    }
                     if(actualAnswers.get(i).isCorrect()==item.getAnswers().get(i).isCorrect()){
                         totalCorrect++;
                     }
                 }
 
-                if(totalCorrect>=actualAnswers.size()){
-                    final DialogAnswerLesson dialog = new DialogAnswerLesson(LessonActivity.this, true);/*, new View.OnClickListener() {
+                if(selected != 1){
+                    Toast.makeText(getApplicationContext(), R.string.lesson_select_one_option, Toast.LENGTH_SHORT).show();
+                }else {
+                    if (totalCorrect >= actualAnswers.size()) {
+                        final DialogAnswerLesson dialog = new DialogAnswerLesson(LessonActivity.this, true);/*, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             score++;
@@ -149,36 +164,36 @@ public class LessonActivity extends AppCompatActivity {
                             }
                         }
                     });*/
-                    dialog.setCancelable(false);
-                    dialog.setCanceledOnTouchOutside(false);
-                    dialog.show();
-                    Button buttontrue = dialog.getButtonNext();
-                    buttontrue.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            score++;
-                            mathTaskActual++;
-                            if(mathTaskActual<actLesson.getTasks().size()){
-                                createNewTask(actLesson.getTasks().get(mathTaskActual));
-                            }else{
-                                dialog.dismiss();
-                                final int scoreFinal = (score*100/actLesson.getTasks().size());
-                                new CreateResultUserLessonDB(new CallbackInterface() {
-                                    @Override
-                                    public void doCallback(Object object) {
+                        dialog.setCancelable(false);
+                        dialog.setCanceledOnTouchOutside(false);
+                        dialog.show();
+                        Button buttontrue = dialog.getButtonNext();
+                        buttontrue.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                score++;
+                                mathTaskActual++;
+                                if (mathTaskActual < actLesson.getTasks().size()) {
+                                    createNewTask(actLesson.getTasks().get(mathTaskActual));
+                                } else {
+                                    dialog.dismiss();
+                                    final int scoreFinal = (score * 100 / actLesson.getTasks().size());
+                                    new CreateResultUserLessonDB(new CallbackInterface() {
+                                        @Override
+                                        public void doCallback(Object object) {
 
-                                        DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
-                                        dialogEnd.setCancelable(false);
-                                        dialogEnd.setCanceledOnTouchOutside(false);
-                                        dialogEnd.show();
-                                    }
-                                }, getApplicationContext()).execute(1L, actLesson.getId(),(long)scoreFinal);
+                                            DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                            dialogEnd.setCancelable(false);
+                                            dialogEnd.setCanceledOnTouchOutside(false);
+                                            dialogEnd.show();
+                                        }
+                                    }, getApplicationContext()).execute(idUser, actLesson.getId(), (long) scoreFinal);
+                                }
+                                dialog.dismiss();
                             }
-                            dialog.dismiss();
-                        }
-                    });
-                }else{
-                    final DialogAnswerLesson dialog = new DialogAnswerLesson(LessonActivity.this, false);/*, new View.OnClickListener() {
+                        });
+                    } else {
+                        final DialogAnswerLesson dialog = new DialogAnswerLesson(LessonActivity.this, false);/*, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             mathTaskActual++;
@@ -190,35 +205,35 @@ public class LessonActivity extends AppCompatActivity {
                             }
                         }
                     });*/
-                    dialog.setCancelable(false);
-                    dialog.setCanceledOnTouchOutside(false);
-                    dialog.show();
-                    Button buttonfalse = dialog.getButtonNext();
-                    buttonfalse.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            mathTaskActual++;
-                            if(mathTaskActual<actLesson.getTasks().size()){
-                                createNewTask(actLesson.getTasks().get(mathTaskActual));
-                            }else{
-                                dialog.dismiss();
-                                final int scoreFinal = (score*100/actLesson.getTasks().size());
-                                new CreateResultUserLessonDB(new CallbackInterface() {
-                                    @Override
-                                    public void doCallback(Object object) {
+                        dialog.setCancelable(false);
+                        dialog.setCanceledOnTouchOutside(false);
+                        dialog.show();
+                        Button buttonfalse = dialog.getButtonNext();
+                        buttonfalse.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                mathTaskActual++;
+                                if (mathTaskActual < actLesson.getTasks().size()) {
+                                    createNewTask(actLesson.getTasks().get(mathTaskActual));
+                                } else {
+                                    dialog.dismiss();
+                                    final int scoreFinal = (score * 100 / actLesson.getTasks().size());
+                                    new CreateResultUserLessonDB(new CallbackInterface() {
+                                        @Override
+                                        public void doCallback(Object object) {
 
-                                        DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
-                                        dialogEnd.setCancelable(false);
-                                        dialog.setCanceledOnTouchOutside(false);
-                                        dialogEnd.show();
-                                    }
-                                }, getApplicationContext()).execute(1L, actLesson.getId(),(long)scoreFinal);
+                                            DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
+                                            dialogEnd.setCancelable(false);
+                                            dialog.setCanceledOnTouchOutside(false);
+                                            dialogEnd.show();
+                                        }
+                                    }, getApplicationContext()).execute(idUser, actLesson.getId(), (long) scoreFinal);
+                                }
+                                dialog.dismiss();
                             }
-                            dialog.dismiss();
-                        }
-                    });
+                        });
+                    }
                 }
-
 
 
             }
