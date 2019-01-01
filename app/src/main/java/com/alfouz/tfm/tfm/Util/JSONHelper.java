@@ -170,8 +170,9 @@ public class JSONHelper {
             Boolean ispublic = objCourse.getInt("publico")>0;
             Integer type = objCourse.getInt("tipo");
             Long idRemoto = objCourse.getLong("id");
+            Long creator = objCourse.getLong("iduser");
 
-            courses.add(new Course(title, null, level, 0, description, ispublic, CourseType.getType(type), idRemoto));
+            courses.add(new Course(title, null, level, 0, description, ispublic, CourseType.getType(type), idRemoto, creator));
         }
 
         return courses;
@@ -184,8 +185,9 @@ public class JSONHelper {
         Boolean ispublic = json.getInt("publico")>0;
         Integer type = json.getInt("tipo");
         Long idRemoto = json.getLong("id");
+        Long creator = json.getLong("iduser");
 
-        return new Course(title, null, level, 0, description, ispublic, CourseType.getType(type), idRemoto);
+        return new Course(title, null, level, 0, description, ispublic, CourseType.getType(type), idRemoto, creator);
     }
 
     public List<Lesson> getLessonsFromJSON(JSONArray jsonArray) throws JSONException {

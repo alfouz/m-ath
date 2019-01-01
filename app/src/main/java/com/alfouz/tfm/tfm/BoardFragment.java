@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.alfouz.tfm.tfm.Adapters.CourseAdapter;
 import com.alfouz.tfm.tfm.Adapters.CourseBoardAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
+import com.alfouz.tfm.tfm.AsyncTasks.GetCoursesWithNoStudentDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetUserCoursesDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
@@ -96,7 +97,7 @@ public class BoardFragment extends Fragment {
 
         List<Course> courseList = new ArrayList<Course>();
 
-        new GetUserCoursesDB(new CallbackInterface<List<Course>>() {
+        new GetCoursesWithNoStudentDB(new CallbackInterface<List<Course>>() {
             @Override
             public void doCallback(List<Course> courses) {
                 mAdapter = new CourseBoardAdapter(courses, new CourseBoardAdapter.OnItemClickListener() {

@@ -98,7 +98,7 @@ public class CourseBoardAdapter  extends RecyclerView.Adapter<CourseBoardAdapter
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(holder.itemView.getContext(), StatsActivity.class);
-                intent.putExtra("idLesson", holder.courseEntity.getId());
+                intent.putExtra("idCourse", holder.courseEntity.getId());
                 holder.itemView.getContext().startActivity(intent);
                 //Toast.makeText(holder.itemView.getContext(), holder.itemView.getContext().getText(R.string.misc_not_implemented_yet), Toast.LENGTH_SHORT).show();
             }

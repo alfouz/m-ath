@@ -30,6 +30,9 @@ public interface CourseDao {
     @Query("SELECT * FROM Courses WHERE student = :student OR creator = -1 ORDER BY id DESC")
     List<CourseEntity> getCoursesByStudent(long student);
 
+    @Query("SELECT * FROM Courses WHERE creator = :creator AND student < 0 ORDER BY id DESC")
+    List<CourseEntity> getCoursesWithNoStudent(long creator);
+
     @Insert
     long insertCourse(CourseEntity course);
 

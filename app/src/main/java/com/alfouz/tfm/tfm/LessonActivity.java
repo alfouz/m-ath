@@ -27,6 +27,17 @@ import com.alfouz.tfm.tfm.DTOs.Lesson;
 import com.alfouz.tfm.tfm.DTOs.MathTask;
 import com.alfouz.tfm.tfm.DTOs.MathTaskOption;
 import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
+import com.alfouz.tfm.tfm.Database.Entities.ResultUserLessonEntity;
+import com.alfouz.tfm.tfm.Util.APIRestUtil;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,9 +82,6 @@ public class LessonActivity extends AppCompatActivity {
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
-
-
-
 
         new GetLessonDB(new CallbackInterface<Lesson>() {
             @Override
@@ -221,7 +229,6 @@ public class LessonActivity extends AppCompatActivity {
                                     new CreateResultUserLessonDB(new CallbackInterface() {
                                         @Override
                                         public void doCallback(Object object) {
-
                                             DialogEndLesson dialogEnd = new DialogEndLesson(LessonActivity.this, idCourse, actLesson, scoreFinal);
                                             dialogEnd.setCancelable(false);
                                             dialog.setCanceledOnTouchOutside(false);
@@ -292,4 +299,7 @@ public class LessonActivity extends AppCompatActivity {
         builder.setMessage(getString(R.string.lesson_close_message)).setPositiveButton(getString(R.string.misc_yes), dialogClickListener)
                 .setNegativeButton(getString(R.string.misc_no), dialogClickListener).show();
     }
+
+
+
 }

@@ -172,7 +172,7 @@ public class CourseActivity extends AppCompatActivity {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                     tvDescription.setJustificationMode(Layout.JUSTIFICATION_MODE_INTER_WORD);
                 }
-                tvOwner.setText("Nombre-Propietario");
+                tvOwner.setText(Long.toString(course.getCreator())/*"Nombre-Propietario"*/);
                 tvVisibility.setText(course.isPublic()?"Pública":"Privada");
                 ratingBar.setRating(course.getLevel());
 

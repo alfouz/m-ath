@@ -14,11 +14,11 @@ import com.alfouz.tfm.tfm.Util.CourseType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetUserCoursesDB extends AsyncTask<Long, Void, List<Course>> {
+public class GetCoursesWithNoStudentDB extends AsyncTask<Long, Void, List<Course>> {
     CallbackInterface callback;
     AppDatabase db;
 
-    public GetUserCoursesDB(CallbackInterface callback, Context context) {
+    public GetCoursesWithNoStudentDB(CallbackInterface callback, Context context) {
         this.callback = callback;
         this.db = AppDatabase.getInstance(context);
     }
@@ -26,7 +26,7 @@ public class GetUserCoursesDB extends AsyncTask<Long, Void, List<Course>> {
     @Override
     protected List<Course> doInBackground(Long... integers) {
         Long idUser = integers[0];
-        List<CourseEntity> list = db.courseDao().getCoursesByUser(idUser);
+        List<CourseEntity> list = db.courseDao().getCoursesWithNoStudent(idUser);
         List<Course> courses = new ArrayList<Course>();
         for(CourseEntity c : list){
             List<LessonEntity> listLessonEntity = db.lessonDao().getLessonsByCourse(c.getId());

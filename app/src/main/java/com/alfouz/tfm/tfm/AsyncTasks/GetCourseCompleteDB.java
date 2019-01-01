@@ -48,7 +48,7 @@ public class GetCourseCompleteDB extends AsyncTask<Long, Void, Course> {
             }
             listLessons.add(new Lesson(le.getId(), le.getCourse(), le.getTitle(), le.getDescription(), mathTasks, le.getDuration(), le.getIdRemote()));
         }
-        Course course = new Course(courseEntity.getId(), courseEntity.getTitle(), listLessons, courseEntity.getLevel(), courseEntity.getScore(), courseEntity.getDescription(), courseEntity.isPublic(), CourseType.getType(courseEntity.getType()), courseEntity.getIdRemote());
+        Course course = new Course(courseEntity.getId(), courseEntity.getCreator(), courseEntity.getTitle(), listLessons, courseEntity.getLevel(), courseEntity.getScore(), courseEntity.getDescription(), courseEntity.isPublic(), CourseType.getType(courseEntity.getType()), courseEntity.getIdRemote());
 
         return course;
     }

@@ -33,7 +33,7 @@ public class GetCourseDB extends AsyncTask<Long, Void, Course> {
         for(LessonEntity le : listLessonEntities){
             listLessons.add(new Lesson(le.getId(), le.getTitle(), le.getDescription(), le.getDuration()));
         }
-        Course course = new Course(courseEntity.getId(), courseEntity.getTitle(), listLessons, courseEntity.getLevel(), courseEntity.getScore(), courseEntity.getDescription(), courseEntity.isPublic(), CourseType.getType(courseEntity.getType()), courseEntity.getIdRemote());
+        Course course = new Course(courseEntity.getId(), courseEntity.getCreator(), courseEntity.getTitle(), listLessons, courseEntity.getLevel(), courseEntity.getScore(), courseEntity.getDescription(), courseEntity.isPublic(), CourseType.getType(courseEntity.getType()), courseEntity.getIdRemote());
 
         return course;
     }

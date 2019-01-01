@@ -18,7 +18,7 @@ public class Course {
     private CourseType type;
     private long idRemote;
 
-    public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type){
+    /*public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type){
         this.id = id;
         this.title = title;
         this.lessons = lessons;
@@ -28,10 +28,24 @@ public class Course {
         this.isPublic = isPublic;
         this.type = type;
 
-    }
+    }*/
 
-    public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote){
+    /*public Course(long id, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote){
         this.id = id;
+        this.title = title;
+        this.lessons = lessons;
+        this.score = score;
+        this.level = level;
+        this.description = description;
+        this.isPublic = isPublic;
+        this.type = type;
+        this.idRemote = idRemote;
+
+    }*/
+
+    public Course(long id, long creator, String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote){
+        this.id = id;
+        this.creator = creator;
         this.title = title;
         this.lessons = lessons;
         this.score = score;
@@ -54,7 +68,7 @@ public class Course {
 
     }
 
-    public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote){
+    /*public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote){
         this.title = title;
         this.lessons = lessons;
         this.score = score;
@@ -64,7 +78,7 @@ public class Course {
         this.type = type;
         this.idRemote = idRemote;
 
-    }
+    }*/
 
     public Course(String title, List<Lesson> lessons, Float level, Integer score, String description, boolean isPublic, CourseType type, long idRemote, long idUser){
         this.title = title;

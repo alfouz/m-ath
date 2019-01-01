@@ -50,6 +50,7 @@ public class APIRestUtil {
     private static String tasks = "/task";
     private static String taskoptions = "/taskoption";
     private static String users = "/user";
+    private static String results = "/result";
 
     private static String create = "/createall";
 
@@ -70,6 +71,7 @@ public class APIRestUtil {
         return url+taskoptions;
     }
     public static String getUsers(){return url+users;}
+    public static String getResults(){return url+results;}
 
 
 
