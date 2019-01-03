@@ -95,7 +95,12 @@
     <string name="stats_users">Usuarios realizando en curso: %1$s</string>
     <string name="stats_results_info">Porcentaje de aciertos según la lección</string>
 
+    <!-- Profile fragment -->
+    <string name="profile_total_courses">Tienes registrados %1$d cursos</string>
+    <string name="profile_total_score">Tienes una puntuación total del %1$d%% </string>
+
     <!-- Miscelanea -->
+    <string name="misc_courses">Cursos</string>
     <string name="misc_public">Público</string>
     <string name="misc_private">Privado</string>
     <string name="misc_title">Título</string>
@@ -126,6 +131,7 @@
     <string name="misc_last_week">Última semana</string>
     <string name="misc_last_month">Último mes</string>
     <string name="misc_last_year">Último año</string>
+    <string name="misc_scores">Puntuación</string>
 
     <string name="misc_comp_options">%1$d opciones</string>
     <string name="misc_comp_lessons">%1$d lecciones</string>
