@@ -50,10 +50,11 @@
             android:id="@+id/cardCourseLessons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="Lessons"
+            android:textSize="12sp"
             card_view:layout_constraintStart_toStartOf="@+id/cardCourseTitle"
-            card_view:layout_constraintTop_toBottomOf="@+id/cardCourseTitle" />
+            card_view:layout_constraintTop_toBottomOf="@+id/idLevel" />
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/chart"
@@ -74,20 +75,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:numStars="6"
+            card_view:layout_constraintBottom_toBottomOf="@+id/idLevel"
             card_view:layout_constraintStart_toEndOf="@+id/idLevel"
-            card_view:layout_constraintTop_toBottomOf="@+id/cardCourseTitle" />
+            card_view:layout_constraintTop_toTopOf="@+id/idLevel" />
 
         <TextView
             android:id="@+id/idLevel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:text="@string/course_card_level"
-            card_view:layout_constraintStart_toEndOf="@+id/cardCourseLessons"
+            android:textSize="12sp"
+            card_view:layout_constraintStart_toStartOf="@+id/cardCourseTitle"
             card_view:layout_constraintTop_toBottomOf="@+id/cardCourseTitle" />
 
     </android.support.constraint.ConstraintLayout>

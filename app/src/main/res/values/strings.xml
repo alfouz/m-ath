@@ -28,6 +28,9 @@
 
     <!-- Tarjeta de curso -->
     <string name="course_card_level">Nivel: </string>
+    <string name="course_not_enough_data">Curso no definido</string>
+    <string name="course_not_enough_data_desc">No se ha realizado ningún curso aún</string>
+    <string name="course_intro">Último curso realizado: </string>
 
     <!-- Actividad de Curso -->
     <string name="course_lesson_start_message">Esta lección tiene %1$d preguntas, ¿está listo para comenzar?</string>
@@ -120,6 +123,9 @@
     <string name="misc_is_ecuation">¿Es una fórmula?</string>
     <string name="misc_ok">Ok</string>
     <string name="misc_upload">Subir</string>
+    <string name="misc_last_week">Última semana</string>
+    <string name="misc_last_month">Último mes</string>
+    <string name="misc_last_year">Último año</string>
 
     <string name="misc_comp_options">%1$d opciones</string>
     <string name="misc_comp_lessons">%1$d lecciones</string>
@@ -154,6 +160,7 @@
         -El apartado home contenerá un resumen, y el apartado "Perfil" los progresos del usuario actual.\n\n
         Versión 0.4 alpha
     </string>
+    <string name="home_activity">Actividad reciente:</string>
 
     <string name="info_equation">
         Ayuda para creación de fórmulas \n\n

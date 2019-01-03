@@ -19,6 +19,12 @@ public interface ResultUserLessonDao {
     @Query("SELECT * FROM ResultUserLessons WHERE user = :user AND lesson= :lesson")
     List<ResultUserLessonEntity> getResultUserLessonList(long user, long lesson);
 
+    @Query("SELECT * FROM ResultUserLessons WHERE user= :user ORDER BY timestamp desc")
+    ResultUserLessonEntity getLastResultUser(long user);
+
+    @Query("SELECT * FROM ResultUserLessons WHERE user= :user AND timestamp>:secs ORDER BY timestamp desc")
+    List<ResultUserLessonEntity> getResultsAlongTime(long user, long secs);
+
     //Posiblemente es necesario implementar una función que devuelva el mayor score de una lección por usuario
 
     @Insert
