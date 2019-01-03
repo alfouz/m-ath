@@ -88,12 +88,16 @@
     <string name="shop_fragment_view_curse">Ver curso descargado</string>
     <string name="shop_fragment_no_connection">No hay conexión con el servidor</string>
 
+    <!-- Stats Activity -->
+    <string name="stats_users">Usuarios realizando en curso: %1$s</string>
+    <string name="stats_results_info">Porcentaje de aciertos según la lección</string>
 
     <!-- Miscelanea -->
     <string name="misc_public">Público</string>
     <string name="misc_private">Privado</string>
     <string name="misc_title">Título</string>
     <string name="misc_lessons">Lecciones</string>
+    <string name="misc_lesson">Lección</string>
     <string name="misc_description">Descripción</string>
     <string name="misc_statement">Enunciado</string>
     <string name="misc_autor">Autor</string>

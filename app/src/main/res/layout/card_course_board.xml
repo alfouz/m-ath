@@ -68,14 +68,11 @@
         <ImageButton
             android:id="@+id/idButtonCourseStat"
             style="@style/Widget.AppCompat.ImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:background="@null"
             card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintDimensionRatio="1:1"
             card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             card_view:srcCompat="@drawable/ic_insert_chart_black_24dp" />

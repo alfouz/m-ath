@@ -17,11 +17,14 @@ import android.widget.Switch;
 
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.AsyncTasks.EditCourseDB;
+import com.alfouz.tfm.tfm.AsyncTasks.EditLessonDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseCompleteDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseDB;
 import com.alfouz.tfm.tfm.AsyncTasks.GetCourseEntityDB;
+import com.alfouz.tfm.tfm.AsyncTasks.GetCourseLessonsDB;
 import com.alfouz.tfm.tfm.DTOs.Course;
 import com.alfouz.tfm.tfm.Database.Entities.CourseEntity;
+import com.alfouz.tfm.tfm.Database.Entities.LessonEntity;
 import com.alfouz.tfm.tfm.Util.APIRestUtil;
 import com.alfouz.tfm.tfm.Util.JSONHelper;
 import com.android.volley.Request;
@@ -37,6 +40,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class EditCourseActivity extends AppCompatActivity {
@@ -146,8 +150,8 @@ public class EditCourseActivity extends AppCompatActivity {
                             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
 
                             JSONObject params = new JSONObject();
-
                             try {
+                                Log.d("tst", new JSONHelper(getApplicationContext()).getJSONfromCourse(courset).toString());
                                 params.put("idlocal", courseAct.getId());
                                 params.put("iduser", courseAct.getCreator());
                                 params.put("titulo", courseAct.getTitle());
@@ -170,7 +174,7 @@ public class EditCourseActivity extends AppCompatActivity {
                                         public void onResponse(final JSONObject responsePlaces) {
                                             new GetCourseEntityDB(new CallbackInterface<CourseEntity>() {
                                                 @Override
-                                                public void doCallback(CourseEntity courseEntity) {
+                                                public void doCallback(final CourseEntity courseEntity) {
                                                     if(courseEntity!=null && courseEntity.getIdRemote()<=0l) {
                                                         courseEntity.setTitle(title.getText().toString());
                                                         courseEntity.setDescription(description.getText().toString());
@@ -185,7 +189,57 @@ public class EditCourseActivity extends AppCompatActivity {
                                                         new EditCourseDB(new CallbackInterface<CourseEntity>() {
                                                             @Override
                                                             public void doCallback(CourseEntity course) {
+                                                                //Obtener ids remotos de cada una de las lecciones enviadas
+                                                                new GetCourseLessonsDB(new CallbackInterface<List<LessonEntity>>() {
+                                                                    @Override
+                                                                    public void doCallback(List<LessonEntity> lessons) {
+                                                                        RequestQueue requestQueuelessons = Volley.newRequestQueue(MyApplication.getAppContext());
+                                                                        for(final LessonEntity l : lessons){
+                                                                            try {
+                                                                                JSONObject params2 = new JSONObject();
+                                                                                //TODO Puede que esto genere problemas o sea necesario hacerlo en más sitios
+                                                                                params2.put("idcourse", courseEntity.getIdRemote());
+                                                                                params2.put("idlocal", l.getId());
+                                                                                Log.d("tst",params2.toString());
+                                                                                JsonObjectRequest requestLesson = new JsonObjectRequest(
+                                                                                        Request.Method.GET, //GET or POST
+                                                                                        APIRestUtil.getLessons() + "/courseid/" +Long.toString(courseEntity.getIdRemote()) + "/" + Long.toString(l.getId()),
+                                                                                        null, //Parameters
+                                                                                        new Response.Listener<JSONObject>() { //Listener OK
 
+                                                                                            @Override
+                                                                                            public void onResponse(JSONObject responsePlaces) {
+                                                                                                try {
+                                                                                                    l.setIdRemote(responsePlaces.getLong("id"));
+                                                                                                    //Creado resultado
+                                                                                                    new EditLessonDB(new CallbackInterface() {
+                                                                                                        @Override
+                                                                                                        public void doCallback(Object object) {
+                                                                                                            //Editada leccion
+                                                                                                        }
+                                                                                                    }, getApplicationContext()).execute(l);
+                                                                                                } catch (JSONException e) {
+                                                                                                    e.printStackTrace();
+                                                                                                }
+
+                                                                                            }
+                                                                                        }, new Response.ErrorListener() { //Listener ERROR
+
+                                                                                    @Override
+                                                                                    public void onErrorResponse(VolleyError error) {
+                                                                                        //error
+                                                                                    }
+                                                                                });
+
+
+                                                                                //Send the request to the requestQueue
+                                                                                requestQueuelessons.add(requestLesson);
+                                                                            } catch (JSONException e) {
+                                                                                e.printStackTrace();
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }, getApplicationContext()).execute(courseEntity.getId());
                                                             }
                                                         }, getApplicationContext()).execute(courseEntity);
                                                     }else{

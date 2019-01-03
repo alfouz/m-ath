@@ -7,6 +7,7 @@ import com.alfouz.tfm.tfm.DTOs.Course;
 import com.alfouz.tfm.tfm.DTOs.Lesson;
 import com.alfouz.tfm.tfm.DTOs.MathTask;
 import com.alfouz.tfm.tfm.DTOs.MathTaskOption;
+import com.alfouz.tfm.tfm.Database.Entities.ResultUserLessonEntity;
 import com.alfouz.tfm.tfm.Database.Entities.UserEntity;
 import com.alfouz.tfm.tfm.R;
 
@@ -18,6 +19,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class JSONHelper {
@@ -254,5 +256,29 @@ public class JSONHelper {
         user.setId(id);
         user.setIdGoogle(idGoogle);
         return user;
+    }
+
+    public List<ResultUserLessonEntity> getResultsFromJSON(JSONArray jsonArray) throws JSONException {
+        //[{"user":18,"lesson":13,"timestamp":1546380792780,"percentCorrect":100}]
+        List<ResultUserLessonEntity> results = new ArrayList<>();
+
+        for (int i = 0; i<jsonArray.length(); i++) {
+            JSONObject resultJSON = jsonArray.getJSONObject(i);
+
+            Long user = resultJSON.getLong("user");
+            Long idLeccion = resultJSON.getLong("lesson");
+            Long timestamp = resultJSON.getLong("timestamp");
+            Long percentcorrect = resultJSON.getLong("percentCorrect");
+
+            ResultUserLessonEntity result = new ResultUserLessonEntity();
+            result.setLesson(idLeccion);
+            result.setUser(user);
+            result.setTimestamp(new Date(timestamp));
+            result.setPercentCorrect(percentcorrect);
+            results.add(result);
+
+        }
+
+        return results;
     }
 }
