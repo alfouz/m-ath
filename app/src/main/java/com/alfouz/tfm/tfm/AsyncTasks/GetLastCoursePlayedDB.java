@@ -30,9 +30,6 @@ public class GetLastCoursePlayedDB extends AsyncTask<Long, Void, Course> {
         ResultUserLessonEntity result = db.resultUserLessonDao().getLastResultUser(idUser);
         if(result!=null) {
             CourseEntity courseEntity = db.courseDao().getCourseById(db.lessonDao().getLessonById(result.getLesson()).getCourse());
-            List<LessonEntity> listLessonEntities = db.lessonDao().getLessonsByCourse(courseEntity.getId());
-
-            List<Lesson> listLessons = new ArrayList<Lesson>();
 
             List<LessonEntity> listLessonEntity = db.lessonDao().getLessonsByCourse(courseEntity.getId());
             List<Lesson> listLesson = new ArrayList<Lesson>();
@@ -52,7 +49,7 @@ public class GetLastCoursePlayedDB extends AsyncTask<Long, Void, Course> {
                 score += resultAct!=null?resultAct.getPercentCorrect():0;
                 listLesson.add(new Lesson(l.getId(), l.getTitle(), l.getDescription(), l.getDuration()));
             }
-            Course course = new Course(courseEntity.getId(), courseEntity.getCreator(), courseEntity.getTitle(), listLessons, courseEntity.getLevel(),  (listLessonEntity.size()!=0)?(score/listLessonEntity.size()):0, courseEntity.getDescription(), courseEntity.isPublic(), CourseType.getType(courseEntity.getType()), courseEntity.getIdRemote());
+            Course course = new Course(courseEntity.getId(), courseEntity.getCreator(), courseEntity.getTitle(), listLesson, courseEntity.getLevel(),  (listLessonEntity.size()!=0)?(score/listLessonEntity.size()):0, courseEntity.getDescription(), courseEntity.isPublic(), CourseType.getType(courseEntity.getType()), courseEntity.getIdRemote());
             return course;
         }else{
             return null;

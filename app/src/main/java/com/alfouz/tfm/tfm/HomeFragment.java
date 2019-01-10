@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alfouz.tfm.tfm.Adapters.CourseAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
@@ -178,10 +179,14 @@ public class HomeFragment extends Fragment {
                 mAdapter = new CourseAdapter(courses, new CourseAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(Course item) {
-                        Intent intent = new Intent(getActivity(), CourseActivity.class);
-                        intent.putExtra("idCourse", item.getId());
-                        intent.putExtra("idUser", idUser);
-                        startActivity(intent);
+                        if(item.getId()>0) {
+                            Intent intent = new Intent(getActivity(), CourseActivity.class);
+                            intent.putExtra("idCourse", item.getId());
+                            intent.putExtra("idUser", idUser);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(getContext(), R.string.home_course_example, Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 mRecyclerView.setAdapter(mAdapter);

@@ -38,7 +38,7 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
     private static final String TAG = AuthenticationActivity.class.getSimpleName();
 
     GoogleSignInClient mGoogleSignInClient;
-    private static final int RC_SIGN_IN = 9002;
+    private static final int RC_SIGN_IN = 9001;
 
 
     public String personName;
@@ -52,6 +52,7 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
+                .requestIdToken(getString(R.string.server_client_id))
                 .build();
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
@@ -71,15 +72,6 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.sign_in_button:
-
-                /*new CheckUserAndInsertDB(new CallbackInterface() {
-                    @Override
-                    public void doCallback(Object object) {
-                        Intent intent = new Intent(getApplicationContext(), InitialActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                        startActivity(intent);
-                    }
-                }, getApplicationContext()).execute("1");*/
                 v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
                 signIn();
                 break;
@@ -118,9 +110,9 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-
             initializeData(account);
 
+            //Log.d("tst", account.getIdToken() + " - " + account.getId());
             //new CheckUserDB(this, getApplicationContext()).execute(account.getId());
             /*new CheckUserAndInsertBD(this, getApplicationContext()).execute(account.getId());*/
         } catch (ApiException e) {
@@ -138,7 +130,7 @@ public class AuthenticationActivity extends AppCompatActivity implements View.On
         }
         email = account.getEmail();
 
-        new CheckUserDB(this, getApplicationContext()).execute(account.getId());
+        new CheckUserDB(this, getApplicationContext()).execute(account.getId()); //TODO Dangerous thing
         /*new CheckUserAndInsertBD(this, getApplicationContext()).execute(account.getId());*/
     }
 

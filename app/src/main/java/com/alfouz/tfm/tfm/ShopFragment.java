@@ -18,6 +18,7 @@ import com.alfouz.tfm.tfm.Adapters.CourseBoardAdapter;
 import com.alfouz.tfm.tfm.Adapters.CourseShopAdapter;
 import com.alfouz.tfm.tfm.AsyncTasks.CallbackInterface;
 import com.alfouz.tfm.tfm.DTOs.Course;
+import com.alfouz.tfm.tfm.DTOs.Lesson;
 import com.alfouz.tfm.tfm.Util.APIRestUtil;
 import com.alfouz.tfm.tfm.Util.JSONHelper;
 import com.android.volley.Request;

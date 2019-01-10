@@ -167,6 +167,7 @@
         Versión 0.4 alpha
     </string>
     <string name="home_activity">Actividad reciente:</string>
+    <string name="home_course_example">Este es un curso de ejemplo</string>
 
     <string name="info_equation">
         Ayuda para creación de fórmulas \n\n

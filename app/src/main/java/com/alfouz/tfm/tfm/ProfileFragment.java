@@ -61,6 +61,8 @@ public class ProfileFragment extends Fragment {
     private TextView tvTotalCursos;
     private TextView tvTotalCorrecto;
 
+    GetCoursesByStudentDB getCoursesByStudentDB;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -139,7 +141,7 @@ public class ProfileFragment extends Fragment {
         tvTotalCursos = root.findViewById(R.id.tvTotalCursos);
         tvTotalCorrecto = root.findViewById(R.id.tvTotalCorrecto);
 
-        new GetCoursesByStudentDB(new CallbackInterface<List<Course>>() {
+        getCoursesByStudentDB = new GetCoursesByStudentDB(new CallbackInterface<List<Course>>() {
             @Override
             public void doCallback(List<Course> courses) {
 
@@ -247,6 +249,13 @@ public class ProfileFragment extends Fragment {
                 //pieChart.setDrawEntryLabels(true);
                 radarChart.invalidate(); // refresh
             }
-        }, getContext()).execute(idUser);
+        }, getContext());
+        getCoursesByStudentDB.execute(idUser);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        getCoursesByStudentDB.cancel(true);
     }
 }

@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -232,17 +233,17 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
         int id = item.getItemId();
 
         if (id == R.id.mathtask_menu_create) {
-            if(titleMathTask!=null && !titleMathTask.equals("")) {
-                if(mathTaskOptionL!=null && mathTaskOptionL.size()>0) {
+            if (titleMathTask != null && !titleMathTask.equals("")) {
+                if (mathTaskOptionL != null && mathTaskOptionL.size() > 0) {
                     int correct = 0;
-                    for(MathTaskOption mto : mathTaskOptionL){
-                        if(mto.isCorrect()){
+                    for (MathTaskOption mto : mathTaskOptionL) {
+                        if (mto.isCorrect()) {
                             correct++;
                         }
                     }
-                    if(correct>0) {
-                        if(ecuationMathTask==null){
-                            ecuationMathTask="";
+                    if (correct > 0) {
+                        if (ecuationMathTask == null) {
+                            ecuationMathTask = "";
                         }
                         new CreateMathTaskDB(new CallbackInterface<MathTaskEntity>() {
                             @Override
@@ -271,15 +272,16 @@ public class MathTaskNewActivity extends AppCompatActivity implements MathTaskDa
                                 }, getApplicationContext()).execute(mtoeArray);
                             }
                         }, this).execute(Long.toString(idLesson), titleMathTask, ecuationMathTask, "-1");
-                    }else{
+                    } else {
                         Toast.makeText(this, getString(R.string.new_mathtaskoption_select_at_least_one_correct), Toast.LENGTH_SHORT).show();
                     }
-                }else{
+                } else {
                     Toast.makeText(this, getString(R.string.new_mathtask_options_error), Toast.LENGTH_SHORT).show();
                 }
-            }else{
+            } else {
                 Toast.makeText(this, getString(R.string.new_mathtask_title_error), Toast.LENGTH_SHORT).show();
             }
+
         }
         return super.onOptionsItemSelected(item);
     }
